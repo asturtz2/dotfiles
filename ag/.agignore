@@ -1,0 +1,9 @@
+configs*
+*.git*
+.local/share/applications*
+.local/share/gvfs*
+.local/share/icc*
+.bash_history
+.bash_logout
+.gmrun_history
+.cache*

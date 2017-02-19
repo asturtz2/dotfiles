@@ -1,0 +1,7 @@
+URxvt.font: xft:Hasklig:size=11:antialias=true:autohint=false
+URxvt.scrollBar: false
+URxvt.scrollBar_right: true
+URxvt.iso14755: False
+URxvt.clipboard.copycmd:xsel -ib
+URxvt.clipboard.copycmd:xsel -ob
+URxvt.perl-ext-common: default

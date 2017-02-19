@@ -1,0 +1,9 @@
+--- Interrupt from thread: main
+
+/usr/lib/ruby/vendor_ruby/sup/util/ncurses.rb:109:in `keycode?'
+/usr/lib/ruby/vendor_ruby/sup/util/ncurses.rb:101:in `is_keycode?'
+/usr/lib/ruby/vendor_ruby/sup/buffer.rb:609:in `ask_getch'
+/usr/lib/ruby/vendor_ruby/sup/buffer.rb:628:in `ask_yes_or_no'
+/usr/lib/ruby/vendor_ruby/sup/util.rb:610:in `method_missing'
+/usr/bin/sup-mail:315:in `<module:Redwood>'
+/usr/bin/sup-mail:74:in `<main>'

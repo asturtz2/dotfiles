@@ -1,0 +1,50 @@
+open_with h
+shell c
+find n
+find g
+open_with q
+shell mkdir MATH-314
+shell touch hw5.tex
+find w
+shell touch hw2.tex
+find 
+open_with 
+shell rm hw1.*
+shell mvk
+shell rm -r hw2
+shell mkdir hw2
+shell mv hw2-assignment.pdf hw2
+shell mv hw2.tex hw2
+find 2
+find 3
+shell mkdir hw5
+shell mv hw5.* hw5
+shell ex
+shell wget https://www.math.unl.edu/~bdeng1/Teaching/math314/Review%20Lists/Review%20Check%20List%20for%20Exam%201.docx
+shell pilprint 
+shell cat %s
+find network
+find interfaces
+shell k %s
+shell 
+shell  %s
+shell ./ %s
+find mu
+shell mkdir .mutt
+shell touch
+shell touch muttrc
+find init
+find net
+find networki
+shell %s restart
+find .su
+find con
+cd 
+find a
+l
+find sch
+find off
+find ma
+find p
+delete
+
