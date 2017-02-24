@@ -12,7 +12,6 @@
 " Basic mappings {{{
 map <Space> <Leader>
 let maplocalleader = ","
-map <CR> :
 "}}}
 
 " Buffer mappings {{{
@@ -129,7 +128,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 " }}}

@@ -1,1761 +1,3 @@
-ls
-rm *Constraint*
-ls
-df -h
-cd
-ls
-cd Downloads/
-ls
-du -h .
-cd ..
-du -h Downloads/
-man du
-du -h Downloads/ -a
-ls
-su
-ls
-cd .local/share/nvim/
-ls
-cd swap/
-ls
-rm *hw1*
-ls
-cd ..
-cd .xmonad
-ls
-ghci
-cd .xmonad/
-ping google.com
-ping 8.8.8.8
-ifconfig
-sudo ifconfig
-ifconfig eth0 up
-sudo ifconfig eth0 up
-sudo ifconfig
-cd school/
-ls
-cd CSCE-428/hw1/
-ls
-vim
-sudo shutdown now
-sudo ifconfig
-sudo ifconfig eth0 up
-sudo ifconfig
-man ifconfig
-sudo ifconfig -a
-sudo ifconfig -i
-sudo ifconfig -s
-sudo ifconfig
-sudo shutdown now
-htop
-ls
-sudo ifconfig
-sudo ifconfig -a
-sudo ifconfig eth0 up
-sudo ifconfig eth0
-ls
-ssh asturtz@cse.unl.edu
-cd /etc/resolvconf/
-ls
-cd ..
-ks
-ls
-cat resolv.conf 
-shutdown now
-sudo shutdown now
-sudo ifconfig
-sudo shutdown now
-sudo ifconfig
-sudo ifconfig -a
-sudo ifconfig eth0 up
-sudo ifconfig
-ping 8.8.8.8
-sudo shutdown now
-cd school/CSCE-428/hw1/
-ls
-history
-df
-df- h
-df -h
-lspci
-lspci -v
-sudo lspci -v
-ifconfig eth0
-man ifconfig
-ifconfig -s
-sudo ifconfig -s
-sudo ifconfig eth0
-iptables
-sudo iptables
-sudo iptables -h
-netstat
-ifup
-sudo ifup
-sudo ifup eth0
-man ifup
-man iface
-cat /etc/network/interfaces
-su
-cd /etc/network/
-vim interfaces
-df -h
-ifconfig -a
-sudo ifconfig -a
-ifconfig
-sudo ifconfig
-ls
-vim
-ls
-cd school/Nebraska-Environmental-Trust/
-vim
-ranger
-exit
-ls
-ranger
-config status
-cat mount.sh 
-config add -u
-config commit -m "Vim config/weechat"
-config push
-ranger
-ls
-ls -a
-ls -a ran*
-ls -a *ran*
-rm index.html\?fdid=dek.k3b.android.androFotoFinder 
-rm test.t*
-rm thing.test*
-ls
-ls -a
-cd .config/
-ls
-cd ranger/
-ls
-ls -a
-cd ..
-ls
-cd ..
-ls
-ls -a
-man ctags
-which ctags
-which etags
-man etags
-ls
-vim
-cd .local/share/
-ls
-cd nvim/
-ls
-cd swap/
-ls
-rm *vim*
-ls
-cd
-vim
-man vim
-history vim
-vim
-ls
-cd .xmonad/
-ls
-cd lib/
-ls
-cd Xmon
-ls
-cd XMonad/
-ranger
-cd ..
-ls
-ghci
-ls
-ranger
-cd .xmonad
-ls
-cd lib/
-ls
-cd XMonad/
-ghci
-cd Layout/
-ls
-ghci
-xmonad --recompile
-ranger
-su
-vim
-ls
-cd .local/share/
-ls
-cd nvim/swap/
-ls
-rm ./*
-ls
-cd
-ls
-vim
-man systemctl
-sudo systemctl hybrid-sleep
-man systemctl
-sudo systemctl suspend
-vim
-ls
-ls -a
-vim .xinitrc 
-wal -i Pictures/waterfall-rockface.jpg 
-vim
-cat .xinitrc 
-vim .xinitrc
-ls
-ranger
-vim
-cd Downloads/
-du -h
-ls
-ranger
-ls
-cd school/
-ls
-mkdir CSCE-466
-ls
-cd CSCE-4
-cd CSCE-466/
-ls
-sudo mv /tmp/mozilla_alex0/assign1_S17.pdf .
-ls
-vim
-wal -i Pictures/waterfall-rockface.jpg 
-vim
-ls
-ranger
-man feh
-rtv
-man feh
-cd school/CSCE-466/
-ks
-ls
-cd
-ls
-wal -i Pictures/cabin.jpg 
-vim
-ls -a
-vim .config/rtv/
-vim .config/rtv/rtv.cfg 
-vim .mailcap 
-ls
-sudo apt install perl
-git clone https://github.com/stark/Color-Scripts
-ls
-feh feh*
-ls
-rm feh_00*
-ls
-du -h
-ls
-cd Color-Scripts/
-ls
-cd preview/
-ls
-cd color-scripts-preview/
-ls
-cd ..
-feh color-scripts-preview/
-ls
-cd Color-Scripts/
-ks
-ls
-cd preview/
-ls
-feh color-scripts-preview/
-ls
-cd ..
-ls
-cd color-scripts/
-ls
-cd arc
-cd arch
-ls
-./arch
-cd Color-Scripts/color-scripts/
-./arch
-ls
-rtv
-ls
-rtv
-ls
-cd Color-Scripts/color-scripts/arch
-Color-Scripts/color-scripts/arch
-cd Color-Scripts/color-scripts/
-ls
-colortest
-./colortest
-./colorview
-./rails
-ls
-./colorwheel
-./colorview
-cat colorview
-echo $red
-echo $BLK
-cat arch
-vim
-weechat
-ls
-vim .Xresources 
-ls
-cd Color-Scripts/color-scripts/
-ls
-arch
-ls
-./arch
-./colorview
-./colorwheel
-cd
-vim
-man fc-list
-fc-list
-fc-list -v
-man fc-list
-fc -h
-fc-list -h
-fc-list -s
-man fc-list
-man urxvt
-vim
-rvt
-rtv
-wal -i Pictures/cabin.jpg 
-source ~/.bashrc
-ranger
-env EDITOR=vim ranger
-ls
-vim
-man urxvt
-fc-list
-fc-list || grep anonymous pro
-fc-list || grep anonymous
-fc-list | grep anonymous
-fc-list | grep anonymous pro
-fc-list | grep anonymous
-apt search anonymous
-apt install fonts-anonymous-pro
-sudo apt install fonts-anonymous-pro 
-fc-list | grep anonymous
-man urxvt
-ls
-vim
-ls
-cd Color-Scripts/
-ls
-cd Downloads/
-ls
-cd OTF/
-ls
-cd ..
-cd Webfonts/
-ls
-man mpv
-vim
-wal -i Pictures/cabin.jpg 
-ls
-wal -i Pictures/cabin.jpg 
-ls
-vim
-ls
-xfce4-terminal
-ranger
-wal -i Pictures/cabin.jpg 
-wal -i Pictures/cabin.jpg 
-ls
-vim
-ls
-mpv mpv-shot0001.jpg 
-ls
-rm feh_0*
-rm mpv-*
-ls
-cd Color-Scripts/
-ls
-cd color-scripts/
-arch
-./arch
-ls
-wal -i Pictures/cabin.jpg 
-ls
-fc-list | grep anonymous
-ls
-xfce4-terminal
-ls
-vim
-ls
-vim
-wal -i Pictures/cabin.jpg 
-ls
-apt search source code pro
-apt install ttf-anonymous-pro 
-sudo apt install ttf-anonymous-pro 
-wal -i Pictures/cabin.jpg 
-ls
-wal -i Pictures/cabin.jpg 
-ls
-wal -i Pictures/cabin.jpg 
-ls
-apt search hasklig
-apt search source code pro
-cd /usr/share/fonts
-ls
-cd opentype/
-ls
-sudo mv Hasklig* /usr/share/fonts/opentype/
-fc-list | grep hasklig
-fc-list | grep Hasklig
-ls
-wal -i Pictures/cabin.jpg 
-ls
-vim
-ls
-wal -i Pictures/cabin.jpg 
-ls
-vim
-ls
-ls
-Color-Scripts/color-scripts/arch
-Color-Scripts/color-scripts/colorview
-ls
-wal -i Pictures/woman-in-woods.jpg 
-wal -i Pictures/seattle-skyline.jpg 
-wal -i Pictures/meadow.jpg 
-wal -i Pictures/woods
-wal -i Pictures/woods.jpg
-htop
-wal -i Pictures/lavendar-fields.jpg 
-kill 9649 
-ls
-Color-Scripts/color-scripts/arch
-$COLOR0
-ls
-nuget
-ls
-cd school/
-ls
-cd Nebraska-Environmental-Trust/
-ls
-git status
-git fetch
-git help config
-git config replace-all editor nvim
-git help config
-ls
-ls
-git status
-ranger
-cd school/Nebraska-Environmental-Trust/
-git pull
-git config --global user.name "Alex Sturtz"
-git config --global user.email "alexstur@gmail.com"
-git config --global credential.helper cache
-git pull
-git status
-git branch -r
-git remote prune origin
-git branch -r
-git config --global credential.helper nocache
-config status
-config add -u
-config commit -m "Backup config"
-config push
-ls
-ls -a
-ranger
-ls
-sudo shutdown now
-wal -i Pictures/woods.jpg 
-vim
-man sftp
-man ssh
-man scp
-ls
-touch backup
-ls
-cat backup 
-rm backup 
-man pandoc
-apt list installed | grep websocket
-ssh asturtz@cse.unl.edu
-sftp asturtz@cse.unl.edu
-nuget
-man grep
-nuget help install
-ls
-cd .config/
-ls
-cd ..
-cd .local/
-ls
-cd share/
-ls
-cd NuGet/
-ls
-cd Cache/
-ls
-cat WebGrease.1.6.0.nupkg 
-cd ..
-ls
-cd ..
-cd
-cd school/
-ls
-cd Nebraska-Environmental-Trust/
-ls
-cd GrantWeb/
-ls
-cd GrantWeb
-ls
-cd ..
-ls
-cd GrantWeb/
-ls
-nuget Install-Package jquery.dirtyforms
-man nuget
-nuget
-nuget install jquery.dirtyforms
-ls
-cd GrantWeb
-ls
-cat packages.config 
-ls -avl
-cd ..
-cd 
-cd school/
-cd
-./mount.sh 
-cd school/
-cp -r Nebraska-Environmental-Trust/ ~/workspace/
-cd
-ls
-cd workspace/
-ls
-cd Nebraska-Environmental-Trust/
-ls
-cd ..
-cd
-cd school/Nebraska-Environmental-Trust/
-vim
-ls
-vim
-wal -i Pictures/woods.jpg 
-cd school/Nebraska-Environmental-Trust/
-cd GrantWeb/
-ls
-cd ..
-ls
-cd GrantWeb/
-ls
-rm -r jQuery.1.4.2/
-rm -r jquery.dirtyforms.2.0.0/
-ls
-nuget
-nuget help restore
-ls
-nuget restore GrantWeb.sln
-ls
-git status
-nuget install jquery-dirtyforms
-nuget install jquery.dirtyforms
-ls
-nuget
-ls
-nuget help install
-ls
-rm jquery*
-rm -r jquery*
-rm -r jQ*
-ls
-cd packages/
-ls
-nuget install jquery.dirtyforms
-j
-git fetch
-cd school/Nebraska-Environmental-Trust/GrantWeb/
-ls
-cd GrantWeb
-ls
-git diff GrantWeb.csproj feature/Funding_Partners
-man git diff
-git fetch
-git diff ~ feature/Timeline
-git diff ~ origin/feature/Timeline
-git diff ~ origin feature/Timeline
-git branch
-git checkout feature/Timeline
-git checkout Dev
-git diff ~ feature/Timeline
-git diff HEAD feature/Timeline
-ls
-git status
-cd ..
-ls
-ls -a
-cd ..
-ls
-ls -a
-cat .gitignore
-git checkout feature/Timeline -- GrantWeb/GrantWeb/GrantWeb.csproj
-vim
-ls
-ls
-config status
-config add -u
-config commit -m "Backup before upgrade"
-config push
-ranger
-nuget restore school/Nebraska-Environmental-Trust/GrantWeb/GrantWeb.sln
-git checkout HEAD -- school/Nebraska-Environmental-Trust/GrantWeb/GrantWeb/GrantWeb.csproj
-cd school/Nebraska-Environmental-Trust/
-git checkout HEAD -- school/Nebraska-Environmental-Trust/GrantWeb/GrantWeb/GrantWeb.csproj
-git checkout HEAD -- GrantWeb/GrantWeb/GrantWeb.csproj
-ls
-nuget restore
-cd ..
-ls
-cd Nebraska-Environmental-Trust/GrantWeb/GrantWeb
-ls
-cd ..
-ls
-nuget GrantWeb.sln
-nuget restore GrantWeb.sln
-ls
-cd ..
-ls
-rm -r Nebraska-Environmental-Trust/
-sudo rm -r Nebraska-Environmental-Trust/
-ls
-git clone http://github.com/RaikesSchoolDS/Nebraska-Environmental-Trust
-ls
-cd Nebraska-Environmental-Trust/
-ls
-git fetch
-
-ls
-cd GrantWeb/
-ls
-mkdir packages
-
-
-man git diff
-man git
-man git diff
-man git
-man git diff
-man git
-ls
-nuget
-nuget help restore
-nuget restore school/Nebraska-Environmental-Trust/GrantWeb/GrantWeb.sln
-git status
-cd school/Nebraska-Environmental-Trust/
-git status
-git diff
-git diff HEAD
-cd school/Nebraska-Environmental-Trust/
-cd GrantWeb/
-man ag
-ag IncludeRoslynCompilerFilesToItemGroup .
-vim
-ls
-cd packages/
-ranger
-vim
-nuget
-nuget help delete
-nuget delete
-cd ..
-ls
-rm -r packages/*
-ls
-nuget restore GrantWeb.sln
-vim
-ranger
-cd
-ranger
-ls
-ls -a
-cd .weechat/
-ls
-cat slack.cache 
-cat irc.conf 
-ls
-cat plugins.conf 
-sudo apt
-apt
-apt list --upgradeable
-sudo apt upgrade
-msbuild
-man msbuild
-xbuild school/Nebraska-Environmental-Trust/GrantWeb/GrantWeb.sln
-apt search msbuild
-apt install msbuild
-sudo apt install msbuild
-cd school/Nebraska-Environmental-Trust/
-ls
-cd GrantWeb/
-ls
-msbuild GrantWeb.sln
-ls
-cd ..
-ls
-cd GrantWeb/
-ls
-msbuild GrantWeb.sln
-apt update nuget
-apt update
-sudo apt update
-apt list --upgradeable
-apt list --upgradeable | grep nuget
-apt list --upgradeable | grep mono
-xbuild GrantWeb.sln
-msbuild GrantWeb.sln
-which mono
-man mono
-apt list | grep mono
-wal -i Pictures/woods.jpg 
-/xclip
-xclip
-vim
-wal -i Pictures/woods.jpg 
-ls
-ranger
-wal -i Pictures/woods.jpg 
-sudo shutdown now
-wal -i Pictures/woods.jpg 
-ls
-vim
-apt search aadl
-htop
-apt search ocarina
-man ocarina
-man gcc
-info gcc
-gcc
-wget http://github.com/OpenAADL/ocarina
-ls
-cat ocarina 
-ls
-rm ocarina 
-git clone http://github.com/OpenAADL/ocarina
-ls
-rm -r ocarina/
-sudo rm -r ocarina/
-ls
-git clone http://github.com/OpenAADL/ocarina-build
-ls
-cd ocarina-build/
-ls
-./build_ocarina.sh --scenario=fresh-install --prefix=$PWD/ocarina_install
-man ocarina
-man eclipse
-ls
-cd ocarina/
-ls
-cd debian/
-ls
-cd ..
-ls
-cd ..
-ls
-cd ocarina/
-ls
-cd ..
-ls
-cd ocarina/
-ls
-cd src/
-ls
-cd ..
-ls
-cd
-ls
-cd ocarina-build/
-ls
-cd
-ls
-cd school/
-ls
-cd CSCE-466/
-ls
-htop
-./mount.sh 
-cp school/CSCE-466/PowerBoatHW1.aadl workspace/CSCE-466/
-htop
-ls
-cd ocarina-build/
-ls
-cat README.md 
-./build_ocarina.sh -h
-history
-./build_ocarina.sh --scenario=fresh-install --prefix=$PWD/ocarina_install
-ls
-ls -a
-ls
-cd ocarina/
-ls
-cat INSTALL 
-cat README.rst 
-ls
-cd ..
-ls
-cat README.md 
-./build_ocarina.sh --scenario=fresh-install --prefix=/opt/ocarina
-cd /opt/
-ls
-ls -a
-cd osate2/
-ls
-cd configuration/
-ls
-cd ..
-ls
-cd p2/
-ls
-cd ..
-cd
-ls
-apt search gnatmake
-apt search gnat-make
-apt search gnatmake
-cd /opt/ocarina
-cd ocarina-build/
-ls
-cd
-cd ocarina-build/
-git clone http://.github.com/OpenAADL/ocarina
-cd ..
-git clone http://.github.com/OpenAADL/ocarina
-git clone http://github.com/OpenAADL/ocarina
-ls
-cd ocarina
-ls
-ifconfig
-sudo ifconfig
-sudo ifdown eth0
-sudo ifup eth0
-man ifconfig
-ifdownup
-apt search ifconfig
-man ifdown
-sudo ifdown
-man ifdown
-sudo ifconfig
-/etc/init.d/networking restart
-ifconfig
-sudo ifconfig
-kill 3381 
-wal -i Pictures/woods.jpg 
-which xclip
-wal -i Pictures/woods.jpg 
-ls
-cd Downloads/
-ls
-cp urxvtclip /usr/lib/urxvt/perl/clipboard
-cd /usr/lib/urxvt/
-ls
-cd perl/
-ls
-cat clipboard-osc 
-vim homework.txt
-ls
-cd school/CSCE-428/
-ls
-zathura hw2-assignment.pdf 
-/etc/init.d/networking restart
-ls]
-ls
-rm exams.txt 
-cat time.txt 
-ls
-sudo apt install mdless
-which gem
-gem install mdless
-sudo gem install mdless
-mdless
-ls
-cd school/Nebraska-Environmental-Trust/
-ls
-cd GrantWeb/
-ls
-cd GrantWeb
-ls
-cd
-ls
-cd ocarina
-ls
-cd ..
-ls
-cd ocarina-build/
-ls
-mdless README.md 
-ls
-mutt
-wal -i Pictures/woods.jpg 
-nano .config/nvim/init.vim 
-cd .config/
-ls
-cd nvim/
-ls
-cat init.vim
-vim
-xmodmap
-ghci
-apt search mono
-apt search mono | less
-apt search mono-complete
-apt search mono-xsp4
-apt install mono-xsp4
-sudo apt install mono-xsp4
-apt
-sudo apt update
-apt list --upgradable
-less apt list --upgradable
-less apt list --upgradable | less
-apt list --upgradable | less
-apt upgrade
-sudo apt upgrade
-sudo apt autoremove
-cd school/
-ls
-cd Nebraska-Environmental-Trust/
-ls
-cd GrantWeb/
-ls
-msbuild GrantWeb.sln
-which mcs
-which gmcs
-man mcs
-man msbuild
-info msbuild
-msbuild
-man xbuild
-ls
-cd school/Nebraska-Environmental-Trust/
-ls
-cd GrantWeb/
-ls
-cd GrantWeb
-ls
-xbuild GrantWeb.csproj
-ls
-msbuild GrantWeb.csproj 
-ssh 192.168.0.11
-ssh 192.168.0.10
-192.168.0.0
-ssh 192.168.0.0
-ssh 192.168.56.1
-ifconfig
-sudo ifconfig
-ssh -p 2222 root@127.0.0.1
-su
-ls
-ssh root@127.0.0.1
-ssh asturtz@127.0.0.1
-ssh -p 2222 root@127.0.0.1
-ssh ssh@127.0.0.1
-ssh -p 2222 SSH@127.0.0.1
-ssh SSH@127.0.0.1
-ssh 192.168.56.1
-nmap 192.168.56.1
-nmap 127.0.0.1
-sudo ifconfig
-nmap 192.168.0.11
-ls
-nmap
-nmap 127.0.0.1
-ssh ls
-ssh 127.0.0.1
-apt remove monodevelop
-sudo apt remove monodevelop
-apt search mono-devel
-apt remove *mono*
-sudo apt remove *mono*
-apt search --installed | grep mono
-apt list --installed | grep mono
-apt remove libmono*
-sudo apt remove libmono*
-sudo apt remove monodevelop
-sudo apt autoremove
-apt list --installed | grep mono
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
-sudo echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
-sudo apt-get update
-sudo apt-get install mono-complete
-ls
-vim test.cs
-mcs test.cs
-ls
-mono test.xe
-mono test.exe
-ls
-rm test*
-ls
-apt install monodevelop
-sudo apt install monodevelop
-sudo apt remove monodevelop
-sudo apt install mono-xsp4
-apt search mono-devel
-apt search mono-develop
-apt search monodevelop
-ls
-cd workspace/
-ls
-ln -s Nebraska-Environmental-Trust ~/school/Nebraska-Environmental-Trust
-ls
-ln Nebraska-Environmental-Trust ~/school/Nebraska-Environmental-Trust
-ln Nebraska-Environmental-Trust ~/school/Nebraska-Environmental-Trust/
-ls ~/school/Nebraska-Environmental-Trust/
-cd ~/school/Nebraska-Environmental-Trust/
-ls
-rm Nebraska-Environmental-Trust 
-ls
-cd
-cd workspace/
-ls
-ln -s ~/school/Nebraska-Environmental-Trust/
-ln ~/school/Nebraska-Environmental-Trust/
-sudo shutdown now
-wal -i Pictures/woods.jpg 
-ls
-exit
-ls
-sudo ifconfig
-sudo ifconfig -a
-sudo ifup eth1
-vim /etc/network/interfaces
-sudo vim /etc/network/interfaces
-/etc/init.d/networking reset
-/etc/init.d/networking restart
-ssh root@192.168.56.1
-ssh alex@192.168.56.1
-sudo ifconfig
-sudo vim /etc/network/interfaces
-/etc/init.d/networking restart
-ls
-sudo ifconfig
-ssh 192.168.56.101
-exit
-sudo vim /etc/network/interfaces
-ssh 192.168.56.1
-sudo ifconfig
-sudo vim /etc/hosts
-ping 192.168.56.1
-ssh 192.168.56.1
-ping 192.168.56.1
-ssh 192.168.56.1
-sftp 192.168.56.1
-wal -i Pictures/woods.jpg 
-sudo ifconfig
-cd school/Nebraska-Environmental-Trust/
-ls
-cd ..
-ls
-rm Nebraska-Environmental-Trust/
-rm -r Nebraska-Environmental-Trust/
-git clone https://github.com/RaikesSchoolDS/Nebraska-Environmental-Trust
-ls
-cd Nebraska-Environmental-Trust/
-ls
-git checkout Dev
-ls
-sudo ifconfig
-sftp 192.168.56.1
-sftp 192.168.56.0
-wal -i Pictures/woods.jpg 
-ls
-cd school/
-cd Nebraska-Environmental-Trust/
-ls
-cd GrantWeb/
-ls
-cd GrantWeb
-ls
-cd .config/nvim/
-ls
-cd plugged/
-ls
-man ag
-ag nocompatible .
-vim
-exit
-ls
-sudo rm TimelineViewModel.cs
-git checkout HEAD -- TimelineViewModel.cs
-ls
-cat TimelineViewModel.cs 
-exit
-ls
-xbuild GrantWeb
-xbuild GrantWeb.sln
-ls
-cd GrantWeb
-ls
-cd ..
-cd GrantWeb.Data/
-ls
-cd ViewModels/
-ls
-cd Application/
-ls
-git status
-ls
-mv TimelineViewModel.cs TimeLineViewModel.cs
-ls
-mv TimelinesViewModel.cs TimeLinesViewModel.cs
-ls
-exit
-which msbuild
-exit
-xbuild GrantWeb.sln
-ls
-ag IncludeRoslynCompilerFiles .
-cd ..
-ag IncludeRoslynCompilerFiles .
-nuget
-nuget update
-exit
-htop
-exit
-apt search entity
-sudo apt install libmono-entityframework6.0
-sudo apt install libmono-entityframework-sqlserver6.0
-sudo apt autoremove
-ls
-man msbuild
-man xbuild
-man mono
-ls
-cd packages/
-ls
-cd ..
-ls
-cd packages
-ls
-mv ninject.extensions.conventions.3.2.0.0/ Ninject.Extensions.Conventions.3.2.0.0
-cd ..
-ls
-msbuild GrantWeb.sln
-cd
-ls
-nuget install Ninject
-ls
-cd Ninject.3.2.2.0/
-ls
-cd lib/
-ls
-cd
-ls
-nuget install Ninject.Extensions.Conventions
-ls
-rm -r Ninj*
-rm -r ninj*
-ls
-exit
-sudo apt search entity
-sudo apt search | grep mono | grep entity
-sudo apt search | grep mono
-sudo apt search mono | grep entity
-sudo apt list | grep mono | grep entity
-sudo apt list entity
-sudo apt list | grep entity
-sudo apt list | grep amd64
-sudo apt search amd64 | grep mono
-sudo apt install mono-runtime-boehm
-exit
-cd school/Nebraska-Environmental-Trust/
-ls
-cd GrantWeb/
-ls
-cd GrantWeb
-ls
-ranger
-ls
-vim
-ls
-cd ..
-vim
-nuget install jquery.dirtyforms
-vim
-ls
-cd packages/
-vim
-nuget
-ranger
-nuget update
-nuget update GrantWeb.sln
-ls
-git checkout HEAD -- GrantWeb/GrantWeb.csproj
-git checkout HEAD -- GrantWeb.Data/GrantWeb.csproj
-ls
-cd GrantWeb.Data/
-ls
-git checkout HEAD -- GrantWeb.Data/GrantWeb.Data.csproj
-git checkout HEAD -- GrantWeb.Data.csproj
-cd ..
-ls
-git checkout HEAD -- GrantWeb.Test/GrantWeb.Test.csproj
-ls
-git checkout HEAD -- GrantWeb.Tests/GrantWeb.Tests.csproj
-nuget update GrantWeb.sln
-git checkout HEAD -- GrantWeb.Tests/GrantWeb.Tests.csproj
-git checkout HEAD -- GrantWeb.Data.csproj
-git checkout HEAD -- GrantWeb.Data/GrantWeb.Data.csproj
-git checkout HEAD -- GrantWeb/GrantWeb.csproj
-nuget
-nuget help install
-nuget help config
-nuget config
-which mono
-apt list --installed | grep mono
-echo "deb http://download.mono-project.com/repo/debian nightly main" | sudo tee /etc/apt/sources.list.d/mono-nightly.list
-apt get update
-apt-get update
-sudo apt update
-ls
-cd GrantWeb
-ls
-cd ..
-ls
-cd GrantWeb/
-ls
-cd GrantWeb.Data
-ls
-cd ..
-ls
-cat GrantWeb.sln
-ls
-cd GrantWeb
-ls
-man ag
-ag -g *.exe
-ag -g .exe
-./mount.sh 
-df -h
-ls
-cd school/
-ranger
-htop
-kill 1956 
-ls
-mv school/MATH-314/hw5.pdf workspace/
-cd workspace/
-ls
-cd
-apt list --installed | grep mono
-apt search unix2dos
-sudo apt install nuget
-apt install monodevelop
-sudo apt install monodevelop
-sudo apt install msbuild
-sudo apt upgrade mono
-apt list | grep mono
-sudo apt-get upgrade mono-complete
-df -h
-ls
-umount workspace
-ls
-du -h -s Downloads/
-du -h -s
-du -h -s Desktop
-du -h -s ocarina
-rm -r ocarina
-sudo rm -r ocarina
-ls
-sudo rm -r ocarina-build/
-du -hs school/
-cd school/
-ls
-du -hs Textbooks/
-cd Textbooks/
-ls
-du -h
-du -h .
-man du
-du -ha
-ranger
-cd
-cd /
-man du
-du -aht 20M 
-sudo du -aht 20M 
-ls
-cd
-ls
-rm -r Android/
-ls
-rm -r /opt/android-studio/
-ls /opt
-sudo rm -r /opt/android-studio/
-ls
-df -h
-history
-sudo apt-get upgrade mono-complete
-apt list | grep libmono
-ranger
-ls
-rm jQuery.1.4.2/ jquery.dirtyforms.2.0.0/ -r
-ls
-cd packages/
-nuget install jquery.dirtyforms
-vim
-man xbuild
-apt search texlive
-sudo apt install texlive-latex-extra
-sudo apt install etags
-apt search etags
-apt search ctags
-ls
-cd ..
-ls
-xbuild GrantWeb.sln
-man xbuild
-cal
-cal -a
-cal -y
-wal -i Pictures/woods.jpg 
-ls
-htop
-kill 1 
-sudo kill 3353 
-htop
-wal -i Pictures/waterfall-rockface.jpg 
-ls
-wal -i Pictures/man-snowy-woods.jpg 
-ls
-exit
-./mount.sh 
-ls
-mv hw1.tex ~/school/CSCE-428/hw1
-ls
-cd workspace/
-ls
-cd ..
-ls
-cd school/
-ranger
-cd
-ls
-cd workspace/
-ls
-mv hw1.tex ~/school/CSCE-428/hw1/
-ls
-man zathura
-exit
-ls
-wal -i Pictures/woods.jpg 
-ls
-man cd
-info cd
-help cd
-exit
-ls
-./interfaces restart
-sudo ./interfaces restart
-ls
-cd interfaces.d/
-ls
-sudo ./restart
-cd
-ls
-sudo /etc/network/interfaces.d/ restart
-exit
-history
-history network
-history | grep network
-/etc/init.d/networking restart
-kill 2547 
-htop
-ls
-./mount.sh 
-ls
-cd workspace/
-ls
-mv ~/school/CSCE-428/hw2/hw2.tex .
-mv ~/school/CSCE-428/hw2/hw2.pdf .
-wal -i Pictures/woods.jpg 
-ls
-wal -i Pictures/woods.jpg 
-wal -i .cache/wal/wal
-wal -i "$(< "${HOME}/.cache/wal/wal")"
-ls
-wal -i Pictures/woods.jpg 
-history
-wal -i Pictures/woods.jpg 
-apt search polybar
-apt list --installed | grep clang
-apt list clang
-apt install clang
-sudo apt install clang
-ls
-git clone https://github.com/robm/dzen
-ls
-cd dzen/
-ls
-apt list xlib
-apt search xlib
-apt list | grep xlib
-ls
-make clean install
-sudo make clean install
-kill 8314 
-cd
-cd /usr/local/
-ls
-ls -a
-cd bin/
-ls
-dzen2 
-status.sh | dzen2 -ta r -fn '-*-profont-*-*-*-*-11-*-*-*-*-*-iso8859' -bg '#aecf96' -fg black \ -p -e 'sigusr1=raise;sigusr2=lower;onquit=exec:rm /tmp/dzen2-pid;button3=exit' & echo $! > /tmp/dzen2-pid
-dzen2 -ta r -fn '-*-profont-*-*-*-*-11-*-*-*-*-*-iso8859' -bg '#aecf96' -fg black \ -p -e 'sigusr1=raise;sigusr2=lower;onquit=exec:rm /tmp/dzen2-pid;button3=exit' & echo $! > /tmp/dzen2-pid
-wal -i Pictures/woods.jpg 
-lemonbar
-cal | lemonbar
-lemonbar | cal
-lemonbar -b
-apt list | grep lemonbar
-sudo apt install lemonbar
-lemonbar
-dzen2
-wal -i Pictures/woods.jpg 
-apt list | grep neomutt
-apt list | grep mutt
-mutt
-ls
-cd mail/
-ls
-cd personal/
-ls
-cd archive/
-ls
-cd new/
-ls
-mkdir mail/personal/sent
-echo test | msmtp alexstur@gmail.com
-sudo echo test | msmtp alexstur@gmail.com
-chmod 600 ~/.msmtprc
-sudo echo test | msmtp alexstur@gmail.com
-vim .msmtprc 
-sudo echo test | msmtp alexstur@gmail.com
-ls
-ls Mail/
-ls
-rm -r Mail
-vim .sup/config.yaml
-sup-config 
-ls
-ghci
-apt search xmonad
-apt show xmonad
-ghci
-mutt
-ls
-ls -a
-cd mail
-ls
-cd
-cd mail
-mutt
-cd
-mutt
-fetchmail
-getmail
-mail
-ls
-cd /var/mail/
-ls
-cd al
-cat alex 
-cd
-ls
-rm feh_*
-ls
-rm homework-jan25 
-ls
-rm time.txt 
-ls
-rm new-time.txt 
-ls
-rm feb3-homework.txt 
-ls
-apt list | grep mutt
-lemonbar
-cal | dzen2
-cal | dzen2&
-cal | dzen2 &
-cal | lemonbar &
-cal | lemonbar | &
-apt search sup
-apt list | grep sup
-man sup
-sup
-sudo sup
-which sup
-sup
-man sup
-sudo apt install sup
-sup
-sup-mail
-ls
-cd mail
-ls
-cd
-sup
-sup -s
-sup-mail
-sup-config
-sudo apt install offlineimap
-sudo apt install msmtp sqlite
-vim .offlineimaprc
-offlineimap
-vim .offlineimaprc
-offlineimap
-ghci
-sup-mail
-man weechat
-sup
-sup-mail
-wal -i Pictures/woods.jpg 
-ls
-wal -i Pictures/waterfall-rockface.jpg 
-htop
-sup-mail
-ping 8.8.8.8
-history
-ls
-history | grep network
-ls
-networking restart
-ls
-exit
-./networking restart
-exit
-htop
-ls
-apt list | grep sup
-ls
-apt list | grep ruby
-apt list --installed | grep ruby
-sudo apt install ruby-highline
-sup
-man sup
-man sup-mail
-man sup
-sup -s
-sudo sup -s
-sup
-sup-mail
-apt show sup-mail
-df -h
-sup-sync
-ssh asturtz@cse.unl.edu
-sftp asturtz@cse.unl.edu
-sup-sync
-sup-mail
-sup-sync
-sup-mail
-@wal
-wal -i Pictures/waterfall-rockface.jpg 
-exit
-man pandoc
-exit
-man offlineimap
-man pandoc
-networking restart
-/etc/init.d/networking restart
-cat timing.txt 
-mv timing.txt nvim-timing.txt
-/usr/bin/vim --startuptime vim-timing.txt
-cat vim-timing.txt 
-tail vim-timing.txt 
-tail nvim-timing.txt 
-cat nvim-timing.txt 
-man nvim
-nvim --startuptime timing.txt
-vim
-ghci
-offlineimap
-sup-mail
-wal -i Pictures/waterfall-rockface.jpg 
-cat /etc/ssl/certs/ca-certificates.crt 
-xprop | grep WM_CLASS
-xprop
-xprop firefox
-man xprop
-xprop
-xprop "firefox"
-xprop firefox
-xprop | grep WM_CLASS
-firefox | xprop
-ls
-ls -a
-vim .offlineimap
-vim .offlineimaprc
-ls -a
-cd .offlineimap/
-ls
-cd Account-personal/
-ls
-cd ..
-ls
-cd Repository-personal-
-cd Repository-personal-local/
-ls
-cd ..
-ls -a
-cd mbnames/
-ls
-cd ..
-cd Repository-personal-remote/
-ls
-cd FolderValidity/
-ls
-cd ..
-ls
-cd ..
-ls
-cd Repository-personal-local/
-ls
-cd FolderValidity/
-ls
-cd ../..
-ls
-sup-mail
-offlineimap
-man offlineimap
-offlineimap -d all
-offlineimap -d all | less
-offlineimap -d all |& less
-/etc/init.d/networking restart
-kill 12008 
-wal -i Pictures/waterfall-rockface.jpg 
-exit
-sup-mail
-wal -i Pictures/waterfall-rockface.jpg 
-/etc/init.d/networking restart
-lw
-ls
-which mono
-apt list | grep mbsync
-apt list | grep usync
-apt list | grep isync
-apt list | pacman
-apt list | grep pacman
-apt install isync
-sudo apt install isync
-man g++
-apt install g++
-sudo apt install g++
-man g++
-help g++
-info g++
-man -k g++
-man g++
-g++
-man gcc
-info gcc
-help gcc
-help g++
-man gcc
-apt search gcc-doc
-sudo apt-get install manpages-dev
-vim /etc/apt/sources.list
-sudo vim /etc/apt/sources.list
-sudo apt update
-sudo apt install g++-doc
-wal -i Pictures/waterfall-rockface.jpg 
-man g++
-man gcc
-sudo apt install g++-docs
-g++=docs
-g++-docs
-man g++-docs
-man xorg
-wal -i Pictures/waterfall-rockface.jpg 
-htop
-exit
-man ag
-ag "Applicant's"
-vim
-nuget
-ls
-apt search sql
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server.list | sudo tee /etc/apt/sources.list.d/mssql-server.list
-sudo apt-get update
-sudo apt install -y mssql-server
-sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-apt search mssql
-ls
-man xbuild
-htop
-apt search roslyn
-htop
-git branch
-git status
-git checkout HEAD -- GrantWeb/Views/Application/Edit.cshtml
-git status
-git pull
-git fetch
-git status
-git pull
-cat GrantWeb/GrantWeb.csproj 
-git status
-git stash
-git status
-git pull
-xbuild GrantWeb.sln
-xbuild GrantWeb.sln test.exe
-man xbuild
-xbuild /target:test.exe
-ls
-xbuild GrantWeb.sln
-msbuild GrantWeb.sln
-nuget restore GrantWeb.sln
-msbuild GrantWeb.sln
-xbuild GrantWeb.sln
-msbuild GrantWeb.sln
-xbuild GrantWeb.sln
-xbuild --version
-apt list --installed | grep monodevelop
-ls
-ag "IncludeRoslynCompilerFilesToItemGroup"
-xbuild GrantWeb.sln
-msbuild GrantWeb.sln
-ag "VisualStudio"
-ag "IntegrationTests"
-msbuild GrantWeb.sln
-xbuild GrantWeb.sln
-git status
-git stash
-ls
-git status
-git stash pop
-git stash
-git checkout -b platform-compatibility-config
-git stash pop
-git help add
-git add -u
-git status
-git commit -m "Update .csproj files to support unix systems"
-git branch
-git push -u origin platform-compatibility-config
-git checkout -b feature/applicant-contact-label
-git status
-ls
-mono GrantWeb.sln
-man xbuild
-man mcs
-man msbuild
-msbuild GrantWeb /p:DeployOnBuild=true
-msbuild GrantWeb.sln /p:DeployOnBuild=true
-ls
-git status
 git add -u
 git status
 git commit -m "Fixes #114"
@@ -1998,3 +240,1761 @@ cat init.vim~
 ls
 rm init.vim~
 ls
+cd dotfiels
+cd dotfiles
+ls
+mkdir nvim
+mkdir xmonad
+mkdir xmobar
+mkdir weechat
+ls
+mkdir vimperator
+mkdir sup
+mkdir fzf
+mkdir feh
+mkdir ag
+ls
+mkdir ranger
+mkdir zathura
+ls
+mkdir bash
+ls
+mkdir x11
+ls
+mkdir htop
+mkdir vlc
+ls
+cd nvim
+mkdir .config
+ls
+mv ~/.config/nvim/ .config/
+ls
+ls -a
+mv .config
+cd .config
+ls
+cd nvim
+ls
+cd ..
+ls
+mv nvim ~/.config/
+ls .config/
+ls ~/.config/
+ls ~/.config/nvim
+cp ~/.config/nvim .
+cp -r ~/.config/nvim .
+ls
+rm -r nvim
+sudo rm -r nvim
+ls
+df -h
+cp ~/.config/nvim/ .
+ls
+cp ~/.config/nvim/* .
+ls
+mkdir nvim
+ls
+cd nvim
+cd
+cd -
+ls
+cd ..
+ls
+mv *.vim* nvim
+ls
+cd nvim
+ls
+rm init.vim~
+ls
+cd ~/dotfiles/
+ls
+stow nvim
+ls
+mkdir git
+rm -r git
+mv ~/.agignore ag
+ls
+ls ag
+ls -a ag
+stow ag
+ls
+mkdir base
+ls
+mv bash base
+ls
+cd base
+ls
+cd bash
+ls
+cd ..
+ls
+rm bash
+rm -r bash
+cd ..
+ls
+cd base
+touch .pkgs
+ls
+ls -a
+ls
+cd ..
+ls
+cd base
+ls
+mv ~/.bash* ~/.profile .
+ls
+ls -a
+cd ..
+stow base
+mv ~/.config/htop/ ./config/htop
+man mv
+mkdir htop/.config
+mv ~/.config/htop/ htop/.config
+ls
+cd htop
+ls
+ls -a
+cd .cfongi
+cd .config
+ls
+cd ..
+stow htop
+mkdir ranger/.config
+mv ~/.config/ranger ranger/.config
+stow ranger
+mkdir vlc/.config
+mv ~/.config/vlc/ vlc/.config/
+stow vlc
+mkdir zathura/.config
+mv ~/.config/zathura/ zathura/.config
+stow zathura
+man stow
+ls
+mv .xmonad xmonad
+mv ~/.xmonad xmonad
+stow xmonad
+mv ~/.xmobar* xmobar
+stow xmobar
+mv ~/.vimperator* vimperator
+stow vimperator
+mv ~/.sup sup
+stow sup
+unstow sup
+man stow
+cd sup
+ls
+ls -a
+cd ..
+stow -d sup
+stow -D .sup
+stow -D sup
+ls
+cd sup
+ls
+ls -a
+cd //
+ls
+cd ..
+ls
+cd
+ls
+cd dot
+cd dotfiles/
+ls
+mv sup mail
+ls
+mv ~/.offlineimap* mail
+mv ~/.msmtprc mail
+mv ~/.mailcap mail
+stow mail
+mv ~/.weechat/ weechat/
+stow weechat
+mkdir wallpapers
+mv ~/wallpapers/ wallpapers/
+stow wallpapers
+unstow nvim
+stow -D nvim
+mkdir nvim/.local/share/nvim
+cd nvim/
+ls
+mkdir .local
+cd .local/
+ls
+mkdir share
+cd share/
+mkdir nvim
+ls
+cd ../..
+ls
+ls -a
+mv ~/.local/share/nvim/shada/ .local/share/nvim/
+stow nvim
+cd ..
+stow nvim
+ls
+mv ~/.X* x11
+mv ~/.xsessionrc ~/.xinitrc x11
+stow x11
+git init
+ls
+git status
+git add -a
+git add -A
+du -h
+ls
+cd nv
+cd nvim
+ls
+ls -a
+cd .config
+ls
+cd nvim
+ls
+cd ~/dotfiles
+ls
+stow -D nvim
+cd nvim
+cd .config
+ls
+cd nvim
+ls
+mv plugged ~/.config/nvim
+ls
+cd
+cd dotfiles
+stow nvim
+du -h
+ls
+ls -a
+sudo rm -r .git
+du -h
+du -h --depth=1
+du -h --depth 1
+man du
+du -h -d 1
+cd mail
+ls
+ls -a
+cd .offlineimap
+ls
+du -h
+cd ..
+ls
+ls -a
+cd .sup
+ls
+du -h
+cd
+ls
+cd dotfiles/
+ls
+stow -D mail
+cd mail/.sup/
+ls
+du -h
+cd xapian/
+ls
+du -h
+du -ha
+cd ..
+mv xapian/ ~/.sup
+cd ../..
+du -h
+stow mail
+ls
+ls -a
+git init
+git add -A
+rm -r .git
+sudo rm -r .git
+git init
+git add -A
+git status
+ls
+sudo rm -r .git
+cd mail
+ls
+ls -a
+cd ..
+stow -D mail
+cd mail
+mv .off* ~
+cd ..
+ls
+stow mail
+stow -D weechat
+mv weechat/.weechat/logs ~/.weechat/
+cd weechat/
+ls
+cd .weechat/
+ls
+mv sec.conf ~/.weechat/
+mv weechat.log ~/.weechat/
+ls
+git status
+cd ../..
+ls
+git status
+git init
+git add -A
+git status
+stow -D xmonad
+cd xmonad/
+ls
+ls -a
+cd .xmonad/
+ls
+mv xmonad.errors xmonad.hi .xmonad.o xmonad-x86_64-linux history ~/.xmonad
+mv xmonad.errors xmonad.hi xmonad.o xmonad-x86_64-linux history ~/.xmonad
+ls
+stow .xmonad
+cd
+stow xmonad
+cd dotfiles/
+stow xmonad
+git status
+sudo rm -r .git
+git init
+git add -A
+git status
+git help remote
+sudo rm -r .git
+git clone https://github.com/asturtz2/dotfiles
+ls
+ls -a
+cd dotfiles
+ls
+ls -a
+sudo mv ./* ..
+ls
+cd ..
+ls -a
+cd dotfiles/
+ls
+ls -a
+sudo mv .git ..
+ls
+ls -a
+cd ..
+ls
+ls -a
+rm dotfiles/ -r
+git status
+git add -A
+git status
+git branch
+git commit -m "Initial commit"
+git push -u origin master
+sudo shutdown now
+ls
+df -h
+apt list | grep gnu-stow
+apt list | grep stow
+apt show stow
+sudo apt install stow
+ls
+mkdir dotfiles
+ls
+ls -lav
+ls -a
+cd .config
+ls
+cd zathura
+ls
+man zathura
+cd .dotnet
+cd ~/.dotnet
+ls
+cd optimizationdata/
+ls
+cd 1.0.0-preview2-1-003177/
+ls
+cd
+ls -a
+cd .ghc/
+ls
+cd..
+cd
+ls -a
+cd .config
+ls
+ls -a
+cd nvim
+ls
+cd ..
+ls
+mv nvim nvim.bk
+ls
+cd
+ls
+ls -a
+cat .gitconfig
+ls
+ls -a
+mkdir scripts
+cd scripts
+touch pkg-install.sh
+chmod u+x pkg-install.sh 
+ls
+cd
+ls
+cd .config
+ls
+mv nvim.bk/plugged nvim
+ls
+cd nvim
+ls
+cd ~/dotfiles/
+ls
+cd nvim/
+ls
+cd
+cd -
+cd .config/
+ls
+cd nvim
+ls
+cd
+ls
+cd /
+ls
+cd opt
+ls
+cd
+ls
+ls -a
+cd .config
+ls
+cd htop
+ls
+cat htoprc 
+ls -a
+cd 
+cd -/..
+cd .config
+ls -a
+cd mpv
+ls
+ls -a
+cd ..
+ls
+cd vlc
+ls
+ls -a
+cd ..
+ls -a
+cd ..
+ls
+ls -a
+man ls
+ls -l
+ls -la
+ls -a
+cat .mailcap 
+ls -a
+cd .config
+ls
+ls -a
+cd mpv/
+ls
+ls -a
+cd ..
+ls
+cd
+ls
+mkdir wallpapers
+mv Pictures/* wallpapers/
+ls
+ls -a
+config status
+ls -a
+cd .local/
+ls
+cd share/
+ls
+cd nvim/
+ls
+cd shada/
+ls
+cat main.shada
+cd ..
+ls
+cd site/
+ls
+cd ..
+ls
+cd swap/
+ls
+cd ..
+ls
+cd
+ls -a
+cd .local/share/
+ls
+cd fonts/
+ls
+cd
+apt search source-code
+apt search adobe
+ls -a
+cd .xpce/
+ls
+cd ..
+ls -a
+ls
+ls -a
+cd .cache
+ls
+du -h
+du -h | grep M
+ls
+rm google-chrome -r
+rm evolution -r
+cd
+cd .config
+ls
+cd nvim
+ls
+cd ..
+ls
+cd
+cd .config
+ls
+mv nvim.bk nvim
+ls
+cd nvim
+ls
+mv filetype.vim filetype.vim.bk
+mv init.vim init.vim.bk
+ls
+cd
+ls -a
+mkdir sup
+rm -r sup
+ls -a
+mkdir .sup
+du -hs
+man du
+cd configs
+ls
+cd
+sudo rm -r configs/
+df -h
+cd .weechat
+ls
+cat sec.conf 
+cd ..
+cd
+ls
+ls -a
+mkdir .weechat
+ls -a
+mkdir .xmonad
+cd .xmo
+cd .xmonad
+ls
+cd
+ls
+zip school
+ls
+man zip
+zip school
+ls
+ls -a
+man zip
+zip -r school.zip school
+ls
+ls -a
+df -h
+cd school/Nebraska-Environmental-Trust/
+ls
+cd GrantWeb/
+ls
+git status
+cd ../..
+ls
+zip courses.zip CSCE* MATH*
+ls
+course.zip
+courses.zip
+./courses.zip
+sudo ./courses.zip
+mv courses.zip 
+mv courses.zip ..
+cd ..
+ls
+df -h
+cd
+ls
+unzip courses.zip 
+ls
+unzip courses.zip 
+ls
+mv courses.zip dzen/
+cd dzen/
+unzip courses.zip 
+ls
+rm -r CSCE* MATH*
+ls
+cd
+ls
+cd dzen/
+mv courses.zip ~/school/
+ls
+cd
+cd school/
+ls
+zip textbooks.zip Textbooks/
+ls
+rm courses.zip 
+zip -r courses.zip CSCE* MATH*
+ls
+du -h
+du -ha
+ls
+rm textbooks.zip 
+zip -r textbooks.zip Textbooks/
+du -h
+df -h
+ls
+ls -s
+ls -sh
+cd CSCE-322/
+ls
+cd ..
+cd CSCE-428/
+ls
+ls -sh
+cd hw1/
+ls
+ls -hs
+cd../..
+ls
+cd ../..
+ls
+cd Textbooks/
+ls
+ls -hs
+cd ../Nebraska-Environmental-Trust/
+ls
+cd GrantWeb/
+git status
+git branch
+git fetch
+cd ../..
+ls
+sudo rm -r Nebraska-Environmental-Trust/
+df -h
+ls
+zip -r textbooks Textbooks/
+ls
+ls -hs
+cd Textbooks/
+ls
+du -hs
+rm Calculus*
+ls
+cd ..
+ls
+rm textbooks.zip 
+ls
+cd Textbooks/
+ls -hs
+rm Linear\ Algebra\ and\ its\ Applications.txt 
+mv Linear\ Algebra\ and\ its\ Applications.pdf linear-algebra-and-its-applications.pdf
+ls
+mv BookOfProof-Hammack.pdf book-of-proof.pdf
+mv DiscreteMathematicsWikibook-20130612.pdf discrete-mathematics-wikibook.pdf
+ls
+cd ..
+ls
+du -hs
+df -h
+ls
+rm courses.zip 
+ls
+cd ..
+ls
+cd CSCE-322/
+ls
+cd ..
+rm CSCE* MATH* -r
+ls
+zip -r school.zip school
+ls
+ls -hs
+cd school/
+du -hs
+cd..
+cd ..
+ls
+ls Desktop/
+ls Documents/
+ls Downloads/
+ls
+apt list --installed
+apt list --installed | grep a*
+apt list --installed | grep a.*
+apt list --installed | grep ^a
+apt list --installed | grep ^b
+apt list --installed | grep ^c
+apt list --installed | grep ^d
+apt list --installed | grep ^e
+sudo apt remove emacs*
+sudo apt autoremove
+apt list --installed | grep ^f
+apt search ctags
+apt list --installed | grep ^f
+apt search source code pro
+apt list | grep source code pro
+apt list | grep "source code pro"
+apt list --installed | grep ^f
+apt list --installed | grep ^g
+apt search urxvt
+apt search rxvt
+apt list --installed | grep ^g
+apt list --installed | grep ^h
+apt list | grep hask
+apt list --installed | grep haskell
+apt list --installed | grep hask
+apt list --installed | grep h
+apt list --installed | grep ^h
+apt list --installed | grep ^g
+apt list --installed | grep ^i
+apt list --installed | grep ^j
+apt list --installed | grep ^k
+apt list --installed | grep ^l
+apt list --installed | grep ^m
+apt list --installed | grep ^n
+apt list --installed | grep ^d
+apt list --installed | grep ^n
+apt list --installed | grep ^o
+apt list --installed | grep ^p
+apt list --installed | grep ^q
+apt list --installed | grep [^automatic]
+apt list --installed | grep [^"automatic"]
+apt list --installed | grep -v automatic
+apt list --installed | grep ag
+apt list --installed | grep -v automatic
+apt list --installed | grep texlive
+apt list --installed | grep -v automatic
+sudo apt install unstow
+apt search dropbox
+wal wallpapers/woods.jpg 
+wal -i wallpapers/woods.jpg 
+wal wallpapers/waterfall-rockface.jpg 
+wal -i wallpapers/waterfall-rockface.jpg 
+ls
+ls -a
+cd dotfiles/
+stow weechat
+cd
+ls
+cd .wee
+cd .weechat/
+ls
+cd dot
+cd ~/dotfiles/
+ls
+cd weechat/
+ls
+ls -a
+cd .weechat/
+ls
+cd
+cd .weechat/
+ls
+rm *.conf
+ls
+ls | grep -v logs | rm
+rm javascript/ -r
+rm guile -r
+rm lua -r
+rm python/ -r
+rm perl -r
+rm ruby -r
+rm script -r
+cd dotfiles
+cd ~/dotfiles
+ls
+cd weechat/
+ls
+ls -a
+cd .weechat/
+ls
+/etc/init.d/networking restart
+wal -i wallpapers/waterfall-rockface.jpg 
+cd dotfiles/weechat/.weechat/
+ls
+cd ../..
+stow -D weechat
+/etc/init.d/networking restart
+cd .weechat/
+ls
+cat sec.conf 
+ls
+cd ~/dotfiles/
+ls
+cd weechat/
+ls
+ls -a
+cd .weechat/
+ls
+cd
+ls .weechat/
+cd .weechat/
+ls
+ls -av
+ls -al
+man weechat
+cd
+vim config-weechat.sh
+ls
+cat weechat.conf
+cd .weechat/
+cat weechat.conf 
+ls
+weechat
+cat plugins.conf 
+wal -i wallpapers/waterfall-rockface.jpg 
+vim
+ls
+mv homework5.txt ~/school/MATH-314/
+ls
+wal -i wallpapers/waterfall-rockface.jpg 
+/etc/init.d/networking restart
+bc
+ikhal
+vim .config/khal/khal.conf 
+man ikhal
+khal configure
+rm .config/khal/khal.conf 
+khal config
+khal configure
+ls .local/share/khal/calendars/
+rm .local/share/khal/calendars/private1 -r
+khal
+rm .local/share/khal/calendars/* -r
+rm .config/khal/khal.conf
+khal configure
+ikhal
+man khal
+man cal
+man khal
+man vdir
+vidr
+vdir
+man vdir
+cd .local/share/khal/calendars/
+ls
+cd private/
+ls
+ls -a
+cd ..
+vdir
+cd private/
+vdir
+cd
+mkdir calendars
+cd calendars/
+ls
+mkdir CSCE-428
+mkdir CSCE-466
+mkdir MATH-314
+mkdir CSCE-487
+mkdir CSCE-451
+ls
+khal
+cd
+ls
+git clone https://github.com/stark/Color-Scripts
+ls -s
+du -hs Color-Scripts/
+cd Color-Scripts/
+ls
+cd color-scripts/
+ls
+./arch
+./colortest
+./colorwheel 
+./bars
+./colorview
+ls
+./illumina 
+ls
+./colortest
+./arch 
+ls
+./colorbars
+ls
+./colorview
+ls
+./colortest-slim 
+htop
+apt search khal
+sudo apt install khal
+ls
+khal
+khal configure
+khal
+man khal
+ikhal
+khal agenda
+ikhal
+khal
+khal new -a CSCE-466 tomorrow 11:59PM Homework 2 Due
+khal
+khal new -a CSCE-451 friday 8:30am Exam 1
+khal
+khal agenda
+ikhal
+ls
+khal
+khal printcalendars
+khal search CSCE-451
+khal search exam
+khal this week
+khal week
+khal at
+khal calendar
+khal
+khal --days 7
+khal calendar --days 7
+khal new 8:30am Assignment 1 Due -a CSCE-451
+khal new -a CSCE-451 8:30am Assignment 1 Due
+khal new 8:30am wednesday Assignment 1 Due -a CSCE-451
+khal new -a CSCE-451 8:30am wednesday Assignment 1 Due
+khal new wednesday 8:30am Assignment 1 Due -a CSCE-451
+khal --days 7
+khal calendar --days 14
+khal delete
+ikhal
+khal
+khal calendary --days 7
+khal calendar --days 7
+/etc/init.d/networking restart
+apt search vdirsyncer
+man vdirsyncer
+khal
+ikhal
+khal new -a Test
+khal printcalendars
+khal
+man khal
+ifconfig
+sudo ifconfig
+wal -i wallpapers/waterfall-rockface.jpg 
+wal -i wallpapers/cabin.jpg 
+wal -i wallpapers/woods.jpg 
+ls
+cd Downloads/
+ls
+mv alvaro-serrano-133360.jpg pen.jpg
+htop
+vim
+cd Downloads/
+ls
+mv jessica-furtney-177531.jpg vertical-river.jpg
+wal -i vertical-river.jpg 
+ls
+wal -i pen.jpg 
+ls
+cd Color-Scripts/color-scripts/
+./arch 
+ls
+cd Color-Scripts/
+cd color-scripts/
+./arch 
+ls
+/etc/init.d/networking restart
+cd ~/Downloads/
+ls
+mv sophie-sollmann-165057.jpg flower-brass.jpg
+mv buzz-andersen-139830.jpg typewriter-drink.jpg
+wal -i flower-brass.jpg 
+wal -i typewriter-drink.jpg 
+ls
+cd ~/wallpapers/
+ls
+wal -i soil.jpg 
+wal -i cherry-blossom.jpg 
+vim
+ls
+cd ~/Downloads/
+ls
+wal -i annie-spratt-147610.jpg 
+vim
+cd
+vim
+wal -i Downloads/annie-spratt-59115.jpg 
+ls
+vim
+ls
+apt search xdotool
+apt show xdotool
+sudo apt install xdotool
+xdotool key mouesbutton3
+xdotool key mousebutton3
+xdotool key click 3
+ls
+khal
+ls
+khal
+agenda
+khal agenda
+exit
+ls
+exit
+ls
+exit
+man xmobar
+ls
+cd wallpapers
+ls
+wal -i vintage-kitchen.jpg 
+ghci
+cd Downloads/
+ls
+mv barby-dalbosco-20629.jpg antique-compass.jpg
+wal -i antique-compass.jpg 
+ghci
+cd Color-Scripts/color-scripts/
+./arch 
+ls
+./colortest
+ls
+./dna 
+ls
+./illumina 
+./pacman 
+./arch 
+ls
+./alpha 
+./zwaves 
+./spectrum 
+./rails 
+ls
+./bars
+ls
+./arch 
+./rails
+xrdb -query
+./rails 
+man feh
+ls
+ranger
+khal
+ranger
+khal agenda
+ranger
+ls
+cd Downloads/
+ls
+wal -i alberto-restifo-4508.jpg 
+wal -i ales-krivec-3534.jpg 
+ranger
+khal
+wal -i ales-krivec-3534.jpg 
+wal -i wallpapers/vintage-kitchen.jpg 
+vim
+ranger
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+vim .Xresources 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+vim .Xresources 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+vim .Xresources 
+ls
+vim .Xresources 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+vim .Xresources 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+vim .Xresources 
+ls
+vim .Xresources 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+vim .Xresources 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+cd .local/share/fonts/
+ls
+cd
+vim .Xresources 
+xrdb ./.Xresources 
+vim .Xresources 
+xrdb ./.Xresources 
+ls
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+vim .Xresources 
+xrdb ./.Xresources 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+vim .Xresources 
+xrdb ./.Xresources 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+vim .Xresources 
+xrdb ./.Xresources 
+ls
+vim .Xresources 
+xrdb ./.Xresources 
+ls
+vim .Xresources 
+xrdb ./.Xresources 
+ls
+vim .Xresources
+ls
+xrdb ./.Xresources 
+ls
+vim .Xresources 
+xrdb ./.Xresources 
+ls
+vim .Xresources 
+xrdb ./.Xresources 
+ls
+vim .Xresources 
+xrdb ./.Xresources 
+ls
+ls
+xfce4-terminal
+ls
+vim .Xresources 
+xrdb ./.Xresources 
+ls
+vim .Xresources 
+xrdb ./.Xresources 
+ls
+vim .Xresources 
+xrdb ./.Xresources 
+ls
+$ printf '\e]710;%s\007' "xft:Terminus:pixelsize=12"
+printf '\e]710;%s\007' "xft:Terminus:pixelsize=12"
+wal -i wallpapers/vintage-kitchen.jpg 
+printf '\e]710;%s\007' "xft:inconsolas:pixelsize=12"
+printf '\e]710;%s\007' "xft:inconsolas:bold:pixelsize=12"
+printf '\e]710;%s\007' "xft:inconsolas:pixelsize=12"
+printf '\e]710;%s\007' "xft:monaco:pixelsize=12"
+ls
+p
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+ls
+xrdb ./.Xresources 
+printf '\e]710;%s\007' "xft:terminus:pixelsize=12"
+ls
+printf '\e]710;%s\007' "xft:monofur:pixelsize=12"
+printf '\e]710;%s\007' "xft:cousine:pixelsize=12"
+printf '\e]710;%s\007' "xft:roboto mono:pixelsize=12"
+printf '\e]710;%s\007' "xft:roboto mono:pixelsize=11"
+printf '\e]710;%s\007' "xft:roboto mono:pixelsize=13"
+printf '\e]710;%s\007' "xft:roboto mono:pixelsize=12"
+printf '\e]710;%s\007' "xft:liberation:pixelsize=12"
+printf '\e]710;%s\007' "xft:droid sans mono:pixelsize=12"
+printf '\e]710;%s\007' "xft:droid sans:pixelsize=12"
+printf '\e]710;%s\007' "xft:inconsolata:pixelsize=12"
+ls
+vim .Xresources 
+ls
+printf '\e]710;%s\007' "xft:inconsolata:pixelsize=12"
+printf '\e]710;%s\007' "xft:inconsolata:pixelsize=13"
+printf '\e]710;%s\007' "xft:inconsolata:pixelsize=14"
+ls
+printf '\e]710;%s\007' "xft:inconsolata:pixelsize=16"
+apt search helvetica
+sudo apt install ttf-mscore-installer
+sudo apt install ttf-mscorefonts-installer
+sudo apt install msttcorefonts
+sudo apt install mstcorefonts
+printf '\e]710;%s\007' "xft:arial:pixelsize=16"
+printf '\e]710;%s\007' "xft:arial:pixelsize=14"
+ls
+printf '\e]710;%s\007' "xft:arial:pixelsize=16"
+ls
+xrdb ./.Xresources 
+ls
+printf '\e]710;%s\007' "xft:arial:pixelsize=16"
+printf '\e]710;%s\007' "xft:arial:pixelsize=12"
+printf '\e]710;%s\007' "xft:arial:pixelsize=13"
+printf '\e]710;%s\007' "xft:arial:pixelsize=12"
+printf '\e]710;%s\007' "xft:arial:pixelsize=14"
+ls
+apt search texlive-fonts
+sudo apt install texlive-fonts-recommended
+df -h
+ls
+cd
+cd /
+ls
+du -h | grep ^[1234567890]*[MG]
+sudo du -h | grep ^[1234567890]*[MG]
+sudo du -h | grep ^[1234567890][123456789]+[MG]
+sudo du -h | grep ^[1234567890]*[MG]
+ls
+cd tmp/
+ls
+d u-h
+du -h
+cd
+ls
+cd workspace/
+ls
+cd .
+cd
+ls
+cd Pictures/
+ls
+cd ..
+ls
+cd Pictures/
+ls
+cd ..
+ls
+cd /
+ls
+cd bin
+ls
+cd
+cd /
+cd /usr/bin
+ls
+du -ha
+du -ha | grep M
+cd ..
+cd /srv/
+cd ..
+cd /usr/src/
+ls
+cd ../..
+ls
+cd
+vim .Xresources 
+printf '\e]710;%s\007' "xft:times new roman:pixelsize=14"
+ls
+printf '\e]710;%s\007' "xft:courier:pixelsize=14"
+ls
+printf '\e]710;%s\007' "xft:courier:pixelsize=16"
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+printf '\e]710;%s\007' "xft:courier:pixelsize=17"
+ls
+apt search microsoft
+apt search ttf | grep microsoft
+apt search times new roman
+apt show fonts-arkpandora 
+sudo apt install fonts-arkpandora 
+ls
+printf '\e]710;%s\007' "xft:tymes:pixelsize=17"
+printf '\e]710;%s\007' "xft:tymes:pixelsize=12"
+printf '\e]710;%s\007' "xft:tymes:pixelsize=13"
+printf '\e]710;%s\007' "xft:tymes:pixelsize=12"
+xrdb ./.Xresources 
+ls
+cd /usr/share/fonts/
+ls
+cd truetype/
+ls
+cd arkpandora/
+ls
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=12"
+ls
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=13"
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=14"
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=13"
+ls
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=12"
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=11"
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=13"
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=13:antialias=true"
+ls
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=13:antialias=true:autohint=false"
+ls
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=14:antialias=true:autohint=false"
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=12:antialias=true:autohint=false"
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=13:antialias=true:autohint=false"
+xrdb ./.Xresources 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=13:antialias=true:autohint=false"
+ls
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=12:antialias=true:autohint=false"
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=11:antialias=true:autohint=false"
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=12:antialias=true:autohint=false"
+wal -i wallpapers/vintage-kitchen.jpg 
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=12:antialias=true:autohint=false"
+ls
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=13:antialias=true:autohint=false"
+ls
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=12:antialias=true:autohint=false"
+wal -i wallpapers/vintage-kitchen.jpg 
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=12:antialias=true:autohint=false"
+ls
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=13:antialias=true:autohint=false"
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=14:antialias=true:autohint=false"
+wal -i wallpapers/vintage-kitchen.jpg 
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=14:antialias=true:autohint=false"
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=13:antialias=true:autohint=false"
+ls
+printf '\e]710;%s\007' "xft:Tymes:pixelsize=12:antialias=true:autohint=false"
+ls
+lsls
+ls
+apt search pandora
+ag -G tymes
+man ag
+ag -g tymes
+ag -g thymes
+ag tymes
+ag thymes
+ag times new roman
+ag "times new roman"
+man ag
+ag -g tymes /
+cd /usr/share/fonts
+ls
+cd truetype/
+ls
+cd arkpandora/
+ls
+printf '\e]710;%s\007' "xft:tymes:pixelsize=12"
+printf '\e]710;%s\007' "xft:arial:pixelsize=12"
+ls
+cd
+xrdb ./.Xresources 
+ls
+printf '\e]710;%s\007' "xft:anonymous pro:pixelsize=12"
+printf '\e]710;%s\007' "xft:anonymous pro:pixelsize=16"
+printf '\e]710;%s\007' "xft:anonymous pro:pixelsize=18"
+ls
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+cd /
+ag -g hasklig .
+ls
+vim
+ag -g hasklig /
+ls
+vim
+ls
+vim 
+vim
+ls
+vim 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+vim
+printf '\e]710;%s\007' "xft:monaco:pixelsize=12"
+printf '\e]710;%s\007' "xft:terminus:pixelsize=12"
+xrdb ./.Xresources 
+ls
+wal -i wallpapers/vintage-kitchen.jpg 
+printf '\e]710;%s\007' "xft:hasklig:pixelsize=12"
+printf '\e]710;%s\007' "xft:hasklig:pixelsize=13"
+printf '\e]710;%s\007' "xft:hasklig:pixelsize=14"
+ls
+printf '\e]710;%s\007' "xft:hasklig:pixelsize=15"
+printf '\e]710;%s\007' "xft:hasklig:pixelsize=16"
+ls
+printf '\e]710;%s\007' "xft:hasklig:pixelsize=17"
+ls
+printf '\e]710;%s\007' "xft:hasklig:pixelsize=16"
+vim .Xresources 
+ls
+ls .local/share/fonts/
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+printf '\e]710;%s\007' "xft:tymes:pixelsize=12"
+printf '\e]710;%s\007' "xft:tymes:pixelsize=11"
+printf '\e]710;%s\007' "xft:tymes:pixelsize=13"
+printf '\e]710;%s\007' "xft:tymes:pixelsize=12"
+printf '\e]710;%s\007' "xft:verdana:pixelsize=12"
+ls
+printf '\e]710;%s\007' "xft:thymes:pixelsize=12"
+ls
+xrdb ./.Xresources 
+ls
+vim
+ls
+wal -i wallpapers/vintage-kitchen.jpg 
+/etc/init.d/networking restart
+xmonad --recompile
+jkxmonad --recompile
+xmonad --recompile
+ghci
+vim
+ghci
+xmonad --recompile
+ghci
+xmonad --recompile
+exit
+man wget
+man wget
+wget --asturtz --ask-password /bbcswebdav/pid-3860386-dt-content-rid-32527702_1/xid-32527702_1
+wget --user asturtz --ask-password https://blackboard.unl.edu/bbcswebdav/pid-3860386-dt-content-rid-32527702_1/xid-32527702_1
+wget --user asturtz2 --ask-password https://blackboard.unl.edu/bbcswebdav/pid-3860386-dt-content-rid-32527702_1/xid-32527702_1
+exit
+ls
+xrdb ./.Xresources 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+cd Nebraska-Environmental-Trust/
+git fetch
+git checkout Dev
+exit
+msbuild GrantWeb.sln
+nuget restore GrantWeb.sln
+ls
+msbuild GrantWeb.sln
+exit
+ls
+git checkout -b fix-misnamed-files
+exit
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+msbuild GrantWeb.sln
+man mono
+xbuild GrantWeb.sln
+man pdb2mdb
+cd /
+ag -g .pdb .
+cd /usr/lib
+ls
+cd mono
+ls
+cd msbuild
+ls
+cd 15.0/
+ls
+cd bin/
+ls
+cd ..
+ls
+cd ..
+ls
+cd ..
+ls
+ag -g Dia .
+ls
+sudo apt search flatpack
+sudo apt search flatpak
+sudo apt install flatpak
+wal -i wallpapers/vintage-kitchen.jpg 
+libreoffice
+sudo apt search libreoffice
+sudo apt list --installed | grep libreoffice
+sudo apt remove libreoffice-common
+sudo apt autoremove
+df -h
+sudo apt remove monodevelop
+flatpak install --user --from https://mono-project.azureedge.net/repo/monodevelop.flatpakref
+df -h
+ls
+ls mail
+cd Downloads/
+du -hs
+ls
+du -a
+du -ah
+ls
+du -hs
+du -ha
+zathura operating-systems-internals.pdf 
+ls
+wal -i alberto-restifo-4508.jpg 
+ls
+du -hs
+df -h
+ls
+flatpak install --user --from https://mono-project.azureedge.net/repo/monodevelop.flatpakref
+df -h
+man flatpak
+flatpak install --user --from https://mono-project.azureedge.net/repo/monodevelop.flatpakref
+ls
+ranger
+cd ~/.local
+cd s
+cd share
+ls
+cd flatpak
+ls
+cd sys
+cd system-cache
+ls
+cd ..
+ls
+cd repo
+ls
+du -hs
+cd ..
+du -hs
+cd ..
+ls
+cd ..
+cd font
+cd fonts
+ls
+cd ..
+cd .local
+ls
+cd share
+ls
+cd cache
+cd..
+cd
+ls
+cd .cach
+cd .cache
+ls
+cd
+du -h --depth 1
+du -h - 1
+du -h -d 1
+ls
+cd .sup
+ls
+du -a
+du -ha
+cd xapian
+ls
+cd ..
+rm .sup -r
+ls
+du -had 1
+ls
+ls -as
+la -has
+ls -has
+cd .config/
+ls
+du -hsd 1
+du -hd 1
+df -h
+cd .cache
+cd ~/.cache
+ls
+du -had 1
+rm -r chromium
+cd ..
+ls
+cd /usr/
+ls
+cd /share
+cd share
+ls
+du -had 1
+du -had 1 | grep g
+du -had 1 | grep G
+cd doc
+ls
+cd ..
+ls
+du -had 1
+du -had 1 | grep M
+ls
+rm midi -r
+ls
+du -had 1 | grep M
+cd ..
+ls
+cd games
+ls
+du -had 1
+cd ..
+ls
+cd sbin
+ls
+du -had 1
+q
+cd ..
+du -had
+du -had 1
+cd lib
+du -had 1
+du -had 1 | grep G
+du -had 1 | grep M
+sudo apt remove libreoffice
+sudo apt remove libreoffice*
+sudo apt autoremove
+sudo apt remove libreoffice*
+ls
+du -had 1
+du -had 1 | grep M
+cd ..
+ls
+cd share
+ls
+du -had 1 | grep M
+cd ..
+ls
+cd local
+ls
+du -had 1 | grep M
+ls
+cd ..
+ls
+cd share
+ls
+cd doc
+ls
+du -had 1 | grep M
+cd
+ls
+cd .cache
+ls
+du -had 1
+cd ..
+cd /usr
+ls
+cd /opt
+ls
+du -had 1
+sudo apt remove osate2 -r
+sudo apt remove osate2
+rm -r osate2
+ls
+sudo rm -r osate2
+ls
+cd dotnet/
+ls
+du -had 1
+df -h
+ls
+du -had 1
+cd ..
+ls
+cd ..
+ls
+cd tmp
+ls
+du -had 1
+ls
+cd cache
+cd .cache/
+ls
+cd mozilla/
+ls
+cd firefox/
+ls
+cd p9fooro2.default/
+ls
+du -hs
+du -ha
+du -ha | grep M
+rm -r cache2/
+df -h
+cd
+vim
+nuget
+nuget help install
+df -h
+ls
+man dotnet
+dotnet
+dotnet --help
+dotnet help build
+df -h
+dotnet help build
+htop
+wal wallpapers/vintage-kitchen.jpg 
+wal -i wallpapers/vintage-kitchen.jpg 
+cd /tmp
+ls
+du -had 1
+sudo du -had 1
+rm ./* -r
+sudo rm ./* -r
+ls
+cd
+df -h
+dotnet
+dotnet help build
+df -h
+dotnet
+dotnet help
+dotnet help restore
+dotnet help build
+ls
+ranger
+dotnet build
+ls
+dotnet build GrantWeb.csproj 
+cd ,,
+cd ..
+ls
+dotnet build GrantWeb
+dotnet build 
+dotnet help
+nuget
+nuget help
+nuget help install
+nuget install jquery.dirtyforms
+ls
+sudo rm -r jquery.dirtyforms.2.0.0/
+nuget install jquery.dirtyforms -SolutionDirectory .
+ls
+rm -r jQuery.1.4.2/
+ls
+cd GrantWeb
+ls
+cat packages.config 
+nuget help
+ls
+htop
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+bc
+ssh asturtz@cse.unl.edu
+sftp asturtz@cse.unl.edu
+man javac
+apt search hello
+apt search world
+apt search hello-world
+apt search hello world
+ls
+wal -i wallpapers/vintage-kitchen.jpg 
+vimtutor
+/etc/init.d/networking restart
+wal -i wallpapers/vintage-kitchen.jpg 
+ping 8.8.8.8
+pandoc
+man pandoc
+wal -i wallpapers/vintage-kitchen.jpg 
+sudo apt remove weechat
+sudo apt install weechat
+ls -a
+vim .weechat/
+vim .weechat/python/autoload/
+cd .weechat/python/autoload/
+ls
+ls -a
+ls ~/dotfiles/
+cd ~/dotfiles/weechat/
+ls
+ls -a
+cd .weechat/
+ls
+cd python/autoload/
+ls -a
+exit
+man weechat
+ls
+vim
+df -h
+sudo apt show libre-office
+sudo apt list | grep libre-office
+sudo apt list | grep libre
+htop
+dotnet
+dotnet help
+df -h
+wal -i wallpapers/vintage-kitchen.jpg 
+msbuild GrantWeb.sln
+sudo shutdown now
