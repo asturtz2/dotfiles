@@ -11,34 +11,14 @@
 
 " Basic mappings {{{
 map <Space> <Leader>
-let maplocalleader = ","
-"}}}
-
-" Buffer mappings {{{
-map <Leader>d :bd<CR> 
-map <Leader>1 <Plug>AirlineSelectTab1
-map <Leader>2 <Plug>AirlineSelectTab2
-map <Leader>3 <Plug>AirlineSelectTab3
-map <Leader>4 <Plug>AirlineSelectTab4
-map <Leader>5 <Plug>AirlineSelectTab5
-map <Leader>6 <Plug>AirlineSelectTab6
-map <Leader>7 <Plug>AirlineSelectTab7
-map <Leader>8 <Plug>AirlineSelectTab8
-map <Leader>9 <Plug>AirlineSelectTab9
+let maplocalleader = "\\"
+map Y y$
 "}}}
 
 " Search mappings {{{
 map <silent> <Leader>c :nohlsearch<CR>
 map <Leader>rv :so ~/.config/nvim/init.vim<CR>
 map <Leader>pi :PlugInstall<CR>
-" }}}
-
-" Split mappings {{{
-noremap <Leader>j <C-w>j
-noremap <Leader>k <C-w>k
-noremap <Leader>h <C-w>h
-noremap <Leader>l <C-w>l
-" }}}
 " }}}
 
 " Folding {{{
@@ -52,7 +32,7 @@ set foldmethod=indent "Fold based on an indent level
 filetype plugin indent on
 set modelines=1
 set hidden "Enable hidden buffers
-set number "Enable line numbers
+set relativenumber "Enable line numbers
 set showmatch "Show matching characters (parentheses, brackets, etc.)
 set incsearch "Search as characters are entered
 set hlsearch "Highlight search matches
@@ -60,6 +40,7 @@ set completeopt-="preview"
 let loaded_netrwPlugin=1
 " }}}
 
+"}}}
 " Ranger {{{
 let g:ranger_map_keys = 0
 map <Leader>t :Ranger<CR>
@@ -120,7 +101,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-sleuth'
 Plug 'francoiscabrol/ranger.vim' , {'on' : 'Ranger'}
-Plug 'rbgrouleff/bclose.vim'
 Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'dylanaraps/wal'
 Plug 'vim-airline/vim-airline'
@@ -138,14 +118,6 @@ Plug 'itchyny/vim-haskell-indent'
 
 " C# {{{
 Plug 'OmniSharp/omnisharp-vim', { 'for' : 'cs' }
-" }}}
-
-" AADL {{{
-Plug 'OpenAADL/AADLib', { 'rtp': 'share/vim/', 'for' : 'aadl' }
-" }}}
-
-" Prolog {{{
-Plug 'adimit/prolog.vim', { 'for' : 'pl'}
 " }}}
 
 " Latex {{{

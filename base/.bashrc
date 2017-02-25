@@ -130,6 +130,7 @@ alias vim=nvim
 
 #Default editor
 export EDITOR=nvim
+set -o vi
 
 #Rvt config
 RTV_URLVIEWER=urlview

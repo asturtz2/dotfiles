@@ -1,17 +1,3 @@
-git add -u
-git status
-git commit -m "Fixes #114"
-git status
-git add -u
-git commit -m "Change "Applicant's Contact Information" to "Primary Contact Information"
-"
-git commit -m "Change "Applicant's Contact Information" to "Primary Contact Information"
-""
-git commit -m "Change 'Applicant's Contact Information' to 'Primary Contact Information'"
-git push -u origin feature/applicant-contact-label 
-git status
-ls
-git status
 xbuild GrantWeb.sln
 msbuild GrantWeb.sln
 xbuild GrantWeb.sln
@@ -1998,3 +1984,17 @@ df -h
 wal -i wallpapers/vintage-kitchen.jpg 
 msbuild GrantWeb.sln
 sudo shutdown now
+                                                                                                                     wal -i wallpapers/vintage-kitchen.jpg 
+apt search qutebrowser
+apt search qute
+apt search browser
+apt serach pyqt
+apt search pyqt
+apt serach qt
+apt search qt
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+./mount.sh 
+wal -i wallpapers/vintage-kitchen.jpg 
