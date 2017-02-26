@@ -1,32 +1,3 @@
-xbuild GrantWeb.sln
-msbuild GrantWeb.sln
-xbuild GrantWeb.sln
-git status
-msbuild GrantWeb.sln
-xbuild GrantWeb.sln
-ifconfig
-sudo ifconfig
-wal -i Pictures/waterfall-rockface.jpg 
-/etc/init.d/networking restart
-sudo apt list | grep pip
-apt search pip
-apt search pip3
-apt list --installed | grep neovim
-apt search neovim
-sudo apt install build-essential cmake python-dev python3-dev
-ranger
-du -h
-df -h
-ls
-cd .config
-ls
-cd nvim
-cd plugged
-ls
-cd YouCompleteMe
-ls
-du -hs
-cd
 ls
 cd
 cd /
@@ -1997,4 +1968,33 @@ ls
 wal -i wallpapers/vintage-kitchen.jpg 
 ls
 ./mount.sh 
+wal -i wallpapers/vintage-kitchen.jpg 
+cd dotfiles/
+git status
+git add -A
+git commit -m "Update vimrc"
+git push
+ls
+ls -a
+cd
+ls -a
+cd school/
+sl
+ls
+cd
+ls
+cd /
+ls
+cd mnt
+ls
+cd /media/
+ls
+cd cdrom
+ls
+cd ..
+cd cdrom0
+ls
+cd /
+ls
+sudo shutdown now
 wal -i wallpapers/vintage-kitchen.jpg 
