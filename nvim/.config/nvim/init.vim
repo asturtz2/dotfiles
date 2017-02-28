@@ -10,7 +10,7 @@
 " Core Mappings {{{
 
 " Basic mappings {{{
-map <Space> <Leader>
+let mapleader = "\<Space>"
 let maplocalleader = "\\"
 map Y y$
 "}}}
@@ -142,7 +142,7 @@ map <LocalLeader>g :OmniSharpGotoDefinition<CR>
 map <LocalLeader>i :OmniSharpFindImplementations<CR>
 map <LocalLeader>ft :OmniSharpFindType<CR>
 map <LocalLeader>fs :OmniSharpFindSymbol<CR>
-map <LocalLeader>fu :OmniSharpFindUsages<CR>
+" map <LocalLeader>fu :OmniSharpFindUsages<CR>
 map <LocalLeader>fm :OmniSharpFindMembers<CR>
 map <LocalLeader>x :OmniSharpFixIssue<CR>
 map <LocalLeader>l :OmniSharpTypeLookup<CR>

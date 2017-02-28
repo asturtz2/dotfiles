@@ -1,6 +1,3 @@
-shell 
-shell  %s
-shell ./ %s
 find mu
 shell mkdir .mutt
 shell touch
@@ -48,3 +45,6 @@ shell wal -i %s
 find loc
 find Mono
 delete
+find li
+find pa
+find as

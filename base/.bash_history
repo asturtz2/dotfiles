@@ -1,179 +1,4 @@
 ls
-cd
-cd /
-ls
-cd tmp
-du -hs
-sudo du -hs
-cd usr
-cd ..
-cd usr
-ls
-cd games
-du -hs
-cd ..
-cd bin
-du -hs
-ls
-cd
-ls
-cd mail
-ls
-cd personal
-ls
-cd sent
-ls
-cd
-ls
-cd Color-Scripts
-du -hs
-cd
-ls
-cd work
-cd workspace
-du -hs
-cd
-ls
-cd configs
-ls
-du -hs
-config-ls
-config ls
-config branch
-config branch -d xmonad
-du -hs
-cd objects
-ls
-cd 00
-ls
-cd
-ls
-config status
-config rm .weechat/logs --cached
-config rm -r .weechat/logs --cached
-config status
-config rm .xmonad/xmonad.errors --cached
-config rm .xmonad/xmonad.hi --cached
-config rm .xmonad/xmonad.o --cached
-config rm .xmonad/xmonad-x* --cached
-config statusw
-config status
-config add -u
-ls
-sudo rm -r Color-Scripts
-df -hs
-df -h
-config add -u
-config commit -m "Commit before transfer"
-config push
-ls
-df -hs
-df -h
-wal -i Pictures/waterfall-rockface.jpg 
-./mount.sh 
-cd school/
-ls
-wal -i Pictures/waterfall-rockface.jpg 
-sudo restart
-sudo reboot now
-wal -i Pictures/waterfall-rockface.jpg 
-sudo reboot now shutdown
-sudo shutdown now
-wal -i Pictures/waterfall-rockface.jpg 
-/etc/init.d/networking restart
-wal -i Pictures/waterfall-rockface.jpg 
-man zathura
-df -h
-ls
-cd UltiSnips/
-ls
-cd
-ls workspace/
-cd workspace/
-ls
-cd Hw1/
-ls
-cd
-rm -r workspace/*
-sudo rm -r workspace/*
-ls
-df -h
-ls
-cd tmp/
-ls
-ls -a
-cd
-ls
-cd Downloads/
-ls
-du -hs
-cd
-ls
-cd /opt
-ls
-cd eclipse/
-du -hs
-apt search eclipse
-cd
-ls
-cd /opt/eclipse
-ls
-cd
-ls
-cd /opt
-ls
-rm -r eclipse/
-sudo rm -r eclipse/
-ls
-cd
-df -h
-man monodevelop
-monodevelop --help
-git help
-git help -g
-git help log
-git log
-htop
-git status
-msbuild GrantWeb.sln
-xbuild GrantWeb.sln
-wal -i Pictures/waterfall-rockface.jpg 
-/etc/init.d/networking restart
-git status
-git fetch
-git branch -rav
-git branch -rav | grep merged
-git branch -rav | grep Merge
-wal -i Pictures/waterfall-rockface.jpg 
-msbuild GrantWeb.sln
-xbuild GrantWeb.sln
-sudo apt-get install curl libunwind8 gettext
-curl -sSL -o dotnet.tar.gz https://go.microsoft.com/fwlink/?LinkID=835021
-sudo mkdir -p /opt/dotnet && sudo tar zxf dotnet.tar.gz -C /opt/dotnet
-sudo ln -s /opt/dotnet/dotnet /usr/local/bin
-man dotnet
-dotnet
-nuget
-man ef
-ef
-dotnet
-apt search dotnet
-dotnet ef
-df -h
-ls
-du -f
-du -t
-man du
-du -ah
-ls
-du -hs | grep dotnet
-du -ha | grep dotnet
-rm .dotnet.tar.gz
-ls
-rm dotnet.tar.gz
-ls
-rm feh_003997_000002_KjrfkPx.png 
-ls
 df -h
 git status
 git commit -m "Rename ApplicationContact to PrimaryCOntact in code"
@@ -1998,3 +1823,178 @@ cd /
 ls
 sudo shutdown now
 wal -i wallpapers/vintage-kitchen.jpg 
+lsblk
+pacman
+apt search pacman
+sudo apt install pacapt
+pacman
+sudo apt remove pacapt
+apt seaarch archiso
+apt search archiso
+apt search arch
+apt search pacapt
+sudo apt install pacapt
+pacapt
+pacapt -h
+pacapt -Q
+pacapt -h
+pacapt -Ss archiso
+sudo apt remove pacapt
+ls
+cd dotfiles/
+ls
+git status
+cd
+ls
+cd school/
+ls
+sudo rm -r Nebraska-Environmental-Trust/
+ls
+cd
+ls
+rm -r school.zip 
+zip school.zip school
+ls
+rm -r school.zip
+zip -r school.zip school
+ls
+df -h
+./mount.sh 
+ls
+mv school.zip workspace/
+cd dotfiles/
+ls
+git status
+git add -A
+git status
+git commit -m "Final commit before move to Arch"
+git push
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+exit
+man pandoc
+exit
+apt search pdf
+apt search oowriter
+df -h
+exit
+/etc/init.d/networking restart
+wvpdf
+wvPDF
+cd
+ls
+cd dotfiles/
+ls
+i
+ls
+cd
+ls
+wget http://raikesdesignstudio.slack.com/files/ytitov/F4BKGRZC7/pa1.pdf
+ip link
+ping 8.8.8.8
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+wget http://raikesdesignstudio.slack.com/files/ytitov/F4BKGRZC7/pa1.pdf
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+ifconfig
+sudo ifconfig
+ip link
+sudo ifconfig
+ranger
+ls
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+wal -i wallpapers/vintage-kitchen.jpg 
+vim test
+ag stdio
+ag stdio /
+ag -g stdio /
+cat /usr/include/c++/6/tr1/stdio.h
+ls
+./osh.o 
+./osh.o -t -1 -2
+make
+./osh.o -t
+ls
+./osh.o 
+./osh.o -t
+./osh.o 
+./osh.o -t
+ls
+./osh.o -t
+./osh.o
+./osh.o 
+ssh asturtz@cse.unl.edu
+man gcc
+man g++
+apt search gcc docs
+apt search gcc-docs
+apt search gcc
+apt search gcc | grep doc
+echo _cplusplus
+echo $_cplusplus
+/etc/init.d/networking restart
+vim .ssh/known_hosts 
+vim .ssh/config
+ssh cse
+man make
+help makefil
+help makefile
+man -k makefile
+man man
+man cpp -k
+man xmonad -k
+man bar -k
+man -k bar
+cal
+./osh.o -t
+bc
+./osh.o -t
+./osh.o 
+./osh.o -t
+ls
+rm osh.o
+./osh
+./osh 
+./osh
+wal -i wallpapers/vintage-kitchen.jpg 
+wal -i ~/wallpapers/vintage-kitchen.jpg 
+./osh 
+echo test
+./osh 
+./osh
+./osh -t
+./osh 
+./osh -t
+./osh 2
+./osh 
+./osh -t
+ls
+g++ parse.cpp -o parse.o
+ls
+parse.o
+./parse.o 
+ls
+rm parse.o
+ls
+vim /etc/hosts
+cd
+ls
+cd -
+ls
+vim makefile
+ls
+make
+ls
+osh.o
+./osh.o
+./osh.o -t -1
+ls
+vim parse.cpp 
+wal -i ~/wallpapers/vintage-kitchen.jpg 
+sudo shutdown now
