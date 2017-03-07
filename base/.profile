@@ -21,7 +21,5 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-PATH="$PATH:/opt/eclipse:/opt/osate2:/opt/android-studio/bin"
-
 wal -r -t
 source "$HOME/.cache/wal/colors.sh"

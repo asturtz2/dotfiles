@@ -1,433 +1,3 @@
-ls
-df -h
-git status
-git commit -m "Rename ApplicationContact to PrimaryCOntact in code"
-git push
-sudo shutdown now
-wal -i Pictures/waterfall-rockface.jpg 
-htop
-cal
-man cal
-calc
-cal
-man cal
-bc
-man bc
-bc
-bc
-cd .config/nvim/
-ls
-cat init.vim
-cat init.vim~
-ls
-rm init.vim~
-ls
-cd dotfiels
-cd dotfiles
-ls
-mkdir nvim
-mkdir xmonad
-mkdir xmobar
-mkdir weechat
-ls
-mkdir vimperator
-mkdir sup
-mkdir fzf
-mkdir feh
-mkdir ag
-ls
-mkdir ranger
-mkdir zathura
-ls
-mkdir bash
-ls
-mkdir x11
-ls
-mkdir htop
-mkdir vlc
-ls
-cd nvim
-mkdir .config
-ls
-mv ~/.config/nvim/ .config/
-ls
-ls -a
-mv .config
-cd .config
-ls
-cd nvim
-ls
-cd ..
-ls
-mv nvim ~/.config/
-ls .config/
-ls ~/.config/
-ls ~/.config/nvim
-cp ~/.config/nvim .
-cp -r ~/.config/nvim .
-ls
-rm -r nvim
-sudo rm -r nvim
-ls
-df -h
-cp ~/.config/nvim/ .
-ls
-cp ~/.config/nvim/* .
-ls
-mkdir nvim
-ls
-cd nvim
-cd
-cd -
-ls
-cd ..
-ls
-mv *.vim* nvim
-ls
-cd nvim
-ls
-rm init.vim~
-ls
-cd ~/dotfiles/
-ls
-stow nvim
-ls
-mkdir git
-rm -r git
-mv ~/.agignore ag
-ls
-ls ag
-ls -a ag
-stow ag
-ls
-mkdir base
-ls
-mv bash base
-ls
-cd base
-ls
-cd bash
-ls
-cd ..
-ls
-rm bash
-rm -r bash
-cd ..
-ls
-cd base
-touch .pkgs
-ls
-ls -a
-ls
-cd ..
-ls
-cd base
-ls
-mv ~/.bash* ~/.profile .
-ls
-ls -a
-cd ..
-stow base
-mv ~/.config/htop/ ./config/htop
-man mv
-mkdir htop/.config
-mv ~/.config/htop/ htop/.config
-ls
-cd htop
-ls
-ls -a
-cd .cfongi
-cd .config
-ls
-cd ..
-stow htop
-mkdir ranger/.config
-mv ~/.config/ranger ranger/.config
-stow ranger
-mkdir vlc/.config
-mv ~/.config/vlc/ vlc/.config/
-stow vlc
-mkdir zathura/.config
-mv ~/.config/zathura/ zathura/.config
-stow zathura
-man stow
-ls
-mv .xmonad xmonad
-mv ~/.xmonad xmonad
-stow xmonad
-mv ~/.xmobar* xmobar
-stow xmobar
-mv ~/.vimperator* vimperator
-stow vimperator
-mv ~/.sup sup
-stow sup
-unstow sup
-man stow
-cd sup
-ls
-ls -a
-cd ..
-stow -d sup
-stow -D .sup
-stow -D sup
-ls
-cd sup
-ls
-ls -a
-cd //
-ls
-cd ..
-ls
-cd
-ls
-cd dot
-cd dotfiles/
-ls
-mv sup mail
-ls
-mv ~/.offlineimap* mail
-mv ~/.msmtprc mail
-mv ~/.mailcap mail
-stow mail
-mv ~/.weechat/ weechat/
-stow weechat
-mkdir wallpapers
-mv ~/wallpapers/ wallpapers/
-stow wallpapers
-unstow nvim
-stow -D nvim
-mkdir nvim/.local/share/nvim
-cd nvim/
-ls
-mkdir .local
-cd .local/
-ls
-mkdir share
-cd share/
-mkdir nvim
-ls
-cd ../..
-ls
-ls -a
-mv ~/.local/share/nvim/shada/ .local/share/nvim/
-stow nvim
-cd ..
-stow nvim
-ls
-mv ~/.X* x11
-mv ~/.xsessionrc ~/.xinitrc x11
-stow x11
-git init
-ls
-git status
-git add -a
-git add -A
-du -h
-ls
-cd nv
-cd nvim
-ls
-ls -a
-cd .config
-ls
-cd nvim
-ls
-cd ~/dotfiles
-ls
-stow -D nvim
-cd nvim
-cd .config
-ls
-cd nvim
-ls
-mv plugged ~/.config/nvim
-ls
-cd
-cd dotfiles
-stow nvim
-du -h
-ls
-ls -a
-sudo rm -r .git
-du -h
-du -h --depth=1
-du -h --depth 1
-man du
-du -h -d 1
-cd mail
-ls
-ls -a
-cd .offlineimap
-ls
-du -h
-cd ..
-ls
-ls -a
-cd .sup
-ls
-du -h
-cd
-ls
-cd dotfiles/
-ls
-stow -D mail
-cd mail/.sup/
-ls
-du -h
-cd xapian/
-ls
-du -h
-du -ha
-cd ..
-mv xapian/ ~/.sup
-cd ../..
-du -h
-stow mail
-ls
-ls -a
-git init
-git add -A
-rm -r .git
-sudo rm -r .git
-git init
-git add -A
-git status
-ls
-sudo rm -r .git
-cd mail
-ls
-ls -a
-cd ..
-stow -D mail
-cd mail
-mv .off* ~
-cd ..
-ls
-stow mail
-stow -D weechat
-mv weechat/.weechat/logs ~/.weechat/
-cd weechat/
-ls
-cd .weechat/
-ls
-mv sec.conf ~/.weechat/
-mv weechat.log ~/.weechat/
-ls
-git status
-cd ../..
-ls
-git status
-git init
-git add -A
-git status
-stow -D xmonad
-cd xmonad/
-ls
-ls -a
-cd .xmonad/
-ls
-mv xmonad.errors xmonad.hi .xmonad.o xmonad-x86_64-linux history ~/.xmonad
-mv xmonad.errors xmonad.hi xmonad.o xmonad-x86_64-linux history ~/.xmonad
-ls
-stow .xmonad
-cd
-stow xmonad
-cd dotfiles/
-stow xmonad
-git status
-sudo rm -r .git
-git init
-git add -A
-git status
-git help remote
-sudo rm -r .git
-git clone https://github.com/asturtz2/dotfiles
-ls
-ls -a
-cd dotfiles
-ls
-ls -a
-sudo mv ./* ..
-ls
-cd ..
-ls -a
-cd dotfiles/
-ls
-ls -a
-sudo mv .git ..
-ls
-ls -a
-cd ..
-ls
-ls -a
-rm dotfiles/ -r
-git status
-git add -A
-git status
-git branch
-git commit -m "Initial commit"
-git push -u origin master
-sudo shutdown now
-ls
-df -h
-apt list | grep gnu-stow
-apt list | grep stow
-apt show stow
-sudo apt install stow
-ls
-mkdir dotfiles
-ls
-ls -lav
-ls -a
-cd .config
-ls
-cd zathura
-ls
-man zathura
-cd .dotnet
-cd ~/.dotnet
-ls
-cd optimizationdata/
-ls
-cd 1.0.0-preview2-1-003177/
-ls
-cd
-ls -a
-cd .ghc/
-ls
-cd..
-cd
-ls -a
-cd .config
-ls
-ls -a
-cd nvim
-ls
-cd ..
-ls
-mv nvim nvim.bk
-ls
-cd
-ls
-ls -a
-cat .gitconfig
-ls
-ls -a
-mkdir scripts
-cd scripts
-touch pkg-install.sh
-chmod u+x pkg-install.sh 
-ls
-cd
-ls
-cd .config
-ls
-mv nvim.bk/plugged nvim
-ls
-cd nvim
-ls
-cd ~/dotfiles/
-ls
 cd nvim/
 ls
 cd
@@ -1997,4 +1567,434 @@ osh.o
 ls
 vim parse.cpp 
 wal -i ~/wallpapers/vintage-kitchen.jpg 
+sudo shutdown now
+ls
+cd dotfiles/
+git status
+git commit -ma "Just kidding"
+git help commit
+git commit -am "Just kidding"
+ls
+git status
+git push
+sudo shutdown now
+wal -i ~/wallpapers/vintage-kitchen.jpg 
+ls
+./mount.sh 
+cd workspace/
+ls
+sudo shutdown now
+wal -i ~/wallpapers/vintage-kitchen.jpg 
+man zathura
+exit
+./osh
+./osh 
+./osh
+./osh 
+cat >
+./osh 
+./osh ./osh
+./osh 
+echo test && echo this
+echo test | cat
+echo test | cat
+exit
+echo test > testFile.txt | cat
+ls
+cat testFile.txt 
+rm testFile.txt 
+exit
+ls | cat < 9.malformed.txt 
+ls | cat
+ls | cat < 1.singleCommand.txt 
+exit
+./osh 
+cat
+echo
+./osh 
+echo
+./osh 
+./osh echo test > newFile.txt
+./osh echo test > newFile.txt >
+./osh 
+./osh
+cat > echo > test >
+./osh 
+./osh
+./osh 
+./osh cat > >
+./osh 
+./osh
+./osh 
+exit
+man g++
+man gcc
+ls
+./osh 
+/.o
+./osh 
+./osh
+./osh 
+./osh -d
+./osh 2 1
+./osh 
+ls | cat | cat
+./osh 
+echo test | ls
+./osh 
+echo > test < thing
+./osh 
+exit
+./mount.sh 
+exit
+./osh 
+touch newFile.txt
+./osh ls > newFile.txt
+ls
+cat newFile.txt 
+rm newFile.txt 
+touch newFile.txt
+cat newFile.txt 
+./osh 
+ls
+cat newFile.txt 
+rm newFile.txt 
+touch newFile.txt
+./osh 
+cat newFile.txt 
+echo > newFile.txt 
+cat newFile.txt 
+rm newFile.txt 
+touch test.txt
+./osh 
+cat test
+cat test.txt 
+cat
+cat < ""
+cat ""
+echo ""
+> test.txt
+cat test
+cat test.txt 
+rm test.txt
+touch atest
+./osh
+cat atest 
+./osh
+> atest 
+./osh 
+cat atest 
+> atest 
+./osh 
+man gdb
+gdb
+sudo apt install gdb
+man gdb
+gdb
+ls
+cat ../hw5/hw5.tex > hw6.tex
+/etc/init.d/networking restart
+wal -i ~/wallpapers/vintage-kitchen.jpg 
+sudo shutdown now
+wal -i ~/wallpapers/vintage-kitchen.jpg 
+ls
+/etc/init.d/networking restart
+ls
+wal -i ~/wallpapers/vintage-kitchen.jpg 
+./osh 
+./osh  
+./osh 
+wal -i wallpapers/vintage-kitchen.jpg 
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+./osh 
+ls
+> atest 
+./osh 
+./osh
+cat atest
+./osh 
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+cd dotfiles/
+ls
+stow -R base
+./osh 
+ls
+./osh 
+cat at
+cat 
+cat atest 
+> atest 
+cat atest 
+./osh 
+./osh
+./osh 
+> atest 
+./osh 
+ls > atest
+cat atest
+> atest
+cat atset
+cat atest
+./osh 
+> atest
+./osh 
+echo < atest
+cat < ls
+ls | cat
+cat ea1.txt ea2.txt 
+ls < atest
+ls
+cat atest
+ls > atest
+ls < atest
+cat atest
+ls atest
+> atest
+echo makefile > atest
+ls < atest
+cat atest
+cat < atest
+cd ..
+ls
+cd -
+ls
+echo pa1 > atest
+cat atest
+cd ..
+cd < atest
+cd < pa1/atest
+cd -
+cd pa1/
+ls
+cat < atest
+bc "1 + 2
+bc "1 + 2"
+bc atest
+mkdir
+mkdir < atest
+mkdir <atest
+<atest mkdir
+cat
+cat << EOF
+atest
+EOF
+
+cat atest
+manc at
+man cat
+cat < atest
+echo cat atest > atest
+<atest
+grep p < atest
+grep pa1 < atest
+cat atest
+grep ca < atest
+grep ca
+./osh 
+man grep
+grep te atest
+cat atest
+./osh 
+cat atest
+./osh 
+cat atest
+< atest
+echo test > atest
+cat atest
+grep te < atest
+./osh 
+cat atest
+echo test > atest
+./osh 
+$PATH
+./osh
+$PATH
+wal -i wallpapers/vintage-kitchen.jpg 
+$PATH
+cd
+ls
+ls 
+ls -a
+cd .fzf
+ls
+ls /usr/local/bin
+cd
+ls -a
+vim .profile 
+vim .bashrc
+echo ls > atest
+cat atest
+rm atest
+./osh
+< atest
+cat atest
+<atest
+cat atest
+> atest
+cat atest
+./osh
+ls && ls blah; echo made it
+ls blah && ls; echo made it
+ls || cat atest && echo made it
+./osh
+./osh 
+./osh < 2.simpleRedir.txt
+./osh -t < 2.simpleRedir.txt
+cat 2.simpleRedir.txt 
+bash 2.simpleRedir.txt 
+cat ea2.txt 
+./osh 
+./osh -t < 2.simpleRedir.txt
+./osh -t < 2.simpleRedir.txt | less
+echo ls > atest
+cat atest
+./osh < atest
+ls
+echo ls
+echo ls\n exit > atest
+cat atest
+echo ls \\n exit
+echo ls \\n exit > atest
+ls
+cat atest
+echo -e ls\nexit > atest
+cat atest
+echo -e 'ls\nexit > atest'
+echo -e 'ls\nexit > atest' > atest
+cat atest
+echo -e 'ls\nexit' > atest
+cat atest
+./osh < atest
+vim atest
+wal -i wallpapers/vintage-kitchen.jpg 
+vim atest
+./osh < atest
+ls
+rm t
+rm testdir -r
+ls -l
+cd testdir
+ls -l
+ls
+rm -rf echotest 
+ls
+cd ,,
+cd ..
+ls
+rm -rf testdir testdir\n
+ls
+sudo rm -rf testdir\\n/
+ls
+ls touch
+rm touch
+rm -r touch
+ls
+ls test
+cd test
+ls
+rm test
+mkdir test
+mv testscripts.zip test
+ls
+rm [0-9]*
+ls
+cd test
+ls
+unzip testscripts.zip 
+ls
+cd ..
+ls
+cd -
+ls
+../osh -t < 2.simpleRedir.txt 
+../osh -t < 2.simpleRedir.txt | less
+../osh -t < 2.simpleRedir.txt
+../osh -t < 1.singleCommand.txt 
+cat ea
+cat ea1.txt 
+cat 1.singleCommand.txt 
+../osh -t < 3.moreRedir.txt 
+cat 3.moreRedir.txt 
+ls
+cat 9.malformed.txt 
+ls
+../osh < 9.malformed.txt 
+../osh -t < 9.malformed.txt 
+cat 9.malformed.txt 
+cat ea9.txt 
+../osh -t < 9.malformed.txt 
+cat 9.malformed.txt 
+../osh -t < 9.malformed.txt 
+../osh -t < 4.logicalConditional.txt 
+cat 4.logicalConditional.txt 
+cat ea4.txt 
+../osh -t < 5.singlepipe.txt 
+cat ea5.txt 
+wal -i wallpapers/vintage-kitchen.jpg 
+/etc/init.d/networking restart
+wal -i wallpapers/vintage-kitchen.jpg 
+./osh 
+ls | grep 1
+./osh 
+ls | grep 
+./osh 
+htop
+ls | grep 1
+ls
+./osh 
+ls | grep 1
+./osh 
+ls | grep 1
+./osh 
+clear
+./osh 
+ls | grep 1
+./osh 
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+ls -a
+df -h
+cd school/
+git clone http://github.com/RaikesSchoolDS/Nebraska-Environmental-Trust
+du -h
+ls
+vim Nebraska-Environmental-Trust/
+ls
+rm -rf Nebraska-Environmental-Trust/
+ls
+vim
+ls
+ls -a
+cat .vimtags 
+clear
+ls
+ls -a
+rm .vimtags
+cd .vim
+ls
+mkdir tags
+vim
+cd
+ls -2
+ls -a
+cat .vim
+cat .vimtags
+htop
+ls
+ls -a
+cd .vim/tags
+ls
+cd ..
+mv .vimtags .vim/global-tags
+cd .vim
+ls
+cd tags
+ls
+cd cpp
+wal -i wallpapers/vintage-kitchen.jpg 
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
 sudo shutdown now
