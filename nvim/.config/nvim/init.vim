@@ -1,4 +1,3 @@
-
 " Startup {{{
 " augroup configgroup
 "     autocmd FileType hs setlocal expandtab
@@ -38,7 +37,7 @@ map <Leader>pi :PlugInstall<CR>
 " Search {{{
 set incsearch "Search as characters are entered
 set hlsearch "Highlight search matches
-"set path+=**
+set path+=**
 " }}}
 
 " Folding {{{
@@ -68,33 +67,9 @@ let loaded_netrwPlugin=1
 
 "}}}
 
-" UI {{{
-
-" Core {{{
-colorscheme wal
+" Core UI {{{
 set relativenumber "Enable line numbers
 set showmatch "Show matching characters (parentheses, brackets, etc.)
-" }}}
-
-" Plugin {{{
-
-" Airline {{{
-let g:airline_theme='term'
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#fnamemod = ':t:.'
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#whitespace#symbol = '|'
-let g:airline#extensions#whitespace#checks = []
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-let g:airline#parts#ffenc#skip_expected_string='utf-8[BOM][dos]'
-" }}}
-
-" }}}
-
 " }}}
 
 " Plugins {{{
@@ -216,6 +191,25 @@ map <LocalLeader>s :OmniSharpReloadSolution<CR>
 "Vimtex {{{
 let g:vimtex_complete_close_braces = 1 
 "}}}
+
+" Airline {{{
+let g:airline_theme='term'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#fnamemod = ':t:.'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#whitespace#symbol = '|'
+let g:airline#extensions#whitespace#checks = []
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline#parts#ffenc#skip_expected_string='utf-8[BOM][dos]'
+" }}}
+
+" Wal {{{
+colorscheme wal
+" }}}
 
 " }}}
 

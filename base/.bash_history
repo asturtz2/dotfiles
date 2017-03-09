@@ -1,27 +1,3 @@
-cd nvim/
-ls
-cd
-cd -
-cd .config/
-ls
-cd nvim
-ls
-cd
-ls
-cd /
-ls
-cd opt
-ls
-cd
-ls
-ls -a
-cd .config
-ls
-cd htop
-ls
-cat htoprc 
-ls -a
-cd 
 cd -/..
 cd .config
 ls -a
@@ -1998,3 +1974,27 @@ wal -i wallpapers/vintage-kitchen.jpg
 sudo shutdown now
 wal -i wallpapers/vintage-kitchen.jpg 
 sudo shutdown now
+ls
+cd dotfiles/
+git status
+git add -A
+git status
+git commit -m "Tweak vimrc"
+git push
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+cal
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+cd .vim
+ls
+cd plugged/
+ls
+cd wal
+ls
+cd colors/
+ls
+./osh 
+wal -i wallpapers/vintage-kitchen.jpg 
+vim
+./mount.sh 
