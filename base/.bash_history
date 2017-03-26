@@ -1,114 +1,3 @@
-cd -/..
-cd .config
-ls -a
-cd mpv
-ls
-ls -a
-cd ..
-ls
-cd vlc
-ls
-ls -a
-cd ..
-ls -a
-cd ..
-ls
-ls -a
-man ls
-ls -l
-ls -la
-ls -a
-cat .mailcap 
-ls -a
-cd .config
-ls
-ls -a
-cd mpv/
-ls
-ls -a
-cd ..
-ls
-cd
-ls
-mkdir wallpapers
-mv Pictures/* wallpapers/
-ls
-ls -a
-config status
-ls -a
-cd .local/
-ls
-cd share/
-ls
-cd nvim/
-ls
-cd shada/
-ls
-cat main.shada
-cd ..
-ls
-cd site/
-ls
-cd ..
-ls
-cd swap/
-ls
-cd ..
-ls
-cd
-ls -a
-cd .local/share/
-ls
-cd fonts/
-ls
-cd
-apt search source-code
-apt search adobe
-ls -a
-cd .xpce/
-ls
-cd ..
-ls -a
-ls
-ls -a
-cd .cache
-ls
-du -h
-du -h | grep M
-ls
-rm google-chrome -r
-rm evolution -r
-cd
-cd .config
-ls
-cd nvim
-ls
-cd ..
-ls
-cd
-cd .config
-ls
-mv nvim.bk nvim
-ls
-cd nvim
-ls
-mv filetype.vim filetype.vim.bk
-mv init.vim init.vim.bk
-ls
-cd
-ls -a
-mkdir sup
-rm -r sup
-ls -a
-mkdir .sup
-du -hs
-man du
-cd configs
-ls
-cd
-sudo rm -r configs/
-df -h
-cd .weechat
 ls
 cat sec.conf 
 cd ..
@@ -1998,3 +1887,114 @@ ls
 wal -i wallpapers/vintage-kitchen.jpg 
 vim
 ./mount.sh 
+ls
+cd school/
+ls
+cd
+cd dotfiles/
+git status
+git commit -am "Updated vimrc"
+git push
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+/etc/init.d/networking restart
+wal -i wallpapers/vintage-kitchen.jpg 
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+/etc/init.d/networking restart
+wal -i wallpapers/vintage-kitchen.jpg 
+cal
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+exit
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+/etc/init.d/networking restart
+./mount.sh 
+exit
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+cd Downloads/
+ls
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+apt list | grep xmonad
+apt
+vimtutor
+vim
+man sem_wait
+wal -i wallpapers/vintage-kitchen.jpg 
+xmonad
+startx
+vim .vimperatorrc
+ls
+ls -2
+ls -a
+cd .vim
+ls
+man g++
+man g++
+
+ls
+man sem_wait
+less .bashrc
+man sem_wait
+less sem_wait
+man sem_wait
+man ranger
+ls
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+./part1
+./part1 -b 10 -p 10 -c 10 -i 10
+./part1 -b 10
+./part1 -b 10 -p 10 -c 10 -i 10
+ls
+cd dotfiles/
+ls
+cd xmonad
+ls
+ls -a
+cd .xmonad
+ls
+cd
+ls
+ls -a
+ls .xmonad/
+cd dotfiles/
+stow -D xmonad
+cd
+ls
+ls .xmonad/
+cd dotfiles/
+ls
+git status
+ls
+stow xmonad
+cd
+ls xmonad
+ls .xmonad
+apt list | grep stow
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+exit
+vim
+man sem_wait
+man sem_t
+man semaphore
+man semaphore.h
+man sem_init
+ranger
+./part1 -b 10 -p 10 -c 10 -i 10
+wal -i wallpapers/vintage-kitchen.jpg 
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+htop

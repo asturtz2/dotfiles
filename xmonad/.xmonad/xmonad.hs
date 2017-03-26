@@ -50,7 +50,7 @@ startup = runInTerm "" "wal -i ~/wallpapers/vintage-kitchen"
 layout = id
     . equalSpacing gapWidth gapShrink mult minWidth
 --    . avoidStruts
-    . mkToggle (single FULL) 
+    . mkToggle (single FULL)
     $ tiled ||| Mirror tiled ||| simplestFloat
   where
     gapWidth  = 15
@@ -73,7 +73,7 @@ logHook' = dynamicLogWithPP sjanssenPP --xmobarPP
     -- }
 
 spaces :: [String]
-spaces = 
+spaces =
     [ "1:Main"
     , "2:Dev"
     , "3:Web"
@@ -96,6 +96,7 @@ keybinds =
     , ranger
     , weechat
     , mail
+    , htop
     ]
   where
     --Tuples of keys/masks and X actions
@@ -106,4 +107,5 @@ keybinds =
     ranger  = ((mod1Mask .|. shiftMask, xK_t), runInTerm "-title ranger" "env EDITOR=nvim ranger")
     weechat = ((mod1Mask .|. shiftMask, xK_i), runInTerm "-title weechat" "weechat")
     mail    = ((mod1Mask .|. shiftMask, xK_m), runInTerm "-title mail" "sup-mail")
+    htop    = ((mod1Mask .|. shiftMask, xK_h), runInTerm "-title htop" "htop")
     toggleFullScreen = ((mod1Mask, xK_f), sendMessage $ Toggle FULL)

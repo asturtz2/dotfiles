@@ -1,4 +1,10 @@
-URxvt.font: xft:Hasklig:pixelsize=14:antialias=true:autohint=false
+Xft*dpi: 96
+Xft*antialias: True
+Xft*hinting: Full
+URxvt.font: xft:Hasklig:pixelsize=13:antialias=true:autohint=false:hinting=true
+URxvt.depth: 32
+URxvt.geometry: 80x30
+URxvt.internalBorder: 3
 URxvt.scrollBar: false
 URxvt.scrollBar_right: true
 URxvt.iso14755: False

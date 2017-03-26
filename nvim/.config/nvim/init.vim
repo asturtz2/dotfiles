@@ -1,9 +1,8 @@
 " Startup {{{
-" augroup configgroup
-"     autocmd FileType hs setlocal expandtab
-"     autocmd FileType hs setlocal tabstop = 8
-"     autocmd FileType hs setlocal softtabstop = 4
-"     autocmd FileType hs setlocal shiftwidth = 4
+augroup configgroup
+    autocmd!
+    autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+augroup end
 " }}}
 
 " Core Mappings {{{
@@ -15,6 +14,9 @@ let maplocalleader = "\\"
 
 " Movement {{{
 map Y y$
+
+" Go to beginning of last visual selection
+map gV `[v`
 map <Home> ^
 map <End> $
 map [[ :cprevious<CR>
@@ -62,6 +64,7 @@ filetype plugin indent on
 set modelines=1
 set hidden "Enable hidden buffers
 set completeopt-="preview"
+set showmatch
 let loaded_netrwPlugin=1
 " }}}
 
@@ -69,6 +72,7 @@ let loaded_netrwPlugin=1
 
 " Core UI {{{
 set relativenumber "Enable line numbers
+set number "Show current line number
 set showmatch "Show matching characters (parentheses, brackets, etc.)
 " }}}
 
@@ -94,6 +98,7 @@ Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'dylanaraps/wal'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-bufferline'
 Plug 'vim-syntastic/syntastic'
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
@@ -134,13 +139,12 @@ let g:ctrlp_use_caching = 0
 
 " Syntastic {{{
 let g:syntastic_aggregate_errors = 1
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_cs_checkers=['syntax', 'semantic', 'issues']
 " }}}
@@ -168,7 +172,7 @@ map <Leader>u :GundoToggle<CR>
 let g:OmniSharp_selector_ui='ctrlp'
 let g:OmniSharp_want_snippet=1
 " }}}
- 
+
 " Mappings{{{
 map <LocalLeader>b :OmniSharpBuildAsync<CR>
 map <LocalLeader>g :OmniSharpGotoDefinition<CR>
@@ -189,22 +193,28 @@ map <LocalLeader>s :OmniSharpReloadSolution<CR>
 " }}}
 
 "Vimtex {{{
-let g:vimtex_complete_close_braces = 1 
+let g:vimtex_complete_close_braces = 1
 "}}}
 
 " Airline {{{
 let g:airline_theme='term'
 let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#fnamemod = ':t:.'
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#whitespace#symbol = '|'
-let g:airline#extensions#whitespace#checks = []
+let g:airline#extensions#bufferline#enabled = 1
+" let g:airline#extensions#syntastic#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+" let g:airline#extensions#tabline#show_tab_nr = 1
+" let g:airline#extensions#tabline#fnamemod = ':t:.'
+" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" let g:airline#extensions#whitespace#symbol = '|'
+" let g:airline#extensions#whitespace#checks = []
+let g:airline_skip_empty_sections = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-let g:airline#parts#ffenc#skip_expected_string='utf-8[BOM][dos]'
+" }}}
+
+" Bufferline {{{
+let g:bufferline_echo = 0
 " }}}
 
 " Wal {{{
@@ -214,5 +224,20 @@ colorscheme wal
 " }}}
 
 " }}}
+
+" Custom Functions {{{
+
+" Strips trailing whitespace at the end of files. this
+" is called on buffer write in the autogroup above.
+function! <SID>StripTrailingWhitespaces()
+    " save last search & cursor position
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
+"}}}
 
 " vim:foldmethod=marker:foldlevel=0
