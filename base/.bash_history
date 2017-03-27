@@ -1,11 +1,3 @@
-ls
-cat sec.conf 
-cd ..
-cd
-ls
-ls -a
-mkdir .weechat
-ls -a
 mkdir .xmonad
 cd .xmo
 cd .xmonad
@@ -1998,3 +1990,11 @@ wal -i wallpapers/vintage-kitchen.jpg
 sudo shutdown now
 wal -i wallpapers/vintage-kitchen.jpg 
 htop
+cd dotfiles/
+git status
+git add -u
+git commit -m "Updated vimrc"
+git status
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+/etc/init.d/networking restart
