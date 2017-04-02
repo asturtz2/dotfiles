@@ -1,5 +1,10 @@
 " Startup {{{
 
+augroup Startup
+    autocmd!
+    autocmd VimEnter * :call CreateUndoDir()
+augroup end
+
 "Strip all trailing whitespace from file on write
 augroup WriteBuffer
     autocmd!
@@ -36,26 +41,10 @@ nnoremap ]] :cnext<CR>
 " }}}
 
 " Buffers {{{
-nnoremap <Leader>b :ls<CR>:b<Space>
-nnoremap <Leader>a <C-^>
+nnoremap <Leader>s <C-^>
 nnoremap <Leader>d :ls<CR>:bd<Space>
-nnoremap <Leader>vb :ls<CR>:vert<Space>:sb<Space>
-nnoremap <Leader>hb :ls<CR>:sb<Space>
 nnoremap <PageUp> :bnext<CR>
 nnoremap <PageDown> :bprev<CR>
-" }}}
-
-" Search {{{
-nnoremap <silent> <Leader>c :nohlsearch<CR>
-nnoremap <Leader>e :edit **/*
-nnoremap <Leader>f :find *
-nnoremap <Leader>F :find <C-R>=expand('%:h').'/*'<CR>
-nnoremap <Leader>vf :vert :sfind *
-nnoremap <Leader>vF :vert :sfind <C-R>=expand('%:h').'/*'<CR>
-nnoremap <Leader>hf :sfind *
-nnoremap <Leader>hF :sfind <C-R>=expand('%:h').'/*'<CR>
-nnoremap <Leader>tf :tabfind *
-nnoremap <Leader>tF :tabfind <C-R>=expand('%:h').'/*'<CR>
 " }}}
 
 " Marks {{{
@@ -65,10 +54,12 @@ nnoremap <Leader>m :marks<CR>:normal!<Space>'
 " Vim plug {{{
 map <Leader>pi :PlugInstall<CR>
 map <Leader>pu :PlugUpdate<CR>
+map <Leader>ps :PlugStatus<CR>
 map <Leader>pc :PlugClean<CR>
 "}}}
+
 " Misc {{{
-map <Leader>rv :so ~/.config/nvim/init.vim<CR>
+map <Leader>v :so ~/.config/nvim/init.vim<CR>
 "}}}
 
 "}}}
@@ -78,7 +69,8 @@ map <Leader>rv :so ~/.config/nvim/init.vim<CR>
 " Search {{{
 set incsearch "Search as characters are entered
 set hlsearch "Highlight search matches
-set path=.,**/
+set ignorecase
+set smartcase
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.aux,*.log,*.fdb*,*.fls
 set wildignorecase
 set wildmode=list:full
@@ -99,6 +91,13 @@ let g:easytags_by_filetype = '~/.vim/tagfiles'
 
 " Completion {{{
 set omnifunc=syntaxcomplete#Complete
+" }}}
+
+" Undo {{{
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+set undoreload=10000
 " }}}
 
 " Misc {{{
@@ -125,10 +124,8 @@ set showmatch "Show matching characters (parentheses, brackets, etc.)
 call plug#begin()
 
 " Core {{{
-Plug 'ctrlpvim/ctrlp.vim', { 'on' : ['CtrlP', 'CtrlPBuffer', 'CtrlPMRU'] }
+Plug 'ctrlpvim/ctrlp.vim', { 'on' : ['CtrlP', 'CtrlPBuffer', 'CtrlPCurFile', 'CtrlPMRU', 'CtrlPBookmarkDir'] }
 Plug 'tpope/vim-fugitive'
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dispatch'
@@ -136,7 +133,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-sleuth'
-Plug 'francoiscabrol/ranger.vim' , {'on' : 'Ranger'}
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'unblevable/quick-scope'
+Plug 'haya14busa/incsearch.vim'
 Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'dylanaraps/wal'
 Plug 'vim-airline/vim-airline'
@@ -146,6 +147,7 @@ Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
 " }}}
 
 " Haskell {{{
@@ -165,18 +167,38 @@ call plug#end()
 
 " Plugin options {{{
 
-" Ranger {{{
-let g:ranger_map_keys = 0
-map <Leader>t :Ranger<CR>
+" Quick-Scope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " }}}
 
+" Incsearch.vim
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+" }}}
+
+"}}}
+
 " CtrlP {{{
-" map <Leader>fo :CtrlP<CR>
-" map <Leader>fl :CtrlPBuffer<CR>
-" map <Leader>fu :CtrlPMRU<CR>
+nnoremap <Leader>f :CtrlP<CR>
+nnoremap <Leader>F :CtrlPCurFile<CR>
+nnoremap <Leader>l :CtrlPBuffer<CR>
+nnoremap <Leader>r :CtrlPMRU<CR>
+
+nnoremap <Leader>c :CtrlPDir<CR>
+nnoremap <Leader>b :CtrlPBookmarkDir<CR>
+nnoremap <Leader>ab :CtrlPBookmarkDirAdd<CR>
 let g:ctrlp_show_hidden = 1 "Show hidden files in control p
 let g:ctrlp_user_command = 'ag %s -l -g "" -f --nocolor --hidden'
-let g:ctrlp_use_caching = 0
+let g:ctrlp_working_path_mode = 0
 " }}}
 
 " Syntastic {{{
@@ -199,13 +221,13 @@ let g:SuperTabDefaultCompletionType = "context"
 map <Leader>gs :Gstatus<CR>
 map <Leader>gc :Gcommit -m
 map <Leader>gm :Gmerge
-map <Leader>gpl :Gpull
-map <Leader>gps :Gpush
-map <Leader>gf :Gfetch
-map <Leader>gg :Ggrep
-map <Leader>gl :Glog
-map <Leader>gd :Gdiff
-map <Leader>gb :Gblame
+map <Leader>gpl :Gpull<Space>
+map <Leader>gps :Gpush<Space>
+map <Leader>gf :Gfetch<CR>
+map <Leader>gg :Ggrep<Space>
+map <Leader>gl :Glog<Space>
+map <Leader>gd :Gdiff<Space>
+map <Leader>gb :Gblame<Space>
 " }}}
 
 " Gundo {{{
@@ -265,6 +287,14 @@ function! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     let @/=_s
     call cursor(l, c)
+endfunction
+
+function! CreateUndoDir()
+    if(&undofile)
+	let newdir='$HOME/.vim/undodir'
+	call mkdir(newdir, '-p')
+	unlet newdir
+    endif
 endfunction
 "}}}
 

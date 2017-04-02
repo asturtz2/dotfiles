@@ -1,16 +1,3 @@
-course.zip
-courses.zip
-./courses.zip
-sudo ./courses.zip
-mv courses.zip 
-mv courses.zip ..
-cd ..
-ls
-df -h
-cd
-ls
-unzip courses.zip 
-ls
 unzip courses.zip 
 ls
 mv courses.zip dzen/
@@ -1998,3 +1985,16 @@ man ag
 man ack
 ack
 awk
+vim
+man mkdir
+mkdir test
+exit
+cd .local
+ls
+cd share
+ls
+cd nvim
+ls
+cd swap
+ls
+man cp
