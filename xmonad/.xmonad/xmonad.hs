@@ -104,8 +104,17 @@ keybinds =
     zathura = ((mod1Mask .|. shiftMask, xK_z), spawn "zathura")
     rtv     = ((mod1Mask .|. shiftMask, xK_r), runInTerm "-title rtv" "rtv")
     vim     = ((mod1Mask .|. shiftMask, xK_v), runInTerm "-title vim" "nvim")
-    ranger  = ((mod1Mask .|. shiftMask, xK_t), runInTerm "-title ranger" "env EDITOR=nvim ranger")
-    weechat = ((mod1Mask .|. shiftMask, xK_i), runInTerm "-title weechat" "weechat")
-    mail    = ((mod1Mask .|. shiftMask, xK_m), runInTerm "-title mail" "sup-mail")
     htop    = ((mod1Mask .|. shiftMask, xK_h), runInTerm "-title htop" "htop")
     toggleFullScreen = ((mod1Mask, xK_f), sendMessage $ Toggle FULL)
+    ranger  =
+      ( (mod1Mask .|. shiftMask, xK_t)
+      , runInTerm "-title ranger" "env EDITOR=nvim ranger"
+      )
+    weechat =
+      ( (mod1Mask .|. shiftMask, xK_i)
+      , runInTerm "-title weechat" "weechat"
+      )
+    mail    =
+      ( (mod1Mask .|. shiftMask, xK_m)
+      , runInTerm "-title mail" "sup-mail"
+      )

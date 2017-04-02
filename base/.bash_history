@@ -1,29 +1,3 @@
-mkdir .xmonad
-cd .xmo
-cd .xmonad
-ls
-cd
-ls
-zip school
-ls
-man zip
-zip school
-ls
-ls -a
-man zip
-zip -r school.zip school
-ls
-ls -a
-df -h
-cd school/Nebraska-Environmental-Trust/
-ls
-cd GrantWeb/
-ls
-git status
-cd ../..
-ls
-zip courses.zip CSCE* MATH*
-ls
 course.zip
 courses.zip
 ./courses.zip
@@ -1998,3 +1972,29 @@ git status
 sudo shutdown now
 wal -i wallpapers/vintage-kitchen.jpg 
 /etc/init.d/networking restart
+wal -i wallpapers/vintage-kitchen.jpg 
+/etc/init.d/networking restart
+sudo shutdown now
+cd dotfiles/
+ls
+git status
+git add -u
+git status
+git commit -m "Add ranger bookmark"
+git push
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+/etc/init.d/networking restart
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+man zathura
+sudo shutdown now
+wal -i wallpapers/vintage-kitchen.jpg 
+ls
+ls -a
+exit
+nvim
+man ag
+man ack
+ack
+awk

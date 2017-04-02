@@ -1,7 +1,19 @@
 " Startup {{{
-augroup configgroup
+
+"Strip all trailing whitespace from file on write
+augroup WriteBuffer
     autocmd!
     autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+augroup end
+
+"Create file marks for the last file viewed of a given type
+augroup LeaveBuffer
+    autocmd!
+    autocmd BufLeave *.css normal! mC
+    autocmd BufLeave *.tex normal! mT
+    autocmd BufLeave *.js normal! mJ
+    autocmd BufLeave *.rb normal! mR
+    autocmd BufLeave *.md normal! mM
 augroup end
 " }}}
 
@@ -13,23 +25,50 @@ let maplocalleader = "\\"
 "}}}
 
 " Movement {{{
-map Y y$
+nnoremap Y y$
 
 " Go to beginning of last visual selection
-map gV `[v`
-map <Home> ^
-map <End> $
-map [[ :cprevious<CR>
-map ]] :cnext<CR>
+nnoremap gV `[v`
+nnoremap <Home> ^
+nnoremap <End> $
+nnoremap [[ :cprevious<CR>
+nnoremap ]] :cnext<CR>
+" }}}
+
+" Buffers {{{
+nnoremap <Leader>b :ls<CR>:b<Space>
+nnoremap <Leader>a <C-^>
+nnoremap <Leader>d :ls<CR>:bd<Space>
+nnoremap <Leader>vb :ls<CR>:vert<Space>:sb<Space>
+nnoremap <Leader>hb :ls<CR>:sb<Space>
+nnoremap <PageUp> :bnext<CR>
+nnoremap <PageDown> :bprev<CR>
 " }}}
 
 " Search {{{
-map <silent> <Leader>c :nohlsearch<CR>
+nnoremap <silent> <Leader>c :nohlsearch<CR>
+nnoremap <Leader>e :edit **/*
+nnoremap <Leader>f :find *
+nnoremap <Leader>F :find <C-R>=expand('%:h').'/*'<CR>
+nnoremap <Leader>vf :vert :sfind *
+nnoremap <Leader>vF :vert :sfind <C-R>=expand('%:h').'/*'<CR>
+nnoremap <Leader>hf :sfind *
+nnoremap <Leader>hF :sfind <C-R>=expand('%:h').'/*'<CR>
+nnoremap <Leader>tf :tabfind *
+nnoremap <Leader>tF :tabfind <C-R>=expand('%:h').'/*'<CR>
 " }}}
 
+" Marks {{{
+nnoremap <Leader>m :marks<CR>:normal!<Space>'
+" }}}
+
+" Vim plug {{{
+map <Leader>pi :PlugInstall<CR>
+map <Leader>pu :PlugUpdate<CR>
+map <Leader>pc :PlugClean<CR>
+"}}}
 " Misc {{{
 map <Leader>rv :so ~/.config/nvim/init.vim<CR>
-map <Leader>pi :PlugInstall<CR>
 "}}}
 
 "}}}
@@ -39,7 +78,10 @@ map <Leader>pi :PlugInstall<CR>
 " Search {{{
 set incsearch "Search as characters are entered
 set hlsearch "Highlight search matches
-set path+=**
+set path=.,**/
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.aux,*.log,*.fdb*,*.fls
+set wildignorecase
+set wildmode=list:full
 " }}}
 
 " Folding {{{
@@ -65,7 +107,8 @@ set modelines=1
 set hidden "Enable hidden buffers
 set completeopt-="preview"
 set showmatch
-let loaded_netrwPlugin=1
+set textwidth=80
+let loaded_netrwPlugin=1 "Do not load netrw
 " }}}
 
 "}}}
@@ -98,7 +141,6 @@ Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'dylanaraps/wal'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bling/vim-bufferline'
 Plug 'vim-syntastic/syntastic'
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
@@ -129,9 +171,9 @@ map <Leader>t :Ranger<CR>
 " }}}
 
 " CtrlP {{{
-map <Leader>fo :CtrlP<CR>
-map <Leader>fl :CtrlPBuffer<CR>
-map <Leader>fu :CtrlPMRU<CR>
+" map <Leader>fo :CtrlP<CR>
+" map <Leader>fl :CtrlPBuffer<CR>
+" map <Leader>fu :CtrlPMRU<CR>
 let g:ctrlp_show_hidden = 1 "Show hidden files in control p
 let g:ctrlp_user_command = 'ag %s -l -g "" -f --nocolor --hidden'
 let g:ctrlp_use_caching = 0
@@ -147,6 +189,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_cs_checkers=['syntax', 'semantic', 'issues']
+" }}}
+
+" Supertab {{{
+let g:SuperTabDefaultCompletionType = "context"
 " }}}
 
 " Fugitive {{{
@@ -173,23 +219,6 @@ let g:OmniSharp_selector_ui='ctrlp'
 let g:OmniSharp_want_snippet=1
 " }}}
 
-" Mappings{{{
-map <LocalLeader>b :OmniSharpBuildAsync<CR>
-map <LocalLeader>g :OmniSharpGotoDefinition<CR>
-map <LocalLeader>i :OmniSharpFindImplementations<CR>
-map <LocalLeader>ft :OmniSharpFindType<CR>
-map <LocalLeader>fs :OmniSharpFindSymbol<CR>
-" map <LocalLeader>fu :OmniSharpFindUsages<CR>
-map <LocalLeader>fm :OmniSharpFindMembers<CR>
-map <LocalLeader>x :OmniSharpFixIssue<CR>
-map <LocalLeader>l :OmniSharpTypeLookup<CR>
-map <LocalLeader>d :OmniSharpDocumentation<CR>
-map <LocalLeader>a :OmniSharpGetCodeActions<CR>
-map <LocalLeader>r :OmniSharpRename<CR>
-map <LocalLeader>m :OmniSharpCodeFormat<CR>
-map <LocalLeader>s :OmniSharpReloadSolution<CR>
-" }}}
-
 " }}}
 
 "Vimtex {{{
@@ -199,7 +228,6 @@ let g:vimtex_complete_close_braces = 1
 " Airline {{{
 let g:airline_theme='term'
 let g:airline_powerline_fonts=1
-let g:airline#extensions#bufferline#enabled = 1
 " let g:airline#extensions#syntastic#enabled = 1
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#buffer_idx_mode = 1
