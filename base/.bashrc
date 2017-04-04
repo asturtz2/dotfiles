@@ -130,6 +130,7 @@ alias vim=nvim
 
 #Default editor
 export EDITOR=nvim
+export TERM=xterm-256color
 set -o vi
 
 #Rvt config

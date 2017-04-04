@@ -1,10 +1,4 @@
 " Startup {{{
-
-augroup Startup
-    autocmd!
-    autocmd VimEnter * :call CreateUndoDir()
-augroup end
-
 "Strip all trailing whitespace from file on write
 augroup WriteBuffer
     autocmd!
@@ -28,6 +22,12 @@ augroup end
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 "}}}
+
+" Changes {{{
+nnoremap <silent> <Plug>InsertChar :<C-U>exec "normal i".<SID>InsertChar(nr2char(getchar()), v:count1)<CR>
+nnoremap <silent> <Plug>AppendChar :<C-U>exec "normal a".<SID>InsertChar(nr2char(getchar()), v:count1)<CR>
+nmap S <Plug>AppendChar
+" }}}
 
 " Movement {{{
 nnoremap Y y$
@@ -107,6 +107,8 @@ set hidden "Enable hidden buffers
 set completeopt-="preview"
 set showmatch
 set textwidth=80
+set ttimeout
+set ttimeoutlen=20
 let loaded_netrwPlugin=1 "Do not load netrw
 " }}}
 
@@ -114,7 +116,6 @@ let loaded_netrwPlugin=1 "Do not load netrw
 
 " Core UI {{{
 set relativenumber "Enable line numbers
-set number "Show current line number
 set showmatch "Show matching characters (parentheses, brackets, etc.)
 " }}}
 
@@ -125,6 +126,7 @@ call plug#begin()
 
 " Core {{{
 Plug 'ctrlpvim/ctrlp.vim', { 'on' : ['CtrlP', 'CtrlPBuffer', 'CtrlPCurFile', 'CtrlPMRU', 'CtrlPBookmarkDir'] }
+Plug 'asturtz2/vim-insert-char'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -152,6 +154,7 @@ Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
 
 " Haskell {{{
 Plug 'itchyny/vim-haskell-indent'
+Plug 'neovimhaskell/haskell-vim', { 'for' : 'haskell' }
 " }}}
 
 " C# {{{
@@ -213,6 +216,12 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_cs_checkers=['syntax', 'semantic', 'issues']
 " }}}
 
+" Airline {{{
+let g:airline_theme='term'
+let g:airline_powerline_fonts=1
+let g:airline_skip_empty_sections = 1
+" }}}
+
 " Supertab {{{
 let g:SuperTabDefaultCompletionType = "context"
 " }}}
@@ -247,25 +256,16 @@ let g:OmniSharp_want_snippet=1
 let g:vimtex_complete_close_braces = 1
 "}}}
 
-" Airline {{{
-let g:airline_theme='term'
-let g:airline_powerline_fonts=1
-" let g:airline#extensions#syntastic#enabled = 1
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#buffer_idx_mode = 1
-" let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-" let g:airline#extensions#tabline#show_tab_nr = 1
-" let g:airline#extensions#tabline#fnamemod = ':t:.'
-" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-" let g:airline#extensions#whitespace#symbol = '|'
-" let g:airline#extensions#whitespace#checks = []
-let g:airline_skip_empty_sections = 1
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-" }}}
+"{{{ Haskell-vim
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+"}}}
 
-" Bufferline {{{
-let g:bufferline_echo = 0
-" }}}
 
 " Wal {{{
 colorscheme wal
@@ -289,13 +289,6 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-function! CreateUndoDir()
-    if(&undofile)
-	let newdir='$HOME/.vim/undodir'
-	call mkdir(newdir, '-p')
-	unlet newdir
-    endif
-endfunction
 "}}}
 
 " vim:foldmethod=marker:foldlevel=0

@@ -1,391 +1,3 @@
-unzip courses.zip 
-ls
-mv courses.zip dzen/
-cd dzen/
-unzip courses.zip 
-ls
-rm -r CSCE* MATH*
-ls
-cd
-ls
-cd dzen/
-mv courses.zip ~/school/
-ls
-cd
-cd school/
-ls
-zip textbooks.zip Textbooks/
-ls
-rm courses.zip 
-zip -r courses.zip CSCE* MATH*
-ls
-du -h
-du -ha
-ls
-rm textbooks.zip 
-zip -r textbooks.zip Textbooks/
-du -h
-df -h
-ls
-ls -s
-ls -sh
-cd CSCE-322/
-ls
-cd ..
-cd CSCE-428/
-ls
-ls -sh
-cd hw1/
-ls
-ls -hs
-cd../..
-ls
-cd ../..
-ls
-cd Textbooks/
-ls
-ls -hs
-cd ../Nebraska-Environmental-Trust/
-ls
-cd GrantWeb/
-git status
-git branch
-git fetch
-cd ../..
-ls
-sudo rm -r Nebraska-Environmental-Trust/
-df -h
-ls
-zip -r textbooks Textbooks/
-ls
-ls -hs
-cd Textbooks/
-ls
-du -hs
-rm Calculus*
-ls
-cd ..
-ls
-rm textbooks.zip 
-ls
-cd Textbooks/
-ls -hs
-rm Linear\ Algebra\ and\ its\ Applications.txt 
-mv Linear\ Algebra\ and\ its\ Applications.pdf linear-algebra-and-its-applications.pdf
-ls
-mv BookOfProof-Hammack.pdf book-of-proof.pdf
-mv DiscreteMathematicsWikibook-20130612.pdf discrete-mathematics-wikibook.pdf
-ls
-cd ..
-ls
-du -hs
-df -h
-ls
-rm courses.zip 
-ls
-cd ..
-ls
-cd CSCE-322/
-ls
-cd ..
-rm CSCE* MATH* -r
-ls
-zip -r school.zip school
-ls
-ls -hs
-cd school/
-du -hs
-cd..
-cd ..
-ls
-ls Desktop/
-ls Documents/
-ls Downloads/
-ls
-apt list --installed
-apt list --installed | grep a*
-apt list --installed | grep a.*
-apt list --installed | grep ^a
-apt list --installed | grep ^b
-apt list --installed | grep ^c
-apt list --installed | grep ^d
-apt list --installed | grep ^e
-sudo apt remove emacs*
-sudo apt autoremove
-apt list --installed | grep ^f
-apt search ctags
-apt list --installed | grep ^f
-apt search source code pro
-apt list | grep source code pro
-apt list | grep "source code pro"
-apt list --installed | grep ^f
-apt list --installed | grep ^g
-apt search urxvt
-apt search rxvt
-apt list --installed | grep ^g
-apt list --installed | grep ^h
-apt list | grep hask
-apt list --installed | grep haskell
-apt list --installed | grep hask
-apt list --installed | grep h
-apt list --installed | grep ^h
-apt list --installed | grep ^g
-apt list --installed | grep ^i
-apt list --installed | grep ^j
-apt list --installed | grep ^k
-apt list --installed | grep ^l
-apt list --installed | grep ^m
-apt list --installed | grep ^n
-apt list --installed | grep ^d
-apt list --installed | grep ^n
-apt list --installed | grep ^o
-apt list --installed | grep ^p
-apt list --installed | grep ^q
-apt list --installed | grep [^automatic]
-apt list --installed | grep [^"automatic"]
-apt list --installed | grep -v automatic
-apt list --installed | grep ag
-apt list --installed | grep -v automatic
-apt list --installed | grep texlive
-apt list --installed | grep -v automatic
-sudo apt install unstow
-apt search dropbox
-wal wallpapers/woods.jpg 
-wal -i wallpapers/woods.jpg 
-wal wallpapers/waterfall-rockface.jpg 
-wal -i wallpapers/waterfall-rockface.jpg 
-ls
-ls -a
-cd dotfiles/
-stow weechat
-cd
-ls
-cd .wee
-cd .weechat/
-ls
-cd dot
-cd ~/dotfiles/
-ls
-cd weechat/
-ls
-ls -a
-cd .weechat/
-ls
-cd
-cd .weechat/
-ls
-rm *.conf
-ls
-ls | grep -v logs | rm
-rm javascript/ -r
-rm guile -r
-rm lua -r
-rm python/ -r
-rm perl -r
-rm ruby -r
-rm script -r
-cd dotfiles
-cd ~/dotfiles
-ls
-cd weechat/
-ls
-ls -a
-cd .weechat/
-ls
-/etc/init.d/networking restart
-wal -i wallpapers/waterfall-rockface.jpg 
-cd dotfiles/weechat/.weechat/
-ls
-cd ../..
-stow -D weechat
-/etc/init.d/networking restart
-cd .weechat/
-ls
-cat sec.conf 
-ls
-cd ~/dotfiles/
-ls
-cd weechat/
-ls
-ls -a
-cd .weechat/
-ls
-cd
-ls .weechat/
-cd .weechat/
-ls
-ls -av
-ls -al
-man weechat
-cd
-vim config-weechat.sh
-ls
-cat weechat.conf
-cd .weechat/
-cat weechat.conf 
-ls
-weechat
-cat plugins.conf 
-wal -i wallpapers/waterfall-rockface.jpg 
-vim
-ls
-mv homework5.txt ~/school/MATH-314/
-ls
-wal -i wallpapers/waterfall-rockface.jpg 
-/etc/init.d/networking restart
-bc
-ikhal
-vim .config/khal/khal.conf 
-man ikhal
-khal configure
-rm .config/khal/khal.conf 
-khal config
-khal configure
-ls .local/share/khal/calendars/
-rm .local/share/khal/calendars/private1 -r
-khal
-rm .local/share/khal/calendars/* -r
-rm .config/khal/khal.conf
-khal configure
-ikhal
-man khal
-man cal
-man khal
-man vdir
-vidr
-vdir
-man vdir
-cd .local/share/khal/calendars/
-ls
-cd private/
-ls
-ls -a
-cd ..
-vdir
-cd private/
-vdir
-cd
-mkdir calendars
-cd calendars/
-ls
-mkdir CSCE-428
-mkdir CSCE-466
-mkdir MATH-314
-mkdir CSCE-487
-mkdir CSCE-451
-ls
-khal
-cd
-ls
-git clone https://github.com/stark/Color-Scripts
-ls -s
-du -hs Color-Scripts/
-cd Color-Scripts/
-ls
-cd color-scripts/
-ls
-./arch
-./colortest
-./colorwheel 
-./bars
-./colorview
-ls
-./illumina 
-ls
-./colortest
-./arch 
-ls
-./colorbars
-ls
-./colorview
-ls
-./colortest-slim 
-htop
-apt search khal
-sudo apt install khal
-ls
-khal
-khal configure
-khal
-man khal
-ikhal
-khal agenda
-ikhal
-khal
-khal new -a CSCE-466 tomorrow 11:59PM Homework 2 Due
-khal
-khal new -a CSCE-451 friday 8:30am Exam 1
-khal
-khal agenda
-ikhal
-ls
-khal
-khal printcalendars
-khal search CSCE-451
-khal search exam
-khal this week
-khal week
-khal at
-khal calendar
-khal
-khal --days 7
-khal calendar --days 7
-khal new 8:30am Assignment 1 Due -a CSCE-451
-khal new -a CSCE-451 8:30am Assignment 1 Due
-khal new 8:30am wednesday Assignment 1 Due -a CSCE-451
-khal new -a CSCE-451 8:30am wednesday Assignment 1 Due
-khal new wednesday 8:30am Assignment 1 Due -a CSCE-451
-khal --days 7
-khal calendar --days 14
-khal delete
-ikhal
-khal
-khal calendary --days 7
-khal calendar --days 7
-/etc/init.d/networking restart
-apt search vdirsyncer
-man vdirsyncer
-khal
-ikhal
-khal new -a Test
-khal printcalendars
-khal
-man khal
-ifconfig
-sudo ifconfig
-wal -i wallpapers/waterfall-rockface.jpg 
-wal -i wallpapers/cabin.jpg 
-wal -i wallpapers/woods.jpg 
-ls
-cd Downloads/
-ls
-mv alvaro-serrano-133360.jpg pen.jpg
-htop
-vim
-cd Downloads/
-ls
-mv jessica-furtney-177531.jpg vertical-river.jpg
-wal -i vertical-river.jpg 
-ls
-wal -i pen.jpg 
-ls
-cd Color-Scripts/color-scripts/
-./arch 
-ls
-cd Color-Scripts/
-cd color-scripts/
-./arch 
-ls
-/etc/init.d/networking restart
-cd ~/Downloads/
-ls
-mv sophie-sollmann-165057.jpg flower-brass.jpg
-mv buzz-andersen-139830.jpg typewriter-drink.jpg
-wal -i flower-brass.jpg 
-wal -i typewriter-drink.jpg 
-ls
-cd ~/wallpapers/
-ls
 wal -i soil.jpg 
 wal -i cherry-blossom.jpg 
 vim
@@ -1998,3 +1610,391 @@ ls
 cd swap
 ls
 man cp
+ls -a
+cd dotfiles
+ls
+mkdir vim
+ls
+cd vim
+mkdir .vim
+cp ~/.config/nvim/init.vim .vimrc
+ls -2
+ls -a
+cat .vimrc
+ls
+ls ~/.config/nvim
+cp -r ~/.config/nvim/plugged/ .vim
+ls
+ls -a
+ls .vim
+cp -r ~/.config/nvim/tags .vim
+cp -r ~/.config/nvim/tagfiles .vim
+cp  ~/.config/nvim/global-tags .vim
+cat ~/.config/nvim/filetype.vim
+cp -r ~/.config/nvim/undo .vim
+ls
+cd .vim
+ls
+cd ../..
+ls
+cd
+ls
+ls -a
+cd .vim
+ls
+cd ..
+rm .vim
+cd dotfiles/
+stow vim
+cd
+ls -a
+cd .vim
+ls
+cd
+cd .config/nvim/
+ls
+cd
+cd dotfiles/
+ls
+cd nvim/
+stow -D nvim
+cd
+cd dotfiles/
+stow -D nvim
+cd
+cd .config/
+ls
+cd nvim
+ls
+cd undo
+ls
+ls -l
+du -7s
+du -hs
+cd ..
+ls
+rm ./*
+rm -r ./*
+rm -rf ./*
+ls
+man ln
+ln -s ~/.vimrc
+ls
+ls -a
+man ln
+rm .vimrc
+ln -s -t ~/.vimrc init.vim
+ln -s ~/.vimrc init.vim
+ls
+cat init.vim 
+ls
+cd ~/dotfiles/
+ls
+cd nvim
+ls
+ls -2
+ls -a
+cd .config/
+ls
+cd nvim/
+ls
+cd
+ls
+cd .config/nvim/
+ls
+cd ..
+ls
+rm -r nvim
+ln -s ~/.vim nvim
+ls
+cd nvim
+ls
+ln -s ~/.vimrc init.vim
+ls
+cd
+ls
+cd .local
+ls
+cd share
+ls
+cd nvim
+ls
+cd site
+ls
+cd autoload/
+ls
+mkdir ~/.vim/autoload
+cp plug.vim ~/.vim/autoload/
+rm plug.vim
+ln -s ~/.vim/autoload/plug.vim plug.vim
+ls
+cd ..
+ls
+cd spell/
+ls
+cd ../..
+ls
+cd site
+cd ..
+cd swap
+ls
+cd
+cd .local
+ls
+cd share/
+cd nvim/
+ls
+cd
+ls
+cd .local/share/nvim/site/
+ls
+cd autoload/
+ls
+cd
+cd dotfiles/
+ls
+git status
+ls
+rm -rf nvim
+git status
+git add vim
+git status
+git rm vim --cached
+git rm -r vim --cached
+git status
+git rm -rf vim --cached
+git status
+cd vim
+ls
+ls -a
+git add .vimrc
+cd .vim
+ls
+git add autoload/
+cd ../..
+ls
+git status
+cd ..
+ls
+cd dotfiles/
+git status
+git checkout -- nvim/.local/share/nvim/shada
+git status
+ls
+cd nvim
+ls
+cd .local/
+cd share/nvim/shada/
+ls
+mkdir ~/.local/share/nvim/shada
+cp main.shada ~/.local/share/nvim/shada/
+cd ~/dotfiles/
+ls
+git rm -r nvim
+git status
+cd
+ls
+cd .config/nvim/
+ls
+cd ~/dotfiles/
+ls
+git status
+cd vim
+ls
+cd .vim
+ls
+cd ../..
+ls
+git stow -D vim
+stow -D vim
+cd
+ls
+mkdir .vim
+cd .vim
+cd
+cd dotfiles/
+ls
+git status
+cd vim
+ls
+cd
+ls
+cd .config/nvim/
+ls
+ln -s ~/.vimrc init.vim
+ls
+cat init.vim 
+ls
+rm init.vim 
+cd
+ls
+cd dotfiles/
+ls
+cd vim
+ls
+cd .vim
+ls
+cd ..
+ls
+ls -a
+cat .vimrc
+ls
+cd .vim
+ls
+rm init.vim 
+cd
+cd .config/nvim
+ls
+cd
+cd dotfiles/
+stow vim
+cd
+cd .config/nvim
+ls
+ln -s ~/.vimrc init.vim
+ls
+cd
+cd dotfiles/
+ls
+git status
+git add -u
+git status
+git commit -m "Move from neovim config to vim config"
+git push
+exit
+vim dotfiles
+vim
+:q
+exit
+wal -i wallpapers/vintage-books.jpg 
+cd dotfiles/
+git status
+git add -u
+git fetch
+git status
+git commit -m "Add vim mappings"
+git push -f
+git status
+df
+df -h
+cd
+git clone https://github.com/RaikesSchoolDS/Nebraska-Environmental-Trust
+ls
+vim Nebraska-Environmental-Trust/
+cd Nebraska-Environmental-Trust/
+ls
+vim
+cd
+rm -rf Nebraska-Environmental-Trust/
+ls
+cd .vim
+ls
+rm init.vim 
+cd
+cd .config/nvim/
+ls
+ln ~/.vimrc init.vim
+ls
+cd
+ls
+ls -a
+cat .vimrc
+ls
+cd .config/nvim
+ls
+cat init.vim 
+rm init.vim 
+ln ~/.vimrc init.vim
+ls
+rm init.vim 
+ls
+ln ~/dotfiles/vim/.vimrc init.vim
+ls
+cat init.vim 
+ranger
+cd
+ls
+cd dotfiles/
+ls
+stow -D vim
+cd
+ls
+ls -a
+rm .vimrc
+cd .vim
+ls
+cat init.vim 
+ls
+rm init.vim 
+ranger
+cd
+cd dotfiles/
+stow vim
+cd
+cd .vim
+ls
+cd
+ls
+cat .vimrc
+cd .config/
+ls
+cd nvim/
+ls
+ln -s ~/dotfiles/vim/.vimrc init.vim
+ls
+rm init.vim 
+ln -s ~/.vimrc init.vim
+ls
+cat init.vim 
+cd ..
+ls
+cd
+cd .vim
+ls
+cd
+ls
+mkdir dev
+cd dev
+git clone https://github.com/rjayatilleka/vim-insert-char
+ls
+cd vim-insert-char/
+ls
+cd plugin/
+ls
+vim insert-char.vim 
+git status
+git checkout -b append-char
+git status
+git add -u
+git commit -m "Add append char functionality"
+git push
+git push -u origin append-char
+git push -u https://github.com/asturtz2/vim-insert-char
+vim insert-char.vim 
+cd
+ls
+cd /
+ls
+cd lib
+ls
+du -h
+wal -i wallpapers/waterfall-rockface.jpg 
+wal -i wallpapers/vintage-car.jpg 
+wal -i wallpapers/seattle-skyline.jpg 
+wal -i wallpapers/soil.jpg 
+wal -i wallpapers/cherry-blossom.jpg 
+wal -i wallpapers/road-through-woods.jpg 
+wal -i wallpapers/flowers-coffee.jpg 
+wal -i wallpapers/waterfall-rockface.jpg 
+wal -i wallpapers/man-snowy-woods.jpg 
+wal -i wallpapers/meadow.jpg 
+wal -i wallpapers/misty-autumn-woods.jpg 
+wal -i wallpapers/vintage-kitchen.jpg 
+/etc/init.d/networking restart
+wal -i wallpapers/vintage-kitchen.jpg 
+git clone https://github.com/RaikesSchoolDS/Nebraska-Environmental-Trust
+vim Nebraska-Environmental-Trust/
+wal -i wallpapers/vintage-kitchen.jpg 
+/etc/init.d/networking restart
+exit
+wal -i wallpapers/vintage-kitchen.jpg 
