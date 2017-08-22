@@ -1,0 +1,244 @@
+;=======================================;
+;                                       ;
+;   Clean and green polybar config      ;
+;                                       ;
+;=======================================;
+
+;
+; Colors
+;
+
+[colors]
+graphite = #2e3440
+gray = #707f9c
+green = #50fa7b
+white = #ffffff
+
+;
+; Bar
+;
+
+[bar/main]
+
+width = 2130
+offset-x = 15
+offset-y = 15
+height = 50
+dpi = 192
+
+background = ${xrdb:color0}
+foreground = ${colors.white}
+
+border-size = 4
+border-color = ${colors.graphite}
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Iosevka:pixelsize=10;3
+font-1 = Iosevka:weight=bold:pixelsize=10;3
+font-2 = FontAwesome:pixelsize=10;3
+font-3 = Iosevka:pixelsize=10
+
+modules-left = workspaces
+modules-center = title
+modules-right = xkeyboard battery wireless volume date powermenu
+
+[module/title]
+type = internal/xwindow
+label-maxlen = 50
+;
+; xkeyboard
+;
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout = %layout%
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+
+;
+; Bspwm
+;
+
+[module/workspaces]
+type = internal/xworkspaces
+
+icon-0 = dev;
+icon-1 = web;
+icon-2 = mail;
+icon-3 = media;
+icon-4 = chat;
+icon-5 = office;
+icon-6 = log;
+
+format = <label-state>
+
+label-active = %icon%
+label-active-margin = 1
+label-active-spacing = 1
+label-active-underline = ${xrdb:color1}
+
+label-urgent = %icon%
+label-urgent-margin = 1
+label-urgent-spacing = 1
+
+label-occupied = %icon%
+label-occupied-margin = 1
+label-occupied-spacing = 1
+
+label-empty = %icon%
+label-empty-margin = 1
+label-empty-spacing = 1
+; label-empty = %icon%
+
+; label-active = %icon%
+
+;label-focused = "%{T2} %{T-}%{T1}%index%%{T-}%{T2} %{T-}"
+;label-focused-background = ${colors.green}
+;label-focused-foreground = ${colors.graphite}
+;label-focused-underline= #fff
+;label-focused-padding = 0
+;
+;label-occupied = "%{T2} %{T-}%{T1}%index%%{T-}%{T2} %{T-}"
+;label-occupied-foreground = ${colors.white}
+;label-occupied-padding = 0
+;
+;label-urgent = "%{T2} %{T-}%{T1}%index%!%{T-}%{T2} %{T-}"
+;label-urgent-foreground = ${colors.green}
+;label-urgent-padding = 0
+;
+;label-empty = "%{T2} %{T-}%{T1}%index%%{T-}%{T2} %{T-}"
+;label-empty-foreground = ${colors.gray}
+;label-empty-padding = 0
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${xrdb:color5}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${xrdb:color5}
+
+;
+; Network
+;
+
+[module/wireless]
+type = internal/network
+interface = wlp1s0
+interval = 3.0
+
+format-connected = <label-connected>
+
+format-connected-foreground = ${xrdb:color5}
+label-connected =""
+
+format-disconnected = <label-disconnected>
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.white}
+
+;
+; DateTime
+;
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = ""
+date-alt = " %a %d %b"
+
+time = %H:%M
+time-alt = %H:%M
+
+label = %date% %time%
+
+;
+; Volume
+;
+
+[module/volume]
+type = internal/volume
+
+master-mixer = IEC958
+format-volume = <ramp-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${colors.white}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.graphite}
+format-muted-background =
+label-muted = sound muted
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+;
+; Powermenu
+;
+
+[module/powermenu]
+type = custom/menu
+
+label-open = "%{T4} %{T-}%{T4} %{T-}"
+label-close =
+format = <label-toggle><menu>
+label-separator = " | "
+
+format-foreground = ${colors.graphite}
+format-background = ${xrdb:color3}
+
+menu-0-0 = 
+menu-0-0-exec = menu-open-1
+menu-0-1 = 
+menu-0-1-exec = menu-open-2
+menu-0-2 = 
+menu-0-2-exec = menu-open-3
+menu-0-3 = "  "
+
+menu-1-0 = 
+menu-1-0-exec = systemctl suspend -i
+menu-1-1 = "  "
+
+menu-2-0 = 
+menu-2-0-exec = systemctl reboot -i
+menu-2-1 = ""
+
+menu-3-0 = 
+menu-3-0-exec = systemctl poweroff -i
+menu-3-1 = ""
+
+;
+; Window-list
+;
+
+[module/windowlist]
+type = custom/script
+exec = $XDG_CONFIG_HOME/polybar/windowlist.sh
+
+;zero interval causes high cpu load
+interval = 0.5
+
+scroll-up = bspc node -f prev.local
+scroll-down = bspc node -f next.local
+; vim:ft=dosini
