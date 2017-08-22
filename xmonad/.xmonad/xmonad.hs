@@ -2,6 +2,7 @@ import System.IO
 
 import XMonad hiding (config)
 
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 
@@ -11,6 +12,7 @@ import XMonad.Layout.EqualSpacing
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.PerWorkspace
+import XMonad.Layout.Minimize
 -- import XMonad.Layout.ResizableTile
 
 import XMonad.Util.Run(spawnPipe, runInTerm)
@@ -22,35 +24,30 @@ import XMonad.Actions.SpawnOn
 import XMonad.Prompt
 
 main = do
-    -- xmproc  <- spawnPipe "/usr/bin/xmobar ~/.xmobarrc"
-    bar <- xmobar config
-    xmonad bar
+    bar <- polybar
+    xmonad config
 
-config = baseConfig
-    { startupHook = startup
-    -- , logHook            = logHook'
-    , layoutHook  = layout
-    , manageHook  = manager
-    , workspaces  = spaces
-    } `additionalKeys` keybinds
+polybar = spawn "polybar main"
 
--- Basic configs
-baseConfig = def
+config = ewmh . docks $ def
     { terminal           = "urxvt"
-    , borderWidth        = 1
+    , borderWidth        = 4
     , normalBorderColor  = "#cccccc"
     , focusedBorderColor = "#8A745E"
-    }
-
-startup :: X ()
-startup = runInTerm "" "wal -i ~/wallpapers/vintage-kitchen"
+    , layoutHook         = layout
+    , manageHook         = manager
+    , handleEventHook    = events
+    , logHook            = logger
+    , workspaces         = spaces
+    } `additionalKeys` keybinds
 
 -- Layouts
 -- layout :: l Window
 layout = id
     . equalSpacing gapWidth gapShrink mult minWidth
---    . avoidStruts
+    . avoidStruts
     . mkToggle (single FULL)
+    . minimize
     $ tiled ||| Mirror tiled ||| simplestFloat
   where
     gapWidth  = 15
@@ -59,37 +56,36 @@ layout = id
     minWidth  = 1
     tiled     = Tall nmaster delta ratio
     nmaster   = 1
-    ratio     = 1/2
     delta     = 3/100
+    ratio     = 1/2
 
 manager = manageDocks <+> manageWorkspaces <+> manageHook defaultConfig
 manageWorkspaces = composeAll
     [ className =? "firefox"    --> doShift "3:web"
     ]
 
-logHook' = dynamicLogWithPP sjanssenPP --xmobarPP
-    -- { ppOutput = hPutStrLn xmproc
-    -- , ppTitle  = xmobarColor "brown" "" . shorten 50
-    -- }
+logger = ewmhDesktopsLogHook
+
+events = handleEventHook def <+> fullscreenEventHook
 
 spaces :: [String]
 spaces =
-    [ "1:Main"
-    , "2:Dev"
-    , "3:Web"
-    , "4:Viewer"
-    , "5:Chat"
-    , "6:Mail"
-    , "7:Music"
-    , "8:Video"
-    , "9:Scratch"
+    [ "dev"
+    , "web"
+    , "mail"
+    , "media"
+    , "chat"
+    , "office"
+    , "log"
     ]
 
 -- Keymappings
 keybinds :: [((KeyMask, KeySym), X ())]
 keybinds =
-    [ toggleFullScreen
-    , firefox
+    [ minimize
+    , restore
+    , toggleFullScreen
+    , qutebrowser
     , zathura
     , rtv
     , vim
@@ -97,10 +93,18 @@ keybinds =
     , weechat
     , mail
     , htop
+    , rofiShow
+    , rofiRun
+    , reload
     ]
   where
     --Tuples of keys/masks and X actions
-    firefox = ((mod1Mask .|. shiftMask, xK_b), spawn "firefox")
+    reload   = ((mod1Mask, xK_q), spawn "reload-xmonad")
+    minimize = ((mod1Mask, xK_m), withFocused minimizeWindow)
+    restore  = ((mod1Mask .|. shiftMask, xK_m), sendMessage RestoreNextMinimizedWin)
+    rofiShow = ((mod1Mask, xK_s), spawn "rofi -show window")
+    rofiRun  = ((mod1Mask, xK_r), spawn "rofi -show run")
+    qutebrowser = ((mod1Mask .|. shiftMask, xK_b), spawn "qutebrowser")
     zathura = ((mod1Mask .|. shiftMask, xK_z), spawn "zathura")
     rtv     = ((mod1Mask .|. shiftMask, xK_r), runInTerm "-title rtv" "rtv")
     vim     = ((mod1Mask .|. shiftMask, xK_v), runInTerm "-title vim" "nvim")

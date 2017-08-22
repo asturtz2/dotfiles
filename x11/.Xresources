@@ -1,7 +1,14 @@
-Xft*dpi: 96
-Xft*antialias: True
-Xft*hinting: Full
-URxvt.font: xft:Hasklig:pixelsize=13:antialias=true:autohint=false:hinting=true
+*dpi: 192
+Xft.dpi: 192
+Xft.antialias: 1
+Xft.autohint: 0
+Xft.hinting: 1
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.rgba: rgb
+URxvt.font: xft:bitstream vera sans mono:size=8:antialias=true
+URxvt.boldFont: xft:bitstream vera sans mono:bold:size=8:antialias=true
+URxvt.letterSpace: -1
 URxvt.depth: 32
 URxvt.geometry: 80x30
 URxvt.internalBorder: 3
