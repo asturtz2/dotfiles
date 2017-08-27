@@ -1,5 +1,6 @@
 import System.IO
 
+import Prelude hiding (mod)
 import XMonad hiding (config)
 
 import XMonad.Hooks.EwmhDesktops
@@ -69,56 +70,45 @@ logger = ewmhDesktopsLogHook
 events = handleEventHook def <+> fullscreenEventHook
 
 spaces :: [String]
-spaces =
-    [ "dev"
-    , "web"
-    , "mail"
-    , "media"
-    , "chat"
-    , "office"
-    , "log"
-    ]
+spaces = [ "dev" , "web" , "mail" , "media" , "chat" , "office" , "log" ]
+
+mod   = mod1Mask
+shift = shiftMask
 
 -- Keymappings
 keybinds :: [((KeyMask, KeySym), X ())]
 keybinds =
     [ minimize
     , restore
-    , toggleFullScreen
+    , fullscreen
     , qutebrowser
     , zathura
-    , rtv
-    , vim
     , ranger
     , weechat
     , mail
-    , htop
     , rofiShow
     , rofiRun
     , reload
     ]
   where
     --Tuples of keys/masks and X actions
-    reload   = ((mod1Mask, xK_q), spawn "reload-xmonad")
-    minimize = ((mod1Mask, xK_m), withFocused minimizeWindow)
-    restore  = ((mod1Mask .|. shiftMask, xK_m), sendMessage RestoreNextMinimizedWin)
-    rofiShow = ((mod1Mask, xK_s), spawn "rofi -show window")
-    rofiRun  = ((mod1Mask, xK_r), spawn "rofi -show run")
-    qutebrowser = ((mod1Mask .|. shiftMask, xK_b), spawn "qutebrowser")
-    zathura = ((mod1Mask .|. shiftMask, xK_z), spawn "zathura")
-    rtv     = ((mod1Mask .|. shiftMask, xK_r), runInTerm "-title rtv" "rtv")
-    vim     = ((mod1Mask .|. shiftMask, xK_v), runInTerm "-title vim" "nvim")
-    htop    = ((mod1Mask .|. shiftMask, xK_h), runInTerm "-title htop" "htop")
-    toggleFullScreen = ((mod1Mask, xK_f), sendMessage $ Toggle FULL)
+    rofiShow     = ((mod, xK_s),           spawn "rofi -show window")
+    rofiRun      = ((mod, xK_r),           spawn "rofi -show run")
+    reload       = ((mod, xK_q),           spawn "reload-xmonad")
+    fullscreen   = ((mod, xK_f),           sendMessage $ Toggle FULL)
+    minimize     = ((mod, xK_m),           withFocused minimizeWindow)
+    qutebrowser  = ((mod .|. shift, xK_b), spawn "qutebrowser")
+    zathura      = ((mod .|. shift, xK_z), spawn "zathura")
+    restore      = ((mod .|. shift, xK_m), sendMessage RestoreNextMinimizedWin)
     ranger  =
-      ( (mod1Mask .|. shiftMask, xK_t)
+      ( (mod .|. shift, xK_t)
       , runInTerm "-title ranger" "env EDITOR=nvim ranger"
       )
     weechat =
-      ( (mod1Mask .|. shiftMask, xK_i)
+      ( (mod .|. shift, xK_i)
       , runInTerm "-title weechat" "weechat"
       )
     mail    =
-      ( (mod1Mask .|. shiftMask, xK_m)
+      ( (mod .|. shift, xK_m)
       , runInTerm "-title mail" "sup-mail"
       )

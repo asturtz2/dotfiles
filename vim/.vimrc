@@ -13,6 +13,7 @@ augroup LeaveBuffer
     autocmd BufLeave *.js normal! mJ
     autocmd BufLeave *.rb normal! mR
     autocmd BufLeave *.md normal! mM
+    autocmd BufLeave *.hs normal! mH
 augroup end
 " }}}
 
@@ -22,12 +23,6 @@ augroup end
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 "}}}
-
-" Changes {{{
-nnoremap <silent> <Plug>InsertChar :<C-U>exec "normal i".<SID>InsertChar(nr2char(getchar()), v:count1)<CR>
-nnoremap <silent> <Plug>AppendChar :<C-U>exec "normal a".<SID>InsertChar(nr2char(getchar()), v:count1)<CR>
-nmap S <Plug>AppendChar
-" }}}
 
 " Movement {{{
 nnoremap Y y$
@@ -66,14 +61,22 @@ map <Leader>v :so ~/.config/nvim/init.vim<CR>
 
 "{{{ Core Options
 
+" Files {{{
+set path=.,**
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.aux,*.log,*.fdb*,*.fls
+set wildignorecase
+set wildmode=longest:full,list,full
+set wildmenu
+" }}}
+
 " Search {{{
+if has('nvim')
+    set inccommand=nosplit "Show substitution matches/replacements dynamically
+endif
 set incsearch "Search as characters are entered
 set hlsearch "Highlight search matches
 set ignorecase
 set smartcase
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.aux,*.log,*.fdb*,*.fls
-set wildignorecase
-set wildmode=list:full
 " }}}
 
 " Folding {{{
@@ -126,8 +129,6 @@ call plug#begin()
 
 " Core {{{
 Plug 'ctrlpvim/ctrlp.vim', { 'on' : ['CtrlP', 'CtrlPBuffer', 'CtrlPCurFile', 'CtrlPMRU', 'CtrlPBookmarkDir'] }
-Plug 'asturtz2/vim-insert-char'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dispatch'
@@ -137,7 +138,11 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-sleuth'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
+Plug 'sheerun/vim-polyglot'
+Plug 'tommcdo/vim-lion'
+Plug 'tommcdo/vim-exchange'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'wellle/targets.vim'
 Plug 'unblevable/quick-scope'
 Plug 'haya14busa/incsearch.vim'
 Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
@@ -148,17 +153,12 @@ Plug 'vim-syntastic/syntastic'
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
 " }}}
 
 " Haskell {{{
 Plug 'itchyny/vim-haskell-indent'
 Plug 'neovimhaskell/haskell-vim', { 'for' : 'haskell' }
-" }}}
-
-" C# {{{
-Plug 'OmniSharp/omnisharp-vim', { 'for' : 'cs' }
 " }}}
 
 " Latex {{{
@@ -226,30 +226,8 @@ let g:airline_skip_empty_sections = 1
 let g:SuperTabDefaultCompletionType = "context"
 " }}}
 
-" Fugitive {{{
-map <Leader>gs :Gstatus<CR>
-map <Leader>gc :Gcommit -m
-map <Leader>gm :Gmerge
-map <Leader>gpl :Gpull<Space>
-map <Leader>gps :Gpush<Space>
-map <Leader>gf :Gfetch<CR>
-map <Leader>gg :Ggrep<Space>
-map <Leader>gl :Glog<Space>
-map <Leader>gd :Gdiff<Space>
-map <Leader>gb :Gblame<Space>
-" }}}
-
 " Gundo {{{
 map <Leader>u :GundoToggle<CR>
-" }}}
-
-" Omnisharp {{{
-
-" Options{{{
-let g:OmniSharp_selector_ui='ctrlp'
-let g:OmniSharp_want_snippet=1
-" }}}
-
 " }}}
 
 "Vimtex {{{
