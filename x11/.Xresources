@@ -1,4 +1,4 @@
-*dpi: 192
+!*dpi: 192
 Xft.dpi: 192
 Xft.antialias: 1
 Xft.autohint: 0
@@ -17,3 +17,4 @@ URxvt.scrollBar_right: true
 URxvt.iso14755: False
 URxvt.clipboard.copycmd:xsel -ob
 URxvt.perl-ext-common: default
+rofi.dpi: 192

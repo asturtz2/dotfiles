@@ -1,1 +1,13 @@
 bindkey -v
+
+function search(){
+    aura -Ss $1 && aura -As $1
+}
+
+function pac(){
+    sudo aura -S $1 || sudo aura -Ax $1
+}
+
+function pacgit(){
+    sudo aura -S --devel $1 || sudo aura -Ax --devel $1
+}

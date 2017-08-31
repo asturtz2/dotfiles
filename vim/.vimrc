@@ -138,7 +138,7 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-sleuth'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'tommcdo/vim-lion'
 Plug 'tommcdo/vim-exchange'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -146,7 +146,6 @@ Plug 'wellle/targets.vim'
 Plug 'unblevable/quick-scope'
 Plug 'haya14busa/incsearch.vim'
 Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
-Plug 'dylanaraps/wal'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
@@ -165,16 +164,22 @@ Plug 'neovimhaskell/haskell-vim', { 'for' : 'haskell' }
 Plug 'lervag/vimtex', { 'for' : ['tex', 'plaintex', 'latex'] }
 " }}}
 
+" Wal {{{
+if executable('wal')
+    Plug 'dylanaraps/wal'
+endif
+" }}}
+
 call plug#end()
 " }}}
 
 " Plugin options {{{
 
-" Quick-Scope
+" Quick-Scope {{{
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " }}}
 
-" Incsearch.vim
+" Incsearch.vim {{{
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1
 map / <Plug>(incsearch-forward)
@@ -187,8 +192,6 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 " }}}
-
-"}}}
 
 " CtrlP {{{
 nnoremap <Leader>f :CtrlP<CR>
@@ -232,6 +235,8 @@ map <Leader>u :GundoToggle<CR>
 
 "Vimtex {{{
 let g:vimtex_complete_close_braces = 1
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_indent_enabled = 0
 "}}}
 
 "{{{ Haskell-vim
@@ -242,11 +247,13 @@ let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
 let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+let g:haskell_indent_disable = 1
 "}}}
 
-
 " Wal {{{
-colorscheme wal
+if executable('wal')
+    colorscheme wal
+endif
 " }}}
 
 " }}}

@@ -25,10 +25,12 @@ import XMonad.Actions.SpawnOn
 import XMonad.Prompt
 
 main = do
-    bar <- polybar
+    bar    <- polybar
+    player <- mopidy
     xmonad config
 
-polybar = spawn "polybar main"
+polybar = spawn "polybar --reload main"
+mopidy  = spawn "mopidy"
 
 config = ewmh . docks $ def
     { terminal           = "urxvt"
@@ -88,13 +90,12 @@ keybinds =
     , mail
     , rofiShow
     , rofiRun
-    , reload
     ]
   where
     --Tuples of keys/masks and X actions
     rofiShow     = ((mod, xK_s),           spawn "rofi -show window")
     rofiRun      = ((mod, xK_r),           spawn "rofi -show run")
-    reload       = ((mod, xK_q),           spawn "reload-xmonad")
+    -- reload       = ((mod, xK_q),           spawn "reload-xmonad")
     fullscreen   = ((mod, xK_f),           sendMessage $ Toggle FULL)
     minimize     = ((mod, xK_m),           withFocused minimizeWindow)
     qutebrowser  = ((mod .|. shift, xK_b), spawn "qutebrowser")

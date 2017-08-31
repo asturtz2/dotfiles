@@ -1,6 +1,12 @@
-alias spotify='spotify --force-device-scale-factor=2'
-alias upgrade='sudo pacman -Syu && sudo aura -Akua'
+alias paclog='aura -Li'
+alias upgrade='sudo aura -Syu && sudo aura -Akyuax && sudo aura -Oj'
+alias remove='sudo aura -R'
+alias spotify='spotify --force-device-scale-factor=1.5'
 alias vim='nvim'
+alias qutebrowser='qutebrowser --backend webengine'
+alias wal='wal -i ~/wallpapers/'
 
-export EDITOR='nvim'
+EDITOR='nvim'
+BROWSER='qutebrowser'
+
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
