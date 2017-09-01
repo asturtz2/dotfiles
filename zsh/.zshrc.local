@@ -1,7 +1,11 @@
 bindkey -v
 
 function search(){
-    aura -Ss $1 && aura -As $1
+    aura -Ss $1 || aura -As $1
+}
+
+function upgrade(){
+    sudo aura -Syu && sudo aura -Akyuax && sudo aura -Oj
 }
 
 function pac(){
@@ -10,4 +14,8 @@ function pac(){
 
 function pacgit(){
     sudo aura -S --devel $1 || sudo aura -Ax --devel $1
+}
+
+function pacusage(){
+    expac -H M '%m\t%n' | sort -rh | grep '^[2-9][0-9]'
 }

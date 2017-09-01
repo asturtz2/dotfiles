@@ -14,6 +14,7 @@ import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Minimize
+import XMonad.Layout.Tabbed
 -- import XMonad.Layout.ResizableTile
 
 import XMonad.Util.Run(spawnPipe, runInTerm)
@@ -25,8 +26,9 @@ import XMonad.Actions.SpawnOn
 import XMonad.Prompt
 
 main = do
-    bar    <- polybar
-    player <- mopidy
+    bar      <- polybar
+    player   <- mopidy
+    -- monitors <- mons
     xmonad config
 
 polybar = spawn "polybar --reload main"
@@ -51,7 +53,7 @@ layout = id
     . avoidStruts
     . mkToggle (single FULL)
     . minimize
-    $ tiled ||| Mirror tiled ||| simplestFloat
+    $ tiled ||| Mirror tiled ||| simpleTabbed ||| simplestFloat
   where
     gapWidth  = 15
     gapShrink = 0

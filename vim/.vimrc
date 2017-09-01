@@ -1,4 +1,11 @@
 " Startup {{{
+
+" Filetype templates
+augroup NewFile
+    autocmd!
+    autocmd BufNewFile *.tex 0r ~/.vim/templates/template.tex
+augroup end
+
 "Strip all trailing whitespace from file on write
 augroup WriteBuffer
     autocmd!
@@ -67,6 +74,8 @@ set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.aux,*.log,*.fdb*,*.fls
 set wildignorecase
 set wildmode=longest:full,list,full
 set wildmenu
+
+let g:tex_flavor = "latex"
 " }}}
 
 " Search {{{
