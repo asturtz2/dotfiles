@@ -5,8 +5,21 @@ function search(){
 }
 
 function upgrade(){
-    sudo aura -Syu && sudo aura -Akyuax && sudo aura -Oj
+    $(backup)
+    sudo aura -Syu
+    sudo aura -Akyuax
+    sudo aura -Oj
 }
+
+
+function backup(){
+    sudo aura -Qqen > ~/dotfiles/arch/arch-pkgs.txt && echo 'Arch package list saved.'
+    sudo aura -Qqem > ~/dotfiles/arch/aur-pkgs.txt && echo 'Aur package list saved.'
+    git -C ~/dotfiles commit -qam "Backup commit" && git -C ~/dotfiles push -q && echo 'Dotfiles successfully backed up.'
+    sudo aura -B && echo 'Packages successfully backed up'
+    echo 'All backups successful.'
+}
+
 
 function pac(){
     sudo aura -S $1 || sudo aura -Ax $1
