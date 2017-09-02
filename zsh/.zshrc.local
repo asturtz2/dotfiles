@@ -55,11 +55,10 @@ function backup-data(){
 
 function backup-all(){
     echo 'Starting full backup.'
-    if backup-packages && backup-dotfiles && backup-data; then
-        echo 'All backups successful.'
-    else
-        echo 'One or more backups failed.'
-    fi
+    backup-packages
+    backup-dotfiles
+    backup-data
+    echo 'All backups successful.'
 }
 
 function pac(){
