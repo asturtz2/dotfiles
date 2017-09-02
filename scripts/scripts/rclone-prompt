@@ -1,0 +1,5 @@
+#!/bin/echo
+
+echo 'Enter password for remote storage access:'
+read -s RCLONE_CONFIG_PASS
+export RCLONE_CONFIG_PASS
