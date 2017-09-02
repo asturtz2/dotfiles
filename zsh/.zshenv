@@ -1,5 +1,4 @@
 alias paclog='aura -Li'
-alias upgrade='sudo aura -Syu && sudo aura -Akyuax && sudo aura -Oj'
 alias remove='sudo aura -R'
 alias spotify='spotify --force-device-scale-factor=1.5'
 alias vim='nvim'

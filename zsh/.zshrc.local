@@ -14,14 +14,14 @@ function upgrade(){
 
 function backup-packages(){
     # Copy list of installed packages for reinstallation
-    echo 'Copying list of installed packages.'
+    echo "Copying list of installed packages."
     aura -Qqen > ~/dotfiles/arch/arch-pkgs.txt \
         && echo 'Arch package list saved.'
     aura -Qqem > ~/dotfiles/arch/aur-pkgs.txt \
         && echo 'Aur package list saved.'
 
     #Backup installed packages for downgrade
-    echo 'Backing up installed packages'
+    echo "Backing up installed packages"
     sudo aura -B \
         && echo 'Packages successfully backed up'
 }
@@ -29,7 +29,7 @@ function backup-packages(){
 # Commit all tracked dotfiles to github repo.
 # GNU Stow required to symlink dotfiles to correct directories
 function backup-dotfiles(){
-    echo 'Backing up dotfiles.'
+    echo "Backing up dotfiles."
     git -C ~/dotfiles status -s
     echo 'Modified files in this list will be committed. What would you like to do?'
     echo "c) Continue q) Quit"
@@ -46,7 +46,7 @@ function backup-dotfiles(){
 # Back up specific home directory data to Dropbox.
 function backup-data(){
     source rclone-prompt
-    echo 'Backing up user data.'
+    echo "Backing up user data."
     rclone --ask-password=false sync --stats=1m ~/school dropbox:school
     rclone --ask-password=false  sync --stats=1m ~/documents dropbox:documents
     echo 'User data successfully backed up.'
@@ -54,7 +54,7 @@ function backup-data(){
 }
 
 function backup-all(){
-    echo 'Starting full backup.'
+    echo "Starting full backup."
     backup-packages
     backup-dotfiles
     backup-data
