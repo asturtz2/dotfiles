@@ -30,16 +30,16 @@ function backup-packages(){
 # GNU Stow required to symlink dotfiles to correct directories
 function backup-dotfiles(){
     echo 'Backing up dotfiles.'
-    git status -s
+    git -C ~/dotfiles status -s
     echo 'Modified files in this list will be committed. What would you like to do?'
-    echo "c) Continue x) Execute command q) Quit"
+    echo "c) Continue q) Quit"
+    commit(){ git -C ~/dotfiles commit -qam "Backup commit" \
+                && git -C ~/dotfiles push -q \
+                && echo 'Dotfiles successfully backed up.'; }
     read option;
     case $option in
-        c) git -C ~/dotfiles commit -qam "Backup commit" \
-            && git -C ~/dotfiles push -q \
-            && echo 'Dotfiles successfully backed up.';;
-        x) read input; $(input);;
-        q) echo 'Exiting.';;
+        c) commit;;
+        q) echo 'Exiting. Dotfiles were not backed up.';;
     esac
 }
 
