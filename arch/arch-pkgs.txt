@@ -9,7 +9,6 @@ automake
 bash
 bison
 bzip2
-chromium
 coreutils
 cryptsetup
 ctags

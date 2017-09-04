@@ -1,4 +1,6 @@
+aur-git
 aura-bin
+castnow-git
 google-chrome
 khal
 lightdm-webkit2-greeter
@@ -7,13 +9,16 @@ mopidy-spotify
 neofetch
 neomutt
 nerd-fonts-complete
+nodejs-npm2arch
 pacaur
 pdfjs
 polybar-git
 python-pywal
 python2-click-log
+qt5-webengine-widevine
 qutebrowser-qtwebengine
 rtv
 spotify
 tasksh
 vdirsyncer
+weeplugins-git

@@ -1,7 +1,8 @@
 bindkey -v
 
 function search(){
-    aura -Ss $1 || aura -As $1
+    aura -Ss $1
+    aura -As $1
 }
 
 function upgrade(){
