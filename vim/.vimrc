@@ -22,6 +22,12 @@ augroup LeaveBuffer
     autocmd BufLeave *.md normal! mM
     autocmd BufLeave *.hs normal! mH
 augroup end
+
+augroup NumberToggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup end
 " }}}
 
 " Core Mappings {{{
@@ -118,7 +124,8 @@ set modelines=1
 set hidden "Enable hidden buffers
 set completeopt-="preview"
 set showmatch
-set textwidth=80
+set textwidth=76
+set columns=76
 set ttimeout
 set ttimeoutlen=20
 let loaded_netrwPlugin=1 "Do not load netrw
@@ -127,6 +134,7 @@ let loaded_netrwPlugin=1 "Do not load netrw
 "}}}
 
 " Core UI {{{
+set number
 set relativenumber "Enable line numbers
 set showmatch "Show matching characters (parentheses, brackets, etc.)
 " }}}
@@ -165,8 +173,9 @@ Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
 " }}}
 
 " Haskell {{{
-Plug 'itchyny/vim-haskell-indent'
+Plug 'itchyny/vim-haskell-indent', { 'for' : 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for' : 'haskell' }
+Plug 'eagletmt/ghcmod-vim', { 'for' : 'haskell' }
 " }}}
 
 " Latex {{{

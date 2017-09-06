@@ -9,6 +9,7 @@ automake
 bash
 bison
 bzip2
+compton
 coreutils
 cryptsetup
 ctags
@@ -65,7 +66,6 @@ make
 man-db
 man-pages
 mdadm
-mopidy
 mpv
 mtr
 nano

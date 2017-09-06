@@ -27,12 +27,12 @@ import XMonad.Prompt
 
 main = do
     bar      <- polybar
-    player   <- mopidy
+    -- player   <- mopidy
     -- monitors <- mons
     xmonad config
 
 polybar = spawn "polybar --reload main"
-mopidy  = spawn "mopidy"
+-- mopidy  = spawn "mopidy"
 
 config = ewmh . docks $ def
     { terminal           = "urxvt"

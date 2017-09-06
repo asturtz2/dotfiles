@@ -35,8 +35,8 @@ module-margin-right = 1
 
 font-0 = Iosevka:pixelsize=10;3
 font-1 = Iosevka:weight=bold:pixelsize=10;3
-font-2 = Iosevka:pixelsize=13;3
-font-3 = Iosevka:pixelsize=10
+font-2 = Iosevka:pixelsize=14;4
+font-3 = Iosevka:pixelsize=22;8
 
 modules-left = arch workspaces
 modules-center = title
@@ -65,13 +65,14 @@ label-indicator-margin = 1
 [module/arch]
 type = custom/menu
 
-label-open = "%{T4} %{T-}%{T4} %{T-}"
+label-open = "%{T-} %{T4}|%{T-} "
+; label-open-font = 4
 label-close =
 format = <label-toggle><menu>
 label-separator = " | "
 
-format-foreground = ${colors.white}
-format-background = ${xrdb:color3}
+format-foreground = ${xrdb:color1}
+format-background = ${xrdb:color0}
 
 menu-0-0 = 
 menu-0-0-exec = menu-open-1
@@ -107,21 +108,25 @@ icon-6 = log;
 format = <label-state>
 
 label-active = %icon%
+label-active-font = 3
 label-active-margin = 1
 label-active-spacing = 1
 label-active-foreground =${xrdb:color3}
 
 label-urgent = %icon%
+label-urgent-font = 3
 label-urgent-margin = 1
 label-urgent-spacing = 1
 label-urgent-foreground = ${xrdb:color1}
 
 label-occupied = %icon%
+label-occupied-font = 3
 label-occupied-margin = 1
 label-occupied-spacing = 1
 label-occupied-foreground = ${xrdb:color1}
 
 label-empty = %icon%
+label-empty-font = 3
 label-empty-margin = 1
 label-empty-spacing = 1
 ; label-empty = %icon%
@@ -152,7 +157,7 @@ battery = BAT0
 adapter = AC0
 full-at = 98
 
-format-charging = <ramp-capacity> <label-charging>
+format-charging = <animation-charging> <label-charging>
 format-charging-foreground = ${xrdb:color3}
 label-charging-foreground = ${colors.white}
 
@@ -160,6 +165,7 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-foreground = ${colors.white}
 
 format-full-prefix = " "
+format-full-prefix-font = 3
 format-full-prefix-foreground = ${xrdb:color3}
 
 ramp-capacity-0 = 
@@ -167,6 +173,14 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
+ramp-capacity-font = 3
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-font = 3
 ; ramp-capacity-foreground = ${xrdb:color3}
 
 ;
@@ -178,14 +192,15 @@ type = internal/network
 interface = wlp1s0
 interval = 3.0
 
-format-connected = <label-connected>
-
+format-connected =<label-connected>
 format-connected-foreground = ${xrdb:color3}
-label-connected =""
+label-connected = ""
+label-connected-font = 3
 
 format-disconnected = <label-disconnected>
+format-disconnected-foreground = ${colors.white}
 label-disconnected = ""
-label-disconnected-foreground = ${xrdb:color3}
+label-disconnected-font = 3
 
 ;
 ; DateTime
