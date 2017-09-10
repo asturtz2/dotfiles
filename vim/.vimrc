@@ -164,6 +164,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'wellle/targets.vim'
 Plug 'unblevable/quick-scope'
 Plug 'haya14busa/incsearch.vim'
+Plug 'Houl/repmo-vim'
 Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -177,7 +178,7 @@ Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
 " Haskell {{{
 Plug 'itchyny/vim-haskell-indent', { 'for' : 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for' : 'haskell' }
-Plug 'eagletmt/ghcmod-vim', { 'for' : 'haskell' }
+" Plug 'eagletmt/ghcmod-vim', { 'for' : 'haskell' }
 " }}}
 
 " Latex {{{
@@ -195,8 +196,52 @@ call plug#end()
 
 " Plugin options {{{
 
+" Lion {{{
+" let g:lion_squeeze_spaces=1
+" }}}
+" Repmo {{{
+
+" Testing plugin mappings out
+map <expr> ; repmo#LastKey(';') | sunmap ;
+map <expr> , repmo#LastRevKey(',') | sunmap ,
+
+noremap <expr> j repmo#SelfKey('j', 'k') | sunmap j
+noremap <expr> k repmo#SelfKey('k', 'k') | sunmap k
+noremap <expr> h repmo#SelfKey('h', 'l') | sunmap h
+noremap <expr> l repmo#SelfKey('l', 'h') | sunmap l
+
+noremap <expr> w repmo#SelfKey('w', 'b') | sunmap w
+noremap <expr> b repmo#SelfKey('b', 'w') | sunmap b
+noremap <expr> W repmo#SelfKey('W', 'B') | sunmap W
+noremap <expr> B repmo#SelfKey('B', 'W') | sunmap B
+noremap <expr> e repmo#SelfKey('e', 'ge') | sunmap e
+noremap <expr> ge repmo#SelfKey('ge', 'e') | sunmap ge
+noremap <expr> E repmo#SelfKey('E', 'gE') | sunmap E
+noremap <expr> gE repmo#SelfKey('gE', 'E') | sunmap gE
+
+" These mappings apparently don't work, need to fix
+" noremap <expr> <C-D> repmo#SelfKey('<C-D>', '<C-U>') | sunmap <C-D>
+" noremap <expr> <C-U> repmo#SelfKey('<C-U>', '<C-D>') | sunmap <C-U>
+" noremap <expr> <C-F> repmo#SelfKey('<C-F>', '<C-B>') | sunmap <C-F>
+" noremap <expr> <C-B> repmo#SelfKey('<C-B>', '<C-F>') | sunmap <C-B>
+" noremap <expr> <C-I> repmo#SelfKey('<C-I>', '<C-O>') | sunmap <C-I>
+" noremap <expr> <C-O> repmo#SelfKey('<C-O>', '<C-I>') | sunmap <C-O>
+" noremap <expr> <C-[> repmo#SelfKey('<C-[>', '<C-]>') | sunmap <C-[>
+" noremap <expr> <C-]> repmo#SelfKey('<C-]>', '<C-[>') | sunmap <C-]>
+
+noremap <expr> <C-E> repmo#SelfKey('<C-E>', '<C-Y>') | sunmap <C-E>
+noremap <expr> <C-Y> repmo#SelfKey('<C-Y>', '<C-E>') | sunmap <C-Y>
+
+
+noremap <expr> f repmo#ZapKey('f')|sunmap f
+noremap <expr> F repmo#ZapKey('F')|sunmap F
+noremap <expr> t repmo#ZapKey('t')|sunmap t
+noremap <expr> T repmo#ZapKey('T')|sunmap T
+
+" }}}
+
 " Quick-Scope {{{
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " }}}
 
 " Incsearch.vim {{{
@@ -223,7 +268,7 @@ nnoremap <Leader>c :CtrlPDir<CR>
 nnoremap <Leader>b :CtrlPBookmarkDir<CR>
 nnoremap <Leader>ab :CtrlPBookmarkDirAdd<CR>
 let g:ctrlp_show_hidden = 1 "Show hidden files in control p
-let g:ctrlp_user_command = 'ag %s -l -g "" -f --nocolor --hidden'
+let g:ctrlp_user_command = 'ag %s -l -g "" -f --nocolor --hidden --path-to-ignore ~/.ignore'
 let g:ctrlp_working_path_mode = 0
 " }}}
 
@@ -293,6 +338,9 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+
+"FIXME: Quick and dirty latex mapping
+inoremap <F1> $\mathbf{}$<ESC>F}i
 
 "}}}
 

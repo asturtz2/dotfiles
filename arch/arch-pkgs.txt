@@ -44,6 +44,7 @@ gst-plugins-good
 gst-plugins-ugly
 gucharmap
 gzip
+highlight
 htop
 imagemagick
 inetutils
@@ -85,6 +86,7 @@ pcmciautils
 pepper-flash
 perl
 pkg-config
+playerctl
 powertop
 procps-ng
 psmisc
@@ -97,7 +99,6 @@ ranger
 rclone
 reiserfsprogs
 rofi
-rxvt-unicode
 s-nail
 samba
 screenfetch

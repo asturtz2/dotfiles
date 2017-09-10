@@ -17,6 +17,7 @@ python2-click-log
 qt5-webengine-widevine
 qutebrowser-qtwebengine
 rtv
+rxvt-unicode-pixbuf
 spotify
 tasksh
 vdirsyncer
