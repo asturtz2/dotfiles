@@ -40,7 +40,7 @@ polybar = spawn "polybar --reload main"
 -- mopidy  = spawn "mopidy"
 
 config = ewmh . docks $ def
-    { terminal           = "urxvt"
+    { terminal           = term
     , borderWidth        = 4
     , normalBorderColor  = "#cccccc"
     , focusedBorderColor = "#8A745E"
@@ -51,6 +51,7 @@ config = ewmh . docks $ def
     , workspaces         = spaces
     } `additionalKeys` keybinds
 
+term = "urxvt"
 -- Layouts
 -- layout :: l Window
 layout = id
@@ -168,6 +169,7 @@ appKeys =
     , viewer
     , player
     , irc
+    , nextTerm
     -- , mail
     ]
   where
@@ -179,6 +181,7 @@ appKeys =
     player     = ((mod , xK_s), raiseMaybe (runSpotify) (ifLaunched "spotify"))
     irc        = ((mod , xK_c), raiseMaybe (run "weechat") (ifLaunched "weechat"))
     runSpotify = spawn "spotify --force-device-scale-factor=1.5"
+    nextTerm = ((mod , xK_t), raiseNext $ ifLaunched term)
 
     -- launcher = ((mod , xK_v), raiseEditor)
 

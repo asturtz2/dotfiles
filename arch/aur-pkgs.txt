@@ -10,6 +10,7 @@ neomutt
 nerd-fonts-complete
 nodejs-npm2arch
 pacaur
+pacolog
 pdfjs
 polybar-git
 python-pywal
@@ -20,5 +21,6 @@ rtv
 rxvt-unicode-pixbuf
 spotify
 tasksh
+ttf-ms-fonts
 vdirsyncer
 weeplugins-git

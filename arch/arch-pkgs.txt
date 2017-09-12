@@ -44,6 +44,7 @@ gst-plugins-good
 gst-plugins-ugly
 gucharmap
 gzip
+haskell-statistics
 highlight
 htop
 imagemagick
@@ -104,6 +105,7 @@ samba
 screenfetch
 sed
 shadow
+stack
 stow
 sudo
 sysfsutils

@@ -35,8 +35,8 @@ module-margin-right = 1
 
 font-0 = Iosevka:pixelsize=10;3
 font-1 = Iosevka:weight=bold:pixelsize=10;3
-font-2 = Iosevka:pixelsize=14;4
-font-3 = Iosevka:pixelsize=22;8
+font-2 = Iosevka:pixelsize=10;4
+font-3 = Iosevka:pixelsize=18;8
 
 modules-left = arch workspaces
 modules-center = title
@@ -65,7 +65,7 @@ label-indicator-margin = 1
 [module/arch]
 type = custom/menu
 
-label-open = "%{T-} %{T4}|%{T-} "
+label-open = "%{T4} %{T4}|"
 ; label-open-font = 4
 label-close =
 format = <label-toggle><menu>

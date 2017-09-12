@@ -5,6 +5,8 @@ alias vim='nvim'
 alias qutebrowser='qutebrowser --backend webengine'
 alias wal='wal -i ~/wallpapers/'
 alias ag='ag --path-to-ignore ~/.ignore'
+alias errlog='journalctl -p 3 -xb'
+
 
 export EDITOR='nvim'
 export BROWSER='qutebrowser'
