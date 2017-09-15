@@ -55,12 +55,12 @@ term = "urxvt"
 -- startup :: XConfig l -> X()
 startup = do
     ewmhDesktopsStartup
-    mconcat $ map reload processes
+    mconcat $! map reload processes
   where
     reload process = spawn $ "reload " ++ process
     processes = [compton, polybar]
-    polybar = "polybar --reload main"
     compton = "compton"
+    polybar = "polybar --reload main"
 
 -- layout = extend layouts
 layout = id
