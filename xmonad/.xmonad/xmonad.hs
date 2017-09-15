@@ -2,6 +2,7 @@ import System.IO
 
 import Prelude hiding (mod)
 import Data.List
+import qualified Data.Map.Lazy as M
 import Control.Monad
 
 import XMonad hiding (config)
@@ -20,6 +21,7 @@ import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Minimize
 import XMonad.Layout.Tabbed
+import XMonad.Layout.SubLayouts
 -- import XMonad.Layout.ResizableTile
 
 import XMonad.Util.Run(spawnPipe, runInTerm)
@@ -27,23 +29,18 @@ import XMonad.Util.EZConfig(additionalKeys)
 
 import XMonad.Actions.WindowGo
 import XMonad.Actions.SpawnOn
+import XMonad.Actions.Submap
 
 import XMonad.Prompt
 
-main = do
-    bar      <- polybar
-    -- player   <- mopidy
-    -- monitors <- mons
-    xmonad config
+main = xmonad config
 
-polybar = spawn "polybar --reload main"
--- mopidy  = spawn "mopidy"
-
-config = ewmh . docks $ def
+config = docks . ewmh $ def
     { terminal           = term
     , borderWidth        = 4
     , normalBorderColor  = "#cccccc"
     , focusedBorderColor = "#8A745E"
+    , startupHook        = startup
     , layoutHook         = layout
     , manageHook         = manager
     , handleEventHook    = events
@@ -54,22 +51,51 @@ config = ewmh . docks $ def
 term = "urxvt"
 -- Layouts
 -- layout :: l Window
+
+-- startup :: XConfig l -> X()
+startup = do
+    ewmhDesktopsStartup
+    compton
+    polybar
+  where
+    polybar = spawn "polybar --reload main"
+    compton = spawn "compton"
+
+shutdown :: X()
+shutdown = do
+    exitPolybar
+    recompile
+    restart
+  where
+    exitPolybar = spawn "pkill polybar"
+    exitCompton = spawn "pkill compton"
+    recompile = spawn "xmonad --recompile"
+    restart = spawn "xmonad --restart"
+
+-- layout = extend layouts
 layout = id
     . equalSpacing gapWidth gapShrink mult minWidth
     . avoidStruts
     . mkToggle (single FULL)
+    . subTabbed
     . minimize
     . windowNavigation
     $ tiled ||| Mirror tiled ||| simpleTabbed ||| simplestFloat
   where
-    gapWidth  = 15
-    gapShrink = 0
+    -- compose = foldr (.) id
+    -- layoutExtensions = concat [gaps, resizing, [windowNavigation]]
+    -- gaps = [spacing 2, avoidStuts]
+    -- resizing = [mkToggle (single FULL), minimize]
+    -- extend = compose layoutExtensions
+    gapWidth  = 30
+    gapShrink = 5
     mult      = 0
     minWidth  = 1
     tiled     = Tall nmaster delta ratio
     nmaster   = 1
     delta     = 3/100
     ratio     = 1/2
+
 
 manager = composeAll . concat $
     [ [ifLaunched a --> viewShift "web" | a <- browsers]
@@ -115,38 +141,45 @@ killUnfocused windowSet = killWindows unfocusedWindows
 
 -- Kill all windows
 killAll :: WindowSet -> X()
-killAll windowSet = killWindows allWindows
-  where
-    allWindows = W.allWindows windowSet
+killAll windowSet = killWindows $ W.allWindows windowSet
 
 -- Keymappings
 keybinds :: [((KeyMask, KeySym), X ())]
-keybinds = systemKeys ++ appKeys
+keybinds = concat [systemKeys, movementKeys, windowKeys, appKeys]
+
+bind :: KeySym -> X() -> ((KeyMask, KeySym), X ())
+bind key action = ((mod, key), action)
+  where
+    mod = mod1Mask
+
+bindShift :: KeySym -> X() -> ((KeyMask, KeySym), X ())
+bindShift key action = ((mod .|. shift, key), action)
+  where
+    mod   = mod1Mask
+    shift = shiftMask
+
+movementKeys :: [((KeyMask, KeySym), X ())]
+movementKeys = [moveDown, moveUp, moveRight, moveLeft]
+  where
+    moveUp    = bind xK_Up    (sendMessage $ Go U)
+    moveDown  = bind xK_Down  (sendMessage $ Go D)
+    moveLeft  = bind xK_Left  (sendMessage $ Go L)
+    moveRight = bind xK_Right (sendMessage $ Go R)
+
+windowKeys :: [((KeyMask, KeySym), X ())]
+windowKeys = [fullscreen, onlyFocused, killAllWindows]
+  where
+    fullscreen     = bind      xK_f (sendMessage $ Toggle FULL)
+    onlyFocused    = bindShift xK_o (withWindowSet killUnfocused)
+    killAllWindows = bindShift xK_k (withWindowSet killAll)
 
 systemKeys :: [((KeyMask, KeySym), X ())]
-systemKeys =
-    [ moveDown
-    , moveUp
-    , moveRight
-    , moveLeft
-    , fullscreen
-    , onlyFocused
-    , noWindows
-    , poweroff
-    , reboot
-    ]
+systemKeys = [reboot, poweroff, reload, wal]
   where
-
-    moveDown    = ((mod           , xK_Down)  , sendMessage $ Go D)
-    moveUp      = ((mod           , xK_Up)    , sendMessage $ Go U)
-    moveRight   = ((mod           , xK_Left)  , sendMessage $ Go R)
-    moveLeft    = ((mod           , xK_Right) , sendMessage $ Go L)
-    fullscreen  = ((mod           , xK_f)     , sendMessage $ Toggle FULL)
-    onlyFocused = ((mod .|. shift , xK_o)     , withWindowSet killUnfocused)
-    noWindows   = ((mod .|. shift , xK_k)     , withWindowSet killAll)
-    poweroff    = ((mod .|. shift , xK_p)     , spawn "poweroff")
-    reboot      = ((mod .|. shift , xK_r)     , spawn "reboot")
-
+    reboot   = bindShift xK_r (spawn "reboot")
+    poweroff = bindShift xK_p (spawn "poweroff")
+    reload   = bind xK_q shutdown
+    wal      = bind xK_a (spawn "wal -i ~/wallpapers")
 
     -- play        = ((mod           , xK_XF86AudioPlay) , sendMessage $ Toggle FULL)
 run :: String -> X ()
@@ -176,7 +209,7 @@ appKeys =
     editor     = ((mod , xK_v), raiseMaybe (run "nvim") (ifLaunched "nvim"))
     launcher   = ((mod , xK_g), spawn "rofi -show run")
     explorer   = ((mod , xK_d), run "ranger")
-    browser    = ((mod , xK_b), raiseBrowser)
+    browser    = ((mod , xK_b), spawn "qutebrowser --backend webengine")
     viewer     = ((mod , xK_z), raiseNextMaybe (spawn "zathura") (ifLaunched "zathura"))
     player     = ((mod , xK_s), raiseMaybe (runSpotify) (ifLaunched "spotify"))
     irc        = ((mod , xK_c), raiseMaybe (run "weechat") (ifLaunched "weechat"))

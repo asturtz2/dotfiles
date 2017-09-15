@@ -204,6 +204,11 @@ call plug#end()
 " Lion {{{
 " let g:lion_squeeze_spaces=1
 " }}}
+"
+" Quick-Scope {{{
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" }}}
+
 " Repmo {{{
 
 " Testing plugin mappings out
@@ -211,7 +216,7 @@ map <expr> ; repmo#LastKey(';') | sunmap ;
 map <expr> , repmo#LastRevKey(',') | sunmap ,
 
 noremap <expr> j repmo#SelfKey('j', 'k') | sunmap j
-noremap <expr> k repmo#SelfKey('k', 'k') | sunmap k
+noremap <expr> k repmo#SelfKey('k', 'j') | sunmap k
 noremap <expr> h repmo#SelfKey('h', 'l') | sunmap h
 noremap <expr> l repmo#SelfKey('l', 'h') | sunmap l
 
@@ -234,8 +239,8 @@ noremap <expr> gE repmo#SelfKey('gE', 'E') | sunmap gE
 " noremap <expr> <C-[> repmo#SelfKey('<C-[>', '<C-]>') | sunmap <C-[>
 " noremap <expr> <C-]> repmo#SelfKey('<C-]>', '<C-[>') | sunmap <C-]>
 
-noremap <expr> <C-E> repmo#SelfKey('<C-E>', '<C-Y>') | sunmap <C-E>
-noremap <expr> <C-Y> repmo#SelfKey('<C-Y>', '<C-E>') | sunmap <C-Y>
+" noremap <expr> <C-E> repmo#SelfKey('<C-E>', '<C-Y>') | sunmap <C-E>
+" noremap <expr> <C-Y> repmo#SelfKey('<C-Y>', '<C-E>') | sunmap <C-Y>
 
 
 noremap <expr> f repmo#ZapKey('f')|sunmap f
@@ -245,9 +250,6 @@ noremap <expr> T repmo#ZapKey('T')|sunmap T
 
 " }}}
 
-" Quick-Scope {{{
-" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-" }}}
 
 " Incsearch.vim {{{
 set hlsearch
@@ -317,7 +319,7 @@ let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
 let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
-let g:haskell_indent_disable = 1
+let g:haskell_indent_disable = 0
 "}}}
 
 " Wal {{{

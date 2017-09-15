@@ -15,9 +15,10 @@ white = #ffffff
 [bar/main]
 
 ; TODO: Dynamic Width
-width = 2130
-offset-x = 15
-offset-y = 15
+; width = 2130
+width = 2160
+; offset-x = 15
+; offset-y = 15
 height = 50
 dpi = 192
 bottom = false

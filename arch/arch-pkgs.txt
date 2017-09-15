@@ -12,6 +12,7 @@ bzip2
 compton
 coreutils
 cryptsetup
+cscope
 ctags
 cups
 cups-pdf
@@ -96,6 +97,7 @@ pulseaudio-jack
 python-neovim
 python-opengl
 qt5-webengine
+qutebrowser
 ranger
 rclone
 reiserfsprogs
