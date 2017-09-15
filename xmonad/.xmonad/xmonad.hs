@@ -55,22 +55,12 @@ term = "urxvt"
 -- startup :: XConfig l -> X()
 startup = do
     ewmhDesktopsStartup
-    compton
-    polybar
+    mconcat $ map reload processes
   where
-    polybar = spawn "polybar --reload main"
-    compton = spawn "compton"
-
-shutdown :: X()
-shutdown = do
-    exitPolybar
-    recompile
-    restart
-  where
-    exitPolybar = spawn "pkill polybar"
-    exitCompton = spawn "pkill compton"
-    recompile = spawn "xmonad --recompile"
-    restart = spawn "xmonad --restart"
+    reload process = spawn $ "reload " ++ process
+    processes = [compton, polybar]
+    polybar = "polybar --reload main"
+    compton = "compton"
 
 -- layout = extend layouts
 layout = id
@@ -174,11 +164,10 @@ windowKeys = [fullscreen, onlyFocused, killAllWindows]
     killAllWindows = bindShift xK_k (withWindowSet killAll)
 
 systemKeys :: [((KeyMask, KeySym), X ())]
-systemKeys = [reboot, poweroff, reload, wal]
+systemKeys = [reboot, poweroff, wal]
   where
     reboot   = bindShift xK_r (spawn "reboot")
     poweroff = bindShift xK_p (spawn "poweroff")
-    reload   = bind xK_q shutdown
     wal      = bind xK_a (spawn "wal -i ~/wallpapers")
 
     -- play        = ((mod           , xK_XF86AudioPlay) , sendMessage $ Toggle FULL)
