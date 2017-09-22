@@ -167,7 +167,6 @@ Plug 'tommcdo/vim-exchange'
 Plug 'rstacruz/vim-closer'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'wellle/targets.vim'
-Plug 'unblevable/quick-scope'
 Plug 'haya14busa/incsearch.vim'
 Plug 'Houl/repmo-vim'
 Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
@@ -205,10 +204,6 @@ call plug#end()
 " let g:lion_squeeze_spaces=1
 " }}}
 "
-" Quick-Scope {{{
-" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-" }}}
-
 " Repmo {{{
 
 " Testing plugin mappings out

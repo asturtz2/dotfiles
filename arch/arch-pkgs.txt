@@ -31,6 +31,7 @@ filesystem
 findutils
 firefox
 flex
+fontforge
 gawk
 gcc-libs
 gdb
@@ -72,6 +73,7 @@ man-pages
 mdadm
 mpv
 mtr
+mupdf
 nano
 ncmpcpp
 netctl

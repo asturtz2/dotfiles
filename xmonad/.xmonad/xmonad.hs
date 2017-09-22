@@ -30,10 +30,17 @@ import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Actions.WindowGo
 import XMonad.Actions.SpawnOn
 import XMonad.Actions.Submap
+import XMonad.Actions.DynamicWorkspaces
 
 import XMonad.Prompt
 
-main = xmonad config
+main = do
+    polybar
+    compton
+    xmonad config
+  where
+    polybar = spawn "reload polybar --reload main"
+    compton = spawn "reload compton"
 
 config = docks . ewmh $ def
     { terminal           = term
@@ -45,9 +52,45 @@ config = docks . ewmh $ def
     , manageHook         = manager
     , handleEventHook    = events
     , logHook            = logger
-    , workspaces         = spaces
+    -- , workspaces         = ["1"]
     } `additionalKeys` keybinds
 
+-- data Symbol
+--     = In
+--     | InAppend
+--     | Out
+--     | OutAppend
+--     | And
+--     | Or
+--     | Pipe
+--     | Null
+--     | Newline
+--     | Semicolon
+
+-- data InSymbol = In | InAppend
+-- data OutSymbol = Out | OutAppend
+-- data Redirect = InSymbol | OutSymbol | Pipe
+-- data Logical = And | Or
+-- data Symbol = Redirect | Logical | Semicolon
+
+-- data Command = Command File Args
+
+-- type File = String
+-- type Args = String
+
+-- data ChainElement = Command File Args | Symbol
+
+
+
+
+-- malformed :: [ChainElement] -> Bool
+-- malformed [] = False
+-- malformed [Semicolon] = False
+-- malformed [Symbol] = True
+-- malformed (Symbol:Symbol:_) = True
+-- malformed (OutSymbol:_:Redirect:_) = True
+-- malformed (InSymbol:_:InSymbol:_) = True
+-- malformed (Pipe:_:InSymbol:_) = True
 term = "urxvt"
 -- Layouts
 -- layout :: l Window
@@ -55,12 +98,13 @@ term = "urxvt"
 -- startup :: XConfig l -> X()
 startup = do
     ewmhDesktopsStartup
-    mconcat $! map reload processes
+    docksStartupHook
+    -- mconcat $ map reload processes
   where
-    reload process = spawn $ "reload " ++ process
-    processes = [compton, polybar]
-    compton = "compton"
-    polybar = "polybar --reload main"
+    -- reload process = spawn $ "reload " ++ process
+    -- processes = [compton, polybar]
+    -- compton = "compton"
+    -- polybar = "polybar --reload main"
 
 -- layout = extend layouts
 layout = id
@@ -88,16 +132,16 @@ layout = id
 
 
 manager = composeAll . concat $
-    [ [ifLaunched a --> viewShift "web" | a <- browsers]
-    , [ifLaunched a --> viewShift "media" | a <- media]
-    , [ifLaunched "nvim" --> viewShift "dev"]
-    , [ifLaunched "weechat" --> viewShift "chat"]
-    , [manageSpawn]
+    [ [manageSpawn]
     , [manageDocks]
     , [manageHook defaultConfig]
+    -- [ifLaunched a --> viewShift "web" | a <- browsers]
+    -- , [ifLaunched a --> viewShift "media" | a <- media]
+    -- , [ifLaunched "nvim" --> viewShift "dev"]
+    -- , [ifLaunched "weechat" --> viewShift "chat"]
     ]
   where
-    viewShift = doF . liftM2 (.) W.view W.shift
+    -- viewShift = doF . liftM2 (.) W.view W.shift
     browsers = ["qutebrowser", "google-chrome", "firefox"]
     media    = ["spotify", "mpv"]
 
@@ -105,10 +149,10 @@ ifLaunched a = appName =? a <||> className =? a <||> title =? a
 
 logger = ewmhDesktopsLogHook
 
-events = handleEventHook def <+> fullscreenEventHook
+events = fullscreenEventHook <+> docksEventHook <+> handleEventHook def
 
-spaces :: [String]
-spaces = [ "dev" , "web" , "mail" , "media" , "chat" , "office" , "log" ]
+-- spaces :: [String]
+-- spaces = [ "dev" , "web" , "mail" , "media" , "chat" , "office" , "log" ]
 
 mod   = mod1Mask
 shift = shiftMask
@@ -125,9 +169,9 @@ killUnfocused :: WindowSet -> X()
 killUnfocused windowSet = killWindows unfocusedWindows
   where
     workspaceWindows = W.index windowSet
-    focusedWindow = W.peek windowSet
+    focusedWindow    = W.peek windowSet
     unfocusedWindows = maybe [] remove focusedWindow
-    remove window = delete window workspaceWindows
+    remove window    = delete window workspaceWindows
 
 -- Kill all windows
 killAll :: WindowSet -> X()
@@ -151,10 +195,10 @@ bindShift key action = ((mod .|. shift, key), action)
 movementKeys :: [((KeyMask, KeySym), X ())]
 movementKeys = [moveDown, moveUp, moveRight, moveLeft]
   where
-    moveUp    = bind xK_Up    (sendMessage $ Go U)
-    moveDown  = bind xK_Down  (sendMessage $ Go D)
-    moveLeft  = bind xK_Left  (sendMessage $ Go L)
-    moveRight = bind xK_Right (sendMessage $ Go R)
+    moveUp    = bindShift xK_Up    (sendMessage $ Go U)
+    moveDown  = bindShift xK_Down  (sendMessage $ Go D)
+    moveLeft  = bindShift xK_Left  (sendMessage $ Go L)
+    moveRight = bindShift xK_Right (sendMessage $ Go R)
 
 windowKeys :: [((KeyMask, KeySym), X ())]
 windowKeys = [fullscreen, onlyFocused, killAllWindows]
@@ -163,6 +207,12 @@ windowKeys = [fullscreen, onlyFocused, killAllWindows]
     onlyFocused    = bindShift xK_o (withWindowSet killUnfocused)
     killAllWindows = bindShift xK_k (withWindowSet killAll)
 
+
+-- workspaceKeys :: [((KeyMask, KeySym), X ())]
+-- workspaceKeys = [openWorkspace]
+--   where
+--     openWorkspace = bind xK_o (addWorkspace
+
 systemKeys :: [((KeyMask, KeySym), X ())]
 systemKeys = [reboot, poweroff, wal]
   where
@@ -170,17 +220,8 @@ systemKeys = [reboot, poweroff, wal]
     poweroff = bindShift xK_p (spawn "poweroff")
     wal      = bind xK_a (spawn "wal -i ~/wallpapers")
 
-    -- play        = ((mod           , xK_XF86AudioPlay) , sendMessage $ Toggle FULL)
 run :: String -> X ()
 run command = runInTerm "" command
-
--- ifNo :: String -> Query Bool
--- ifNo command = checkTitle (<||>) checkAppName (<||>) checkClassName
---   where
---     checkTitle     = title =? command
---     checkAppName   = appName =? command
---     checkClassName = className =? command
-
 
 appKeys :: [((KeyMask, KeySym), X ())]
 appKeys =
@@ -198,7 +239,7 @@ appKeys =
     editor     = ((mod , xK_v), raiseMaybe (run "nvim") (ifLaunched "nvim"))
     launcher   = ((mod , xK_g), spawn "rofi -show run")
     explorer   = ((mod , xK_d), run "ranger")
-    browser    = ((mod , xK_b), spawn "qutebrowser --backend webengine")
+    browser    = ((mod , xK_b), raiseMaybe (spawn "qutebrowser --backend webengine") (ifLaunched "qutebrowser"))
     viewer     = ((mod , xK_z), raiseNextMaybe (spawn "zathura") (ifLaunched "zathura"))
     player     = ((mod , xK_s), raiseMaybe (runSpotify) (ifLaunched "spotify"))
     irc        = ((mod , xK_c), raiseMaybe (run "weechat") (ifLaunched "weechat"))

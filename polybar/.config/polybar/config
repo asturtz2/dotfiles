@@ -16,18 +16,20 @@ white = #ffffff
 
 ; TODO: Dynamic Width
 ; width = 2130
+monitor = eDP1
 width = 2160
 ; offset-x = 15
 ; offset-y = 15
-height = 50
+height = 55
 dpi = 192
 bottom = false
-
+; background = #5a000000
+; foreground = #eee
 background = ${xrdb:color0}
 foreground = ${colors.white}
 
-border-size = 4
-border-color = ${colors.graphite}
+; border-size = 4
+; border-color = ${colors.graphite}
 
 line-size = 5
 
@@ -37,15 +39,17 @@ module-margin-right = 1
 font-0 = Iosevka:pixelsize=10;3
 font-1 = Iosevka:weight=bold:pixelsize=10;3
 font-2 = Iosevka:pixelsize=10;4
-font-3 = Iosevka:pixelsize=18;8
+font-3 = Iosevka:pixelsize=14;4
+font-4 = Hasklug:pixelsize=14:4
 
 modules-left = arch workspaces
 modules-center = title
-modules-right = xkeyboard battery wireless volume date powermenu
+modules-right = xkeyboard battery wireless date powermenu
 
 [module/title]
 type = internal/xwindow
 label-maxlen = 50
+label-font = 2
 ;
 ; xkeyboard
 ;
@@ -59,21 +63,17 @@ label-layout = %layout%
 label-indicator-padding = 2
 label-indicator-margin = 1
 
-;
-; Bspwm
-;
-
 [module/arch]
 type = custom/menu
 
-label-open = "%{T4} %{T4}|"
+label-open = "%{T3}  %{T4}"
 ; label-open-font = 4
 label-close =
 format = <label-toggle><menu>
 label-separator = " | "
 
-format-foreground = ${xrdb:color1}
-format-background = ${xrdb:color0}
+format-foreground = ${xrdb:color2}
+; format-background = ${xrdb:color0}
 
 menu-0-0 = 
 menu-0-0-exec = menu-open-1
@@ -98,21 +98,21 @@ menu-3-1 = ""
 [module/workspaces]
 type = internal/xworkspaces
 
-icon-0 = dev;
-icon-1 = web;
-icon-2 = mail;
-icon-3 = media;
-icon-4 = chat;
-icon-5 = office;
-icon-6 = log;
+; icon-0 = dev;
+; icon-1 = web;
+; icon-2 = mail;
+; icon-3 = media;
+; icon-4 = chat;
+; icon-5 = office;
+; icon-6 = log;
 
 format = <label-state>
 
-label-active = %icon%
+label-active = 
 label-active-font = 3
 label-active-margin = 1
 label-active-spacing = 1
-label-active-foreground =${xrdb:color3}
+; label-active-foreground =${xrdb:color3}
 
 label-urgent = %icon%
 label-urgent-font = 3
@@ -126,7 +126,7 @@ label-occupied-margin = 1
 label-occupied-spacing = 1
 label-occupied-foreground = ${xrdb:color1}
 
-label-empty = %icon%
+label-empty = 
 label-empty-font = 3
 label-empty-margin = 1
 label-empty-spacing = 1
@@ -161,6 +161,7 @@ full-at = 98
 format-charging = <animation-charging> <label-charging>
 format-charging-foreground = ${xrdb:color3}
 label-charging-foreground = ${colors.white}
+label-charging-font = 1
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-foreground = ${colors.white}
@@ -213,6 +214,7 @@ interval = 5
 
 date = ""
 date-alt = " %a %d %b"
+date-font = 2
 
 time = %H:%M
 time-alt = %H:%M
@@ -279,13 +281,13 @@ menu-3-1 = ""
 ; Window-list
 ;
 
-[module/windowlist]
-type = custom/script
-exec = $XDG_CONFIG_HOME/polybar/windowlist.sh
+; [module/windowlist]
+; type = custom/script
+; exec = $XDG_CONFIG_HOME/polybar/windowlist.sh
 
-;zero interval causes high cpu load
-interval = 0.5
+; ;zero interval causes high cpu load
+; interval = 0.5
 
-scroll-up = bspc node -f prev.local
-scroll-down = bspc node -f next.local
+; scroll-up = bspc node -f prev.local
+; scroll-down = bspc node -f next.local
 ; vim:ft=dosini

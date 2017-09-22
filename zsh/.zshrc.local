@@ -8,7 +8,7 @@ function search(){
 function upgrade(){
     backup-packages
     sudo aura -Syu
-    sudo aura -Akyuax
+    sudo aura -Akyua
     sudo aura -Oj
 }
 
