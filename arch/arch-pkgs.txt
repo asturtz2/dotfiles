@@ -38,6 +38,7 @@ gdb
 gettext
 git
 glibc
+go
 grep
 grml-zsh-config
 gst-libav
@@ -187,4 +188,5 @@ youtube-dl
 zathura
 zathura-djvu
 zathura-pdf-poppler
+zip
 zsh

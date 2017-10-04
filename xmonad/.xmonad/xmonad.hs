@@ -34,77 +34,52 @@ import XMonad.Actions.DynamicWorkspaces
 
 import XMonad.Prompt
 
-main = do
-    polybar
-    compton
-    xmonad config
-  where
-    polybar = spawn "reload polybar --reload main"
-    compton = spawn "reload compton"
+main = xmonad config
 
-config = docks . ewmh $ def
+-- config = extensions . hooks . settings $ def
+
+config = extensions def
     { terminal           = term
     , borderWidth        = 4
     , normalBorderColor  = "#cccccc"
     , focusedBorderColor = "#8A745E"
-    , startupHook        = startup
+    , startupHook        = start
     , layoutHook         = layout
     , manageHook         = manager
     , handleEventHook    = events
-    , logHook            = logger
     -- , workspaces         = ["1"]
-    } `additionalKeys` keybinds
+    }
 
--- data Symbol
---     = In
---     | InAppend
---     | Out
---     | OutAppend
---     | And
---     | Or
---     | Pipe
---     | Null
---     | Newline
---     | Semicolon
+extensions :: XConfig l -> XConfig l
+extensions = docks . ewmh . keybinds
 
--- data InSymbol = In | InAppend
--- data OutSymbol = Out | OutAppend
--- data Redirect = InSymbol | OutSymbol | Pipe
--- data Logical = And | Or
--- data Symbol = Redirect | Logical | Semicolon
+-- hooks :: XConfig l -> XConfig l
+-- hooks = startup . manage . layout . events
 
--- data Command = Command File Args
+-- settings :: XConfig l -> XConfig l
+-- settings = term . width .
 
--- type File = String
--- type Args = String
-
--- data ChainElement = Command File Args | Symbol
+-- -- startupHook def = spawn "ls"
 
 
+startup :: XConfig l -> XConfig l
+startup conf = conf {startupHook = start}
 
+start :: X()
+start = do
+    polybar
+    compton
+  where
+    polybar = reload "polybar --reload main"
+    compton = reload "compton"
 
--- malformed :: [ChainElement] -> Bool
--- malformed [] = False
--- malformed [Semicolon] = False
--- malformed [Symbol] = True
--- malformed (Symbol:Symbol:_) = True
--- malformed (OutSymbol:_:Redirect:_) = True
--- malformed (InSymbol:_:InSymbol:_) = True
--- malformed (Pipe:_:InSymbol:_) = True
+reload :: String -> X ()
+reload process = spawn $ "reload " ++ process
+
 term = "urxvt"
 -- Layouts
 -- layout :: l Window
 
--- startup :: XConfig l -> X()
-startup = do
-    ewmhDesktopsStartup
-    docksStartupHook
-    -- mconcat $ map reload processes
-  where
-    -- reload process = spawn $ "reload " ++ process
-    -- processes = [compton, polybar]
-    -- compton = "compton"
-    -- polybar = "polybar --reload main"
 
 -- layout = extend layouts
 layout = id
@@ -131,10 +106,10 @@ layout = id
     ratio     = 1/2
 
 
-manager = composeAll . concat $
-    [ [manageSpawn]
-    , [manageDocks]
-    , [manageHook defaultConfig]
+manager = composeAll
+    [ manageSpawn
+    -- , ifLaunched office --> doFloat
+    , manageHook defaultConfig
     -- [ifLaunched a --> viewShift "web" | a <- browsers]
     -- , [ifLaunched a --> viewShift "media" | a <- media]
     -- , [ifLaunched "nvim" --> viewShift "dev"]
@@ -144,10 +119,9 @@ manager = composeAll . concat $
     -- viewShift = doF . liftM2 (.) W.view W.shift
     browsers = ["qutebrowser", "google-chrome", "firefox"]
     media    = ["spotify", "mpv"]
+    office   = "libreoffice-calc"
 
 ifLaunched a = appName =? a <||> className =? a <||> title =? a
-
-logger = ewmhDesktopsLogHook
 
 events = fullscreenEventHook <+> docksEventHook <+> handleEventHook def
 
@@ -178,8 +152,9 @@ killAll :: WindowSet -> X()
 killAll windowSet = killWindows $ W.allWindows windowSet
 
 -- Keymappings
-keybinds :: [((KeyMask, KeySym), X ())]
-keybinds = concat [systemKeys, movementKeys, windowKeys, appKeys]
+keybinds :: XConfig l -> XConfig l
+keybinds = flip additionalKeys $
+    concat [systemKeys, movementKeys, windowKeys, appKeys]
 
 bind :: KeySym -> X() -> ((KeyMask, KeySym), X ())
 bind key action = ((mod, key), action)
@@ -232,7 +207,6 @@ appKeys =
     , viewer
     , player
     , irc
-    , nextTerm
     -- , mail
     ]
   where

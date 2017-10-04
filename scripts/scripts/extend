@@ -1,22 +1,16 @@
 #!/bin/sh
 # extend non-HiDPI external display on DP* above HiDPI internal display eDP*
 # see also https://wiki.archlinux.org/index.php/HiDPI
-# you may run exto https://bugs.freedesktop.org/show_bug.cgi?id=39949
+# you may run into https://bugs.freedesktop.org/show_bug.cgi?id=39949
 #                  https://bugs.launchpad.net/ubuntu/+source/xorg-server/+bug/883319
-# original script may be found at https://gist.github.com/wvengen/178642bbc8236c1bdb67
-ext=`xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep -v ^eDP | head -n 1`
-int=`xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep -v ^HDMI | head -n 1`
 
-if [ ! -z $ext ]
-then
-  int_w=`xrandr | sed 's/^'"${int}"' [^0-9]* \([0-9]\+\)x.*$/\1/p;d'`
-  int_h=`xrandr | sed 's/^'"${int}"' [^0-9]* [0-9]\+x\([0-9]\+\).*$/\1/p;d'`
-  ext_w=`xrandr | sed 's/^'"${ext}"' [^0-9]* \([0-9]\+\)x.*$/\1/p;d'`
-  ext_h=`xrandr | sed 's/^'"${ext}"' [^0-9]* [0-9]\+x\([0-9]\+\).*$/\1/p;d'`
-  off_w=`echo $((($ext_w-$int_w)/2)) | sed 's/^-//'`
-  # scale_w=`printf "%.*f\n" 3 $(((${int_w}.0 / ${ext_w}.0)))`
-  # scale_h=`printf "%.*f\n" 3 $((($int_h / $ext_h)))`
-  xrandr --output "${int}" --auto --pos ${off_w}x${int_h} --scale 1x1  --output "${ext}" --auto --scale 1.125x1.333 --pos 0x0
-else
-  xrandr -s 0
-fi
+EXT=`xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep -v ^eDP | head -n 1`
+INT=`xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep -v ^HDMI1 | head -n 1`
+
+ext_w=`xrandr | sed 's/^'"${EXT}"' [^0-9]* \([0-9]\+\)x.*$/\1/p;d'`
+ext_h=`xrandr | sed 's/^'"${EXT}"' [^0-9]* [0-9]\+x\([0-9]\+\).*$/\1/p;d'`
+int_w=`xrandr | sed 's/^'"${INT}"' [^0-9]* \([0-9]\+\)x.*$/\1/p;d'`
+off_w=`echo $(( ($int_w-$ext_w)/2 )) | sed 's/^-//'`
+# fb_h=`echo $(( $int_h+$ext_h ))`
+# off_w=`echo $(( ($int_w-$ext_w)/2 )) | sed 's/^-//'`
+xrandr --output "${INT}" --auto --pos ${off_w}x${ext_h} --scale 1x1  --output "${EXT}" --auto --pos 0x0

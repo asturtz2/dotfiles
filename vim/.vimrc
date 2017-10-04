@@ -71,8 +71,10 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-N>
 endif
 " }}}
+
 " Misc {{{
 map <Leader>v :so ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>z :make<CR>
 "}}}
 
 "}}}
