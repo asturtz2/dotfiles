@@ -15,6 +15,7 @@ pdfjs
 polybar-git
 python-pywal
 python2-click-log
+python2-click-threading
 qt5-webengine-widevine
 rtv
 rxvt-unicode-pixbuf
