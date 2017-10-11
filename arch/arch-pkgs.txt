@@ -78,6 +78,7 @@ mupdf
 nano
 ncmpcpp
 netctl
+networkmanager
 nmap
 offlineimap
 openssh
