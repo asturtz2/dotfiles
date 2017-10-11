@@ -5,6 +5,7 @@ google-chrome
 khal
 lightdm-webkit2-greeter
 mons
+ncurses5-compat-libs
 neofetch
 neomutt
 nerd-fonts-complete
