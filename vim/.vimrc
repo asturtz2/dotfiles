@@ -342,10 +342,6 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
-
-"FIXME: Quick and dirty latex mapping
-inoremap <F1> $\mathbf{}$<ESC>F}i
-
 "}}}
 
 " vim:foldmethod=marker:foldlevel=0
