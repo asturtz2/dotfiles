@@ -72,6 +72,15 @@ if has('nvim')
 endif
 " }}}
 
+" Search {{{
+
+"Displays all lines containing the word in the file. Mnemonic: Global
+"Occurrences or Go to Occurrences. The word will be remembered as the last
+"search pattern used, so n/N will work, for example.
+nnoremap go yiw:g/<C-R>0/z#.2<CR>
+
+"}}}
+
 " Misc {{{
 map <Leader>v :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>z :make<CR>
@@ -112,6 +121,10 @@ set foldmethod=indent "Fold based on an indent level
 let g:easytags_file = '~/.vim/global-tags'
 set tags=./tags,tags,~/.vim/tags/*;
 let g:easytags_by_filetype = '~/.vim/tagfiles'
+" let g:easytags_languages = {
+"     'haskell': {
+"         'cmd': 'haskdogs',
+
 " }}}
 
 " Completion {{{
@@ -131,8 +144,8 @@ set modelines=1
 set hidden "Enable hidden buffers
 set completeopt-="preview"
 set showmatch
-set textwidth=76
-set columns=76
+set textwidth=80
+set columns=80
 set ttimeout
 set ttimeoutlen=20
 let loaded_netrwPlugin=1 "Do not load netrw
@@ -170,15 +183,17 @@ Plug 'rstacruz/vim-closer'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'wellle/targets.vim'
 Plug 'haya14busa/incsearch.vim'
-Plug 'Houl/repmo-vim'
+" Plug 'Houl/repmo-vim'
 Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-syntastic/syntastic'
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
+Plug 'w0rp/ale'
+Plug 'unblevable/quick-scope'
+" Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
 " }}}
 
 " Haskell {{{
@@ -206,47 +221,37 @@ call plug#end()
 " let g:lion_squeeze_spaces=1
 " }}}
 "
+
+" Quick-scope {{{
+let g:qs_highlight_on_keys = ['f','F','t','T']
+"}}}
+
 " Repmo {{{
 
-" Testing plugin mappings out
-map <expr> ; repmo#LastKey(';') | sunmap ;
-map <expr> , repmo#LastRevKey(',') | sunmap ,
+" " Testing plugin mappings out
+" map <expr> ; repmo#LastKey(';') | sunmap ;
+" map <expr> , repmo#LastRevKey(',') | sunmap ,
 
-noremap <expr> j repmo#SelfKey('j', 'k') | sunmap j
-noremap <expr> k repmo#SelfKey('k', 'j') | sunmap k
-noremap <expr> h repmo#SelfKey('h', 'l') | sunmap h
-noremap <expr> l repmo#SelfKey('l', 'h') | sunmap l
+" noremap <expr> j repmo#SelfKey('j', 'k') | sunmap j
+" noremap <expr> k repmo#SelfKey('k', 'j') | sunmap k
+" noremap <expr> h repmo#SelfKey('h', 'l') | sunmap h
+" noremap <expr> l repmo#SelfKey('l', 'h') | sunmap l
 
-noremap <expr> w repmo#SelfKey('w', 'b') | sunmap w
-noremap <expr> b repmo#SelfKey('b', 'w') | sunmap b
-noremap <expr> W repmo#SelfKey('W', 'B') | sunmap W
-noremap <expr> B repmo#SelfKey('B', 'W') | sunmap B
-noremap <expr> e repmo#SelfKey('e', 'ge') | sunmap e
-noremap <expr> ge repmo#SelfKey('ge', 'e') | sunmap ge
-noremap <expr> E repmo#SelfKey('E', 'gE') | sunmap E
-noremap <expr> gE repmo#SelfKey('gE', 'E') | sunmap gE
+" noremap <expr> w repmo#SelfKey('w', 'b') | sunmap w
+" noremap <expr> b repmo#SelfKey('b', 'w') | sunmap b
+" noremap <expr> W repmo#SelfKey('W', 'B') | sunmap W
+" noremap <expr> B repmo#SelfKey('B', 'W') | sunmap B
+" noremap <expr> e repmo#SelfKey('e', 'ge') | sunmap e
+" noremap <expr> ge repmo#SelfKey('ge', 'e') | sunmap ge
+" noremap <expr> E repmo#SelfKey('E', 'gE') | sunmap E
+" noremap <expr> gE repmo#SelfKey('gE', 'E') | sunmap gE
 
-" These mappings apparently don't work, need to fix
-" noremap <expr> <C-D> repmo#SelfKey('<C-D>', '<C-U>') | sunmap <C-D>
-" noremap <expr> <C-U> repmo#SelfKey('<C-U>', '<C-D>') | sunmap <C-U>
-" noremap <expr> <C-F> repmo#SelfKey('<C-F>', '<C-B>') | sunmap <C-F>
-" noremap <expr> <C-B> repmo#SelfKey('<C-B>', '<C-F>') | sunmap <C-B>
-" noremap <expr> <C-I> repmo#SelfKey('<C-I>', '<C-O>') | sunmap <C-I>
-" noremap <expr> <C-O> repmo#SelfKey('<C-O>', '<C-I>') | sunmap <C-O>
-" noremap <expr> <C-[> repmo#SelfKey('<C-[>', '<C-]>') | sunmap <C-[>
-" noremap <expr> <C-]> repmo#SelfKey('<C-]>', '<C-[>') | sunmap <C-]>
-
-" noremap <expr> <C-E> repmo#SelfKey('<C-E>', '<C-Y>') | sunmap <C-E>
-" noremap <expr> <C-Y> repmo#SelfKey('<C-Y>', '<C-E>') | sunmap <C-Y>
-
-
-noremap <expr> f repmo#ZapKey('f')|sunmap f
-noremap <expr> F repmo#ZapKey('F')|sunmap F
-noremap <expr> t repmo#ZapKey('t')|sunmap t
-noremap <expr> T repmo#ZapKey('T')|sunmap T
+" noremap <expr> f repmo#ZapKey('f')|sunmap f
+" noremap <expr> F repmo#ZapKey('F')|sunmap F
+" noremap <expr> t repmo#ZapKey('t')|sunmap t
+" noremap <expr> T repmo#ZapKey('T')|sunmap T
 
 " }}}
-
 
 " Incsearch.vim {{{
 set hlsearch
@@ -262,6 +267,10 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 " }}}
 
+" {{{ ALE
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters = {'haskell': ['stack-build', 'stack-ghc', 'hdevtools', 'hlint']}
+
 " CtrlP {{{
 nnoremap <Leader>f :CtrlP<CR>
 nnoremap <Leader>F :CtrlPCurFile<CR>
@@ -270,7 +279,6 @@ nnoremap <Leader>r :CtrlPMRU<CR>
 
 nnoremap <Leader>c :CtrlPDir<CR>
 nnoremap <Leader>b :CtrlPBookmarkDir<CR>
-nnoremap <Leader>ab :CtrlPBookmarkDirAdd<CR>
 let g:ctrlp_show_hidden = 1 "Show hidden files in control p
 let g:ctrlp_user_command = 'ag %s -l -g "" -f --nocolor --hidden --path-to-ignore ~/.ignore'
 let g:ctrlp_working_path_mode = 0

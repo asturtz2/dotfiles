@@ -1,3 +1,4 @@
+{-# RecordWildCards NameFieldPuns #-}
 import System.IO
 
 import Prelude hiding (mod)
@@ -38,6 +39,7 @@ main = xmonad config
 
 -- config = extensions . hooks . settings $ def
 
+-- data Hook = Startup | Layout | Manage | Event
 config = extensions def
     { terminal           = term
     , borderWidth        = 4
@@ -69,6 +71,7 @@ start :: X()
 start = do
     polybar
     compton
+    spawn "xset r rate 250 40"
   where
     polybar = reload "polybar --reload main"
     compton = reload "compton"

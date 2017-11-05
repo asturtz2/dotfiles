@@ -49,6 +49,7 @@ gucharmap
 gzip
 haskell-statistics
 highlight
+hlint
 htop
 imagemagick
 inetutils
@@ -77,6 +78,7 @@ mtr
 mupdf
 nano
 ncmpcpp
+neomutt
 netctl
 networkmanager
 nmap

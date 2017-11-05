@@ -1,13 +1,14 @@
 aur-git
 aura-bin
 castnow-git
+compton-conf
 google-chrome
+hdevtools
 khal
 lightdm-webkit2-greeter
 mons
 ncurses5-compat-libs
 neofetch
-neomutt
 nerd-fonts-complete
 nodejs-npm2arch
 pacaur
