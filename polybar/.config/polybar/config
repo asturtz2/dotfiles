@@ -16,7 +16,6 @@ white = #ffffff
 
 ; TODO: Dynamic Width
 ; width = 2130
-monitor = eDP1
 width = 2160
 ; width = 1920
 ; offset-x = 15
@@ -40,8 +39,7 @@ module-margin-right = 1
 font-0 = Iosevka:pixelsize=10;3
 font-1 = Iosevka:weight=bold:pixelsize=10;3
 font-2 = Iosevka:pixelsize=10;4
-font-3 = Iosevka:pixelsize=12;4
-font-4 = Hasklug:pixelsize=14:4
+font-3 = Iosevka:pixelsize=16;4
 
 modules-left = arch workspaces
 modules-center = title
@@ -51,6 +49,7 @@ modules-right = xkeyboard battery wireless date powermenu
 type = internal/xwindow
 label-maxlen = 50
 label-font = 2
+label-foreground = ${xrdb:color7}
 ;
 ; xkeyboard
 ;
@@ -67,7 +66,7 @@ label-indicator-margin = 1
 [module/arch]
 type = custom/menu
 
-label-open = "%{T3}  %{T4}"
+label-open = "%{T3}  %{T4}"
 ; label-open-font = 4
 label-close =
 format = <label-toggle><menu>
@@ -113,7 +112,7 @@ label-active = 
 label-active-font = 3
 label-active-margin = 1
 label-active-spacing = 1
-; label-active-foreground =${xrdb:color3}
+label-active-foreground =${xrdb:color5}
 
 label-urgent = %icon%
 label-urgent-font = 3
@@ -131,6 +130,7 @@ label-empty = 
 label-empty-font = 3
 label-empty-margin = 1
 label-empty-spacing = 1
+label-empty-foreground = ${xrdb:color5}
 ; label-empty = %icon%
 
 ; label-active = %icon%

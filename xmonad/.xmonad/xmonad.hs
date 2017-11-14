@@ -1,8 +1,8 @@
-{-# RecordWildCards NameFieldPuns #-}
+{-# RecordWildCards NamedFieldPuns #-}
 import System.IO
 
 import Prelude hiding (mod)
-import Data.List
+import qualified Data.List as L
 import qualified Data.Map.Lazy as M
 import Control.Monad
 
@@ -26,14 +26,12 @@ import XMonad.Layout.SubLayouts
 -- import XMonad.Layout.ResizableTile
 
 import XMonad.Util.Run(spawnPipe, runInTerm)
-import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.EZConfig(additionalKeys, removeKeys)
 
 import XMonad.Actions.WindowGo
 import XMonad.Actions.SpawnOn
 import XMonad.Actions.Submap
 import XMonad.Actions.DynamicWorkspaces
-
-import XMonad.Prompt
 
 main = xmonad config
 
@@ -71,10 +69,12 @@ start :: X()
 start = do
     polybar
     compton
+    mopidy
     spawn "xset r rate 250 40"
   where
     polybar = reload "polybar --reload main"
     compton = reload "compton"
+    mopidy  = reload "mopidy"
 
 reload :: String -> X ()
 reload process = spawn $ "reload " ++ process
@@ -89,10 +89,9 @@ layout = id
     . equalSpacing gapWidth gapShrink mult minWidth
     . avoidStruts
     . mkToggle (single FULL)
-    . subTabbed
-    . minimize
     . windowNavigation
-    $ tiled ||| Mirror tiled ||| simpleTabbed ||| simplestFloat
+    $ tiled ||| Mirror tiled
+    -- ||| simpleTabbed ||| simplestFloat
   where
     -- compose = foldr (.) id
     -- layoutExtensions = concat [gaps, resizing, [windowNavigation]]
@@ -124,7 +123,10 @@ manager = composeAll
     media    = ["spotify", "mpv"]
     office   = "libreoffice-calc"
 
-ifLaunched a = appName =? a <||> className =? a <||> title =? a
+running a = (L.isInfixOf a <$> appName) <||> className =? a <||> title =? a
+
+appLaunched :: String -> Query Bool
+appLaunched app = L.isInfixOf app <$> title
 
 events = fullscreenEventHook <+> docksEventHook <+> handleEventHook def
 
@@ -148,7 +150,7 @@ killUnfocused windowSet = killWindows unfocusedWindows
     workspaceWindows = W.index windowSet
     focusedWindow    = W.peek windowSet
     unfocusedWindows = maybe [] remove focusedWindow
-    remove window    = delete window workspaceWindows
+    remove window    = L.delete window workspaceWindows
 
 -- Kill all windows
 killAll :: WindowSet -> X()
@@ -156,19 +158,84 @@ killAll windowSet = killWindows $ W.allWindows windowSet
 
 -- Keymappings
 keybinds :: XConfig l -> XConfig l
-keybinds = flip additionalKeys $
-    concat [systemKeys, movementKeys, windowKeys, appKeys]
+keybinds = flip additionalKeys addKeys . flip removeKeys delKeys
+  where
+    addKeys = concat
+      [ systemKeys
+      , movementKeys
+      , windowKeys
+      , appKeys
+      , insert
+      , switch
+      , delete
+      , quit
+      ]
+    delKeys = [(mod1Mask, xK_q)]
 
 bind :: KeySym -> X() -> ((KeyMask, KeySym), X ())
 bind key action = ((mod, key), action)
   where
     mod = mod1Mask
 
+bindNoMod :: Integral n => KeySym -> X() -> ((n, KeySym), X())
+bindNoMod key action = ((0, key), action)
+
 bindShift :: KeySym -> X() -> ((KeyMask, KeySym), X ())
 bindShift key action = ((mod .|. shift, key), action)
   where
     mod   = mod1Mask
     shift = shiftMask
+
+-- Insert a new instance of an application into the current workspace before the
+-- currently focused window
+insert :: [((KeyMask, KeySym), X ())]
+insert = [bind xK_i subkeys]
+  where
+    subkeys = submap . M.fromList $
+      [ bindNoMod xK_e $ run   "nvim"
+      , bindNoMod xK_p $ run   "ncmpcpp"
+      , bindNoMod xK_c $ run   "weechat"
+      , bindNoMod xK_v $ spawn "zathura"
+      , bindNoMod xK_b $ spawn "vimb"
+      , bindNoMod xK_t $ spawn term
+      ]
+
+-- Switch to the next existing instance of an application in any workspace
+switch :: [((KeyMask, KeySym), X ())]
+switch = [bind xK_s subkeys]
+  where
+    subkeys = submap . M.fromList $
+      [ bindNoMod xK_e $ raiseNext (running "nvim")
+      , bindNoMod xK_p $ raiseNext (running "ncmpcpp")
+      , bindNoMod xK_v $ raiseNext (running "zathura")
+      , bindNoMod xK_b $ raiseNext (running "vimb")
+      , bindNoMod xK_c $ raiseNext (running "WeeChat")
+      , bindNoMod xK_t $ raiseNext (running term)
+      ]
+
+delete :: [((KeyMask, KeySym), X ())]
+delete = [bind xK_d subkeys]
+  where
+    subkeys = submap . M.fromList $
+      [ bindNoMod xK_d kill
+      , bindNoMod xK_w $ withWindowSet (killWindows . W.index)
+      , bindNoMod xK_o $ withWindowSet killUnfocused
+      , bindNoMod xK_a $ withWindowSet killAll
+      ]
+
+quit :: [((KeyMask, KeySym), X ())]
+quit = [bind xK_q subkeys]
+  where
+    subkeys = submap . M.fromList $
+      [ bindNoMod xK_q $ spawn "xmonad --recompile && xmonad --restart"
+      , bindNoMod xK_p $ spawn "poweroff"
+      , bindNoMod xK_r $ spawn "reboot"
+      ]
+
+-- open :: [((KeyMask, KeySym), X ())]
+-- open = [bind xK_o openMappings]
+--   where
+--     openMappings  = submap . M.fromList $
 
 movementKeys :: [((KeyMask, KeySym), X ())]
 movementKeys = [moveDown, moveUp, moveRight, moveLeft]
@@ -199,29 +266,27 @@ systemKeys = [reboot, poweroff, wal]
     wal      = bind xK_a (spawn "wal -i ~/wallpapers")
 
 run :: String -> X ()
-run command = runInTerm "" command
+run = runInTerm ""
 
 appKeys :: [((KeyMask, KeySym), X ())]
 appKeys =
-    [ editor
-    , launcher
-    , explorer
+    [ launcher
     , browser
-    , viewer
-    , player
-    , irc
+    , windows
     -- , mail
     ]
   where
-    editor     = ((mod , xK_v), raiseMaybe (run "nvim") (ifLaunched "nvim"))
+    -- editor     = ((mod , xK_v), raiseNextMaybe (run "nvim") (appLaunched "vim"))
     launcher   = ((mod , xK_g), spawn "rofi -show run")
-    explorer   = ((mod , xK_d), run "ranger")
-    browser    = ((mod , xK_b), raiseMaybe (spawn "qutebrowser --backend webengine") (ifLaunched "qutebrowser"))
-    viewer     = ((mod , xK_z), raiseNextMaybe (spawn "zathura") (ifLaunched "zathura"))
-    player     = ((mod , xK_s), raiseMaybe (runSpotify) (ifLaunched "spotify"))
-    irc        = ((mod , xK_c), raiseMaybe (run "weechat") (ifLaunched "weechat"))
-    runSpotify = spawn "spotify --force-device-scale-factor=1.5"
-    nextTerm = ((mod , xK_t), raiseNext $ ifLaunched term)
+    browser    = ((mod , xK_b), spawn "vimb")
+    -- viewer     = ((mod , xK_z), raiseNextMaybe (spawn "zathura") (ifLaunched "zathura"))
+    -- player     = ((mod , xK_s), raiseMaybe runSpotify (ifLaunched "spotify"))
+    -- irc        = ((mod , xK_c), raiseMaybe (run "weechat") (ifLaunched "weechat"))
+    -- runSpotify = spawn "spotify --force-device-scale-factor=1.5"
+    -- nextTerm = ((mod , xK_t), raiseNext $ ifLaunched term)
+    windows = bind xK_o $ spawn "rofi -show window"
+
+
 
     -- launcher = ((mod , xK_v), raiseEditor)
 

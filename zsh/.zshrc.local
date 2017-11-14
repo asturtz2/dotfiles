@@ -1,9 +1,9 @@
 bindkey -v
 
-function search(){
-    aura -Ss $1
-    aura -As $1
-}
+# function search(){
+#     aura -Ss $1
+#     aura -As $1
+# }
 
 function upgrade(){
     backup-packages
@@ -62,9 +62,9 @@ function backup-all(){
     echo 'All backups successful.'
 }
 
-function pac(){
-    sudo aura -S $1 || sudo aura -Ax $1
-}
+# function pac(){
+#     sudo aura -S $1 || sudo aura -Ax $1
+# }
 
 function pacgit(){
     sudo aura -S --devel $1 || sudo aura -Ax --devel $1
@@ -72,4 +72,12 @@ function pacgit(){
 
 function pacusage(){
     expac -H M '%m\t%n' | sort -rh | grep '^[2-9][0-9]'
+}
+# fd - cd to selected directory
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                     -o \
+                     -type d \
+                     -print 2> /dev/null | fzf +m) && cd "$dir"
 }

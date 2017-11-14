@@ -9,6 +9,6 @@ alias errlog='journalctl -p 3 -xb'
 
 
 export EDITOR='nvim'
-export BROWSER='qutebrowser'
+export BROWSER='vimb'
 
 # export QT_AUTO_SCREEN_SCALE_FACTOR=1

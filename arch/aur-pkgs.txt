@@ -13,7 +13,6 @@ nerd-fonts-complete
 nodejs-npm2arch
 pacaur
 pacolog
-pdfjs
 polybar-git
 python-pywal
 python2-click-log
