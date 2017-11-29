@@ -13,20 +13,22 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 
-import XMonad.Layout.WindowNavigation
-import XMonad.Layout.SimplestFloat
-import XMonad.Layout.Spacing
 import XMonad.Layout.EqualSpacing
+import XMonad.Layout.Minimize
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.PerWorkspace
-import XMonad.Layout.Minimize
+import XMonad.Layout.SimpleDecoration
+import XMonad.Layout.SimplestFloat
+import XMonad.Layout.Spacing
 import XMonad.Layout.Tabbed
 import XMonad.Layout.SubLayouts
+import XMonad.Layout.WindowNavigation
 -- import XMonad.Layout.ResizableTile
 
 import XMonad.Util.Run(spawnPipe, runInTerm)
 import XMonad.Util.EZConfig(additionalKeys, removeKeys)
+import XMonad.Util.Themes
 
 import XMonad.Actions.WindowGo
 import XMonad.Actions.SpawnOn
@@ -40,7 +42,7 @@ main = xmonad config
 -- data Hook = Startup | Layout | Manage | Event
 config = extensions def
     { terminal           = term
-    , borderWidth        = 4
+    , borderWidth        = 0
     , normalBorderColor  = "#cccccc"
     , focusedBorderColor = "#8A745E"
     , startupHook        = start
@@ -69,12 +71,10 @@ start :: X()
 start = do
     polybar
     compton
-    mopidy
     spawn "xset r rate 250 40"
   where
     polybar = reload "polybar --reload main"
     compton = reload "compton"
-    mopidy  = reload "mopidy"
 
 reload :: String -> X ()
 reload process = spawn $ "reload " ++ process
@@ -86,6 +86,7 @@ term = "urxvt"
 
 -- layout = extend layouts
 layout = id
+    -- . simpleDeco shrinkText windowTheme
     . equalSpacing gapWidth gapShrink mult minWidth
     . avoidStruts
     . mkToggle (single FULL)
@@ -107,6 +108,15 @@ layout = id
     delta     = 3/100
     ratio     = 1/2
 
+windowTheme :: Theme
+windowTheme = def
+    { decoWidth = 2130
+    , decoHeight = 40
+    , fontName   = "Iosevka"
+    , activeBorderColor = activeColor def
+    }
+
+
 
 manager = composeAll
     [ manageSpawn
@@ -123,7 +133,9 @@ manager = composeAll
     media    = ["spotify", "mpv"]
     office   = "libreoffice-calc"
 
-running a = (L.isInfixOf a <$> appName) <||> className =? a <||> title =? a
+running a = patternIn appName <||> patternIn className <||> patternIn title
+  where
+    patternIn = fmap $ L.isInfixOf a
 
 appLaunched :: String -> Query Bool
 appLaunched app = L.isInfixOf app <$> title
@@ -163,14 +175,22 @@ keybinds = flip additionalKeys addKeys . flip removeKeys delKeys
     addKeys = concat
       [ systemKeys
       , movementKeys
-      , windowKeys
       , appKeys
+      , fullscreen
       , insert
       , switch
       , delete
       , quit
       ]
-    delKeys = [(mod1Mask, xK_q)]
+    delKeys =
+      [ (mod1Mask, xK_q)
+      , (mod1Mask .|. shiftMask, xK_Return)
+      , (mod1Mask .|. shiftMask, xK_c)
+      ]
+
+
+fullscreen :: [((KeyMask, KeySym), X())]
+fullscreen = [bind xK_f (sendMessage $ Toggle FULL)]
 
 bind :: KeySym -> X() -> ((KeyMask, KeySym), X ())
 bind key action = ((mod, key), action)
@@ -193,11 +213,11 @@ insert = [bind xK_i subkeys]
   where
     subkeys = submap . M.fromList $
       [ bindNoMod xK_e $ run   "nvim"
-      , bindNoMod xK_p $ run   "ncmpcpp"
+      , bindNoMod xK_p $ runInTerm "-title ncmpcpp" "zsh -c 'ncmpcpp'"
       , bindNoMod xK_c $ run   "weechat"
       , bindNoMod xK_v $ spawn "zathura"
       , bindNoMod xK_b $ spawn "vimb"
-      , bindNoMod xK_t $ spawn term
+      , bindNoMod xK_s $ spawn term
       ]
 
 -- Switch to the next existing instance of an application in any workspace
@@ -210,8 +230,20 @@ switch = [bind xK_s subkeys]
       , bindNoMod xK_v $ raiseNext (running "zathura")
       , bindNoMod xK_b $ raiseNext (running "vimb")
       , bindNoMod xK_c $ raiseNext (running "WeeChat")
-      , bindNoMod xK_t $ raiseNext (running term)
+      , bindNoMod xK_s $ raiseNext (running "surface")
       ]
+
+-- master :: [((KeyMask, KeySym), X ())]
+-- master = [bind xK_m subkeys]
+--   where
+--     subkeys = submap . M.fromList $
+--       [ bindNoMod xK_e $ raiseMaster (running "nvim")
+--       , bindNoMod xK_p $ raiseMaster (running "ncmpcpp")
+--       , bindNoMod xK_v $ raiseMaster (running "zathura")
+--       , bindNoMod xK_b $ raiseMaster (running "vimb")
+--       , bindNoMod xK_c $ raiseMaster (running "WeeChat")
+--       , bindNoMod xK_s $ raiseMaster (running "surface")
+--       ]
 
 delete :: [((KeyMask, KeySym), X ())]
 delete = [bind xK_d subkeys]
@@ -245,12 +277,12 @@ movementKeys = [moveDown, moveUp, moveRight, moveLeft]
     moveLeft  = bindShift xK_Left  (sendMessage $ Go L)
     moveRight = bindShift xK_Right (sendMessage $ Go R)
 
-windowKeys :: [((KeyMask, KeySym), X ())]
-windowKeys = [fullscreen, onlyFocused, killAllWindows]
-  where
-    fullscreen     = bind      xK_f (sendMessage $ Toggle FULL)
-    onlyFocused    = bindShift xK_o (withWindowSet killUnfocused)
-    killAllWindows = bindShift xK_k (withWindowSet killAll)
+-- windowKeys :: [((KeyMask, KeySym), X ())]
+-- windowKeys = [fullscreen, onlyFocused, killAllWindows]
+--   where
+--     fullscreen     = bind      xK_f (sendMessage $ Toggle FULL)
+--     onlyFocused    = bindShift xK_o (withWindowSet killUnfocused)
+--     killAllWindows = bindShift xK_k (withWindowSet killAll)
 
 
 -- workspaceKeys :: [((KeyMask, KeySym), X ())]

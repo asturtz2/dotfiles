@@ -14,6 +14,7 @@ white = #ffffff
 
 [bar/main]
 
+enable-ipc = true
 ; TODO: Dynamic Width
 ; width = 2130
 width = 2160
@@ -47,6 +48,10 @@ modules-right = xkeyboard battery wireless date powermenu
 
 [module/title]
 type = internal/xwindow
+
+; hook-0 = echo $WINDOWID
+; hook-1 = echo "other"
+; initial = 1
 label-maxlen = 50
 label-font = 2
 label-foreground = ${xrdb:color7}
@@ -130,7 +135,7 @@ label-empty = 
 label-empty-font = 3
 label-empty-margin = 1
 label-empty-spacing = 1
-label-empty-foreground = ${xrdb:color5}
+label-empty-foreground = ${xrdb:color7}
 ; label-empty = %icon%
 
 ; label-active = %icon%

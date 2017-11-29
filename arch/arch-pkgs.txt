@@ -1,5 +1,6 @@
 acpi
 adobe-source-code-pro-fonts
+alsa-firmware
 alsa-utils
 arandr
 arch-wiki-docs
@@ -22,7 +23,9 @@ dhcpcd
 dialog
 diffutils
 dmenu
+dolphin-emu
 e2fsprogs
+elinks
 emacs
 expac
 fakeroot
@@ -49,6 +52,7 @@ gst-plugins-ugly
 gucharmap
 gzip
 haskell-statistics
+higan
 highlight
 hlint
 htop
@@ -63,6 +67,7 @@ jfsutils
 less
 libmpdclient
 libreoffice-fresh
+libretro-bsnes
 libtool
 licenses
 lightdm
@@ -74,6 +79,9 @@ make
 man-db
 man-pages
 mdadm
+min
+mono
+mopidy
 mpv
 mtr
 mupdf
@@ -104,6 +112,7 @@ pulseaudio
 pulseaudio-jack
 python-neovim
 python-opengl
+python-praw
 qt5-webengine
 qutebrowser
 ranger
@@ -111,6 +120,7 @@ rclone
 reiserfsprogs
 rofi
 rsync
+ruby
 s-nail
 samba
 screenfetch
@@ -119,10 +129,12 @@ shadow
 stack
 stow
 sudo
+synergy
 sysfsutils
 systemd-sysvcompat
 tar
 task
+tcl
 texinfo
 texlive-bibtexextra
 texlive-core
@@ -134,6 +146,8 @@ texlive-pictures
 texlive-publishers
 texlive-science
 the_silver_searcher
+tlp
+transmission-cli
 unzip
 usbutils
 util-linux
@@ -146,6 +160,7 @@ which
 whois
 wpa_actiond
 wpa_supplicant
+xaos
 xclip
 xdotool
 xf86-input-evdev

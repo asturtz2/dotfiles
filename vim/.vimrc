@@ -61,15 +61,12 @@ Plug 'rstacruz/vim-closer'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'wellle/targets.vim'
 Plug 'haya14busa/incsearch.vim'
-" Plug 'Houl/repmo-vim'
+Plug 'romainl/vim-tinyMRU'
 Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '/install -- all' }
-Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
 Plug 'unblevable/quick-scope'
 " Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
 
@@ -107,20 +104,6 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-"ALE
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_linters = {'haskell': ['stack-build', 'stack-ghc', 'hdevtools', 'hlint']}
-
-" Fzf
-" nnoremap <Space>f :Files<CR>
-nnoremap <Space>p :Ag<Space>
-" nnoremap <Space>b :Buffers<CR>
-" nnoremap <Space>r :History<CR>
-nnoremap <Space>l :BLines<CR>
-nnoremap <Space>gs :GFiles?<CR>
-nnoremap <Space>gf :GFiles<CR>
-nnoremap <Space>gc :Commits<CR>
-nnoremap <Space>h :Helptags<CR>
 
 " nnoremap <Space>c :CtrlPDir<CR>
 " let g:ctrlp_show_hidden = 1 "Show hidden files in control p
@@ -175,7 +158,7 @@ nnoremap <End> $
 nnoremap [[ :cprevious<CR>
 nnoremap ]] :cnext<CR>
 
-nnoremap <Space>m :marks<CR>:normal!<Space>'
+nnoremap <Space>' :marks<CR>:normal!<Space>'
 " }}}
 "
 " Search/Replace {{{
@@ -203,7 +186,7 @@ set smartcase
 nnoremap <Space>a <C-^>
 nnoremap <Space>d :ls<CR>:bd<Space>
 nnoremap <Space>b :ls<CR>:b **<Left>
-nnoremap <Space>r :Bro<CR>/
+nnoremap <Space>r :ME<Space>
 nnoremap <PageUp> :bnext<CR>
 nnoremap <PageDown> :bprev<CR>
 
@@ -215,6 +198,8 @@ nnoremap <Space>F :find *
 nnoremap <Space>e :edit <C-R>=fnameescape(expand('%:p:h')).'/'<CR>
 nnoremap <Space>c :cd **/*
 nnoremap <Space>C :cd<CR>:pwd<CR>
+command! -nargs=+ -complete=file_in_path -bar Grep  silent! grep! <args> | redraw!
+nnoremap <silent> <Space>G :Grep <C-r><C-w><CR>
 
 set path&
 let &path .= "**"
@@ -247,19 +232,18 @@ endif
 " }}}
 
 " Insert mode {{{
-inoremap (; (<CR>);<C-c>O<Tab>
-inoremap (, (<CR>),<C-c>O<Tab>
-inoremap {; {<CR>};<C-c>O<Tab>
-inoremap {, {<CR>},<C-c>O<Tab>
-inoremap [; [<CR>];<C-c>O<Tab>
-inoremap [, [<CR>],<C-c>O<Tab>
+" inoremap (; (<CR>);<C-c>O<Tab>
+" inoremap (, (<CR>),<C-c>O<Tab>
+" inoremap {; {<CR>};<C-c>O<Tab>
+" inoremap {, {<CR>},<C-c>O<Tab>
+" inoremap [; [<CR>];<C-c>O<Tab>
+" inoremap [, [<CR>],<C-c>O<Tab>
 "}}}
 
 " Statusline {{{
 " set statusline=%<\ %f\ %m%r%y%w%=%l\/%-6L\ %3c\
-hi User1 cterm=bold ctermbg=7 ctermfg=1
+hi User1 ctermbg=7 ctermfg=0 cterm=bold
 hi User2 ctermbg=7 ctermfg=0
-hi User3 cterm=bold ctermbg=7 ctermfg=1
 set statusline=
 set statusline+=%1*
 set statusline+=%<\ %.20f "Filename
@@ -268,7 +252,7 @@ set statusline+=%= "Switch to right-hand side
 set statusline+=%2*
 set statusline+=%{strlen(&ft)?&ft:'none'}\ \|
 set statusline+=\ %{&fileformat}\ \  "File format
-set statusline+=%3*
+set statusline+=%1*
 set statusline+=\ (%l,\ %c):\%P\ \  "Line number
 " }}}
 
@@ -308,8 +292,9 @@ set showmatch "Show matching characters (parentheses, brackets, etc.)
 " }}}
 
 " Misc {{{
-map <Space>v :so ~/.config/nvim/init.vim<CR>
-nnoremap <Space>z :make<CR>
+map <Space>v :so ~/.vimrc<CR>
+map <Space>z :!zathura * &<Left><Left>
+nnoremap <Space>m :make<CR>
 
 filetype plugin indent on
 set modelines=1
@@ -340,12 +325,8 @@ endfunction
 
 "Custom commands {{{
 "A better oldfiles
-command! Bro :enew | setl buftype=nofile |  setl nobuflisted | 0put =v:oldfiles
-  \| nnoremap <buffer> <CR> gf | 1
-
-" Adds preview window to :Files command
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" command! Bro :enew | setl buftype=nofile |  setl nobuflisted | 0put =v:oldfiles
+"   \| nnoremap <buffer> <CR> gf | 1
 "}}}
 
 "}}}

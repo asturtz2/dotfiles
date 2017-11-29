@@ -7,6 +7,8 @@ hdevtools
 khal
 lightdm-webkit2-greeter
 mons
+mopidy-iris
+mopidy-spotify
 ncurses5-compat-libs
 neofetch
 nerd-fonts-complete
@@ -18,10 +20,9 @@ python-pywal
 python2-click-log
 python2-click-threading
 qt5-webengine-widevine
-rtv
 rxvt-unicode-pixbuf
 spotify
 tasksh
 ttf-ms-fonts
 vdirsyncer
-weeplugins-git
+vimb
