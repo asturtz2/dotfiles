@@ -254,6 +254,7 @@ set statusline+=%{strlen(&ft)?&ft:'none'}\ \|
 set statusline+=\ %{&fileformat}\ \  "File format
 set statusline+=%1*
 set statusline+=\ (%l,\ %c):\%P\ \  "Line number
+set laststatus=2
 " }}}
 
 " Folding {{{
