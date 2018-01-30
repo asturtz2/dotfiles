@@ -1,1 +1,1 @@
-(wal -r &)
+(cat ~/.cache/wal/sequences)

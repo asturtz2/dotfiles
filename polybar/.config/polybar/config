@@ -14,6 +14,7 @@ white = #ffffff
 
 [bar/main]
 
+monitor = eDP-1
 enable-ipc = true
 ; TODO: Dynamic Width
 ; width = 2130

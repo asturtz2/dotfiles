@@ -12,6 +12,11 @@ augroup WriteBuffer
     autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 augroup end
 
+augroup Quickfix
+    autocmd!
+    autocmd FileType qf :nnoremap <buffer> <CR> <CR><C-w>o
+augroup END
+
 "Create file marks for the last file viewed of a given type
 augroup LeaveBuffer
     autocmd!
@@ -68,6 +73,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
 Plug 'unblevable/quick-scope'
+Plug 'w0rp/ale'
 " Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
 
 "Haskell
@@ -196,10 +202,12 @@ nnoremap <PageDown> :bprev<CR>
 nnoremap <Space>f :find <C-R>=expand(getcwd()).'/**/*'<CR>
 nnoremap <Space>F :find *
 nnoremap <Space>e :edit <C-R>=fnameescape(expand('%:p:h')).'/'<CR>
-nnoremap <Space>c :cd **/*
-nnoremap <Space>C :cd<CR>:pwd<CR>
-command! -nargs=+ -complete=file_in_path -bar Grep  silent! grep! <args> | redraw!
-nnoremap <silent> <Space>G :Grep <C-r><C-w><CR>
+nnoremap <Space>cf :cd **/*
+nnoremap <Space>ch :cd<CR>:pwd<CR>
+nnoremap <Space>cc :cd %:p:h<CR>:pwd<CR>
+command! -nargs=+ -complete=file_in_path -bar Grep  silent! grep! <args> | redraw! | cwindow
+nnoremap <silent> <Space>gw :Grep <C-r><C-w><CR>
+nnoremap <Space>gg :Grep<Space>
 
 set path&
 let &path .= "**"
@@ -217,8 +225,12 @@ set wildignorecase
 set wildmode=full
 set wildmenu
 
-if executable("ag")
-    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --vimgrep
+" if executable("ag")
+"     set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --vimgrep
+"     set grepformat^=%f:%l:%c:%m
+" endif
+if executable("rg")
+    set grepprg=rg\ --vimgrep
     set grepformat^=%f:%l:%c:%m
 endif
 
@@ -246,7 +258,8 @@ hi User1 ctermbg=7 ctermfg=0 cterm=bold
 hi User2 ctermbg=7 ctermfg=0
 set statusline=
 set statusline+=%1*
-set statusline+=%<\ %.20f "Filename
+"set statusline+=%<\ %.20f "Filename
+set statusline+=\ %{expand('%:~:.')} "Filename
 set statusline+=\ %m "Modified flag
 set statusline+=%= "Switch to right-hand side
 set statusline+=%2*

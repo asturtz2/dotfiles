@@ -12,8 +12,10 @@ import qualified XMonad.StackSet as W
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 
 import XMonad.Layout.EqualSpacing
+import XMonad.Layout.Fullscreen (fullscreenSupport)
 import XMonad.Layout.Minimize
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
@@ -35,7 +37,7 @@ import XMonad.Actions.SpawnOn
 import XMonad.Actions.Submap
 import XMonad.Actions.DynamicWorkspaces
 
-main = xmonad config
+main = xmonad $ fullscreenSupport config
 
 -- config = extensions . hooks . settings $ def
 
@@ -53,7 +55,7 @@ config = extensions def
     }
 
 extensions :: XConfig l -> XConfig l
-extensions = docks . ewmh . keybinds
+extensions = ewmh . docks . keybinds
 
 -- hooks :: XConfig l -> XConfig l
 -- hooks = startup . manage . layout . events
@@ -122,6 +124,8 @@ manager = composeAll
     [ manageSpawn
     -- , ifLaunched office --> doFloat
     , manageHook defaultConfig
+    -- , className =? "Dolphin-emu" --> doFloat
+    , isDialog --> doF W.shiftMaster <+> doF W.swapDown
     -- [ifLaunched a --> viewShift "web" | a <- browsers]
     -- , [ifLaunched a --> viewShift "media" | a <- media]
     -- , [ifLaunched "nvim" --> viewShift "dev"]
@@ -175,10 +179,10 @@ keybinds = flip additionalKeys addKeys . flip removeKeys delKeys
     addKeys = concat
       [ systemKeys
       , movementKeys
-      , appKeys
       , fullscreen
       , insert
       , switch
+      , monitor
       , delete
       , quit
       ]
@@ -186,6 +190,7 @@ keybinds = flip additionalKeys addKeys . flip removeKeys delKeys
       [ (mod1Mask, xK_q)
       , (mod1Mask .|. shiftMask, xK_Return)
       , (mod1Mask .|. shiftMask, xK_c)
+      , (mod1Mask, xK_p)
       ]
 
 
@@ -217,6 +222,7 @@ insert = [bind xK_i subkeys]
       , bindNoMod xK_c $ run   "weechat"
       , bindNoMod xK_v $ spawn "zathura"
       , bindNoMod xK_b $ spawn "vimb"
+      , bindNoMod xK_r $ spawn "rofi -show run"
       , bindNoMod xK_s $ spawn term
       ]
 
@@ -233,17 +239,14 @@ switch = [bind xK_s subkeys]
       , bindNoMod xK_s $ raiseNext (running "surface")
       ]
 
--- master :: [((KeyMask, KeySym), X ())]
--- master = [bind xK_m subkeys]
---   where
---     subkeys = submap . M.fromList $
---       [ bindNoMod xK_e $ raiseMaster (running "nvim")
---       , bindNoMod xK_p $ raiseMaster (running "ncmpcpp")
---       , bindNoMod xK_v $ raiseMaster (running "zathura")
---       , bindNoMod xK_b $ raiseMaster (running "vimb")
---       , bindNoMod xK_c $ raiseMaster (running "WeeChat")
---       , bindNoMod xK_s $ raiseMaster (running "surface")
---       ]
+monitor :: [((KeyMask, KeySym), X ())]
+monitor = [bind xK_m subkeys]
+  where
+    subkeys = submap . M.fromList $
+      [ bindNoMod xK_e $ spawn "mons -e top && xmonad --restart && wal -R"
+      , bindNoMod xK_o $ spawn "mons -o top && xmonad --restart && wal -R"
+      , bindNoMod xK_s $ spawn "mons -s top && xmonad --restart && wal -R"
+      ]
 
 delete :: [((KeyMask, KeySym), X ())]
 delete = [bind xK_d subkeys]
@@ -299,26 +302,6 @@ systemKeys = [reboot, poweroff, wal]
 
 run :: String -> X ()
 run = runInTerm ""
-
-appKeys :: [((KeyMask, KeySym), X ())]
-appKeys =
-    [ launcher
-    , browser
-    , windows
-    -- , mail
-    ]
-  where
-    -- editor     = ((mod , xK_v), raiseNextMaybe (run "nvim") (appLaunched "vim"))
-    launcher   = ((mod , xK_g), spawn "rofi -show run")
-    browser    = ((mod , xK_b), spawn "vimb")
-    -- viewer     = ((mod , xK_z), raiseNextMaybe (spawn "zathura") (ifLaunched "zathura"))
-    -- player     = ((mod , xK_s), raiseMaybe runSpotify (ifLaunched "spotify"))
-    -- irc        = ((mod , xK_c), raiseMaybe (run "weechat") (ifLaunched "weechat"))
-    -- runSpotify = spawn "spotify --force-device-scale-factor=1.5"
-    -- nextTerm = ((mod , xK_t), raiseNext $ ifLaunched term)
-    windows = bind xK_o $ spawn "rofi -show window"
-
-
 
     -- launcher = ((mod , xK_v), raiseEditor)
 

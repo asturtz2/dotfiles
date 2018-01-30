@@ -10,5 +10,6 @@ alias errlog='journalctl -p 3 -xb'
 
 export EDITOR='nvim'
 export BROWSER='vimb'
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # export QT_AUTO_SCREEN_SCALE_FACTOR=1

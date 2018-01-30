@@ -18,5 +18,5 @@ URxvt.scrollBar: false
 URxvt.scrollBar_right: true
 URxvt.iso14755: False
 URxvt.clipboard.copycmd:xsel -ob
-URxvt.perl-ext-common: default
+URxvt.perl-ext-common: resize-font
 rofi.dpi: 192

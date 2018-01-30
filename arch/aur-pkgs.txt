@@ -19,10 +19,12 @@ polybar-git
 python-pywal
 python2-click-log
 python2-click-threading
+python2-tzlocal
 qt5-webengine-widevine
 rxvt-unicode-pixbuf
 spotify
 tasksh
 ttf-ms-fonts
+urxvt-resize-font-git
 vdirsyncer
 vimb
