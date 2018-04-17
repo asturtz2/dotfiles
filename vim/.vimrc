@@ -137,6 +137,10 @@ let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 let g:haskell_indent_disable = 0
 
+" Ale
+let g:lint_on_save = 1
+let g:lint_on_text_changed = 'never'
+let g:lint_on_filetype_changed = 0
 " Wal
 if executable('wal')
     colorscheme wal
@@ -290,6 +294,7 @@ let g:easytags_by_filetype = '~/.vim/tagfiles'
 
 " Completion {{{
 set omnifunc=syntaxcomplete#Complete
+" let s:python_version = 3
 " }}}
 
 " Undo {{{
@@ -299,6 +304,11 @@ set undolevels=1000
 set undoreload=10000
 " }}}
 
+" {{{ Git
+nnoremap <Space>vs :!git status<CR>
+nnoremap <Space>vb :!git branch<CR>
+nnoremap <Space>vc :!git commit -am ""<Left>
+" }}}
 " {{{ UI
 set number
 set relativenumber "Enable line numbers
@@ -306,7 +316,7 @@ set showmatch "Show matching characters (parentheses, brackets, etc.)
 " }}}
 
 " Misc {{{
-map <Space>v :so ~/.vimrc<CR>
+map <Space>~ :so ~/.vimrc<CR>
 map <Space>z :!zathura * &<Left><Left>
 nnoremap <Space>m :make<CR>
 
@@ -339,8 +349,8 @@ endfunction
 
 "Custom commands {{{
 "A better oldfiles
-" command! Bro :enew | setl buftype=nofile |  setl nobuflisted | 0put =v:oldfiles
-"   \| nnoremap <buffer> <CR> gf | 1
+command! Bro :enew | setl buftype=nofile |  setl nobuflisted | 0put =v:oldfiles
+  \| nnoremap <buffer> <CR> gf | 1
 "}}}
 
 "}}}

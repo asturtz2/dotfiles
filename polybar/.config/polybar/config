@@ -45,7 +45,7 @@ font-3 = Iosevka:pixelsize=16;4
 
 modules-left = arch workspaces
 modules-center = title
-modules-right = xkeyboard battery wireless date powermenu
+modules-right = xkeyboard battery wireless date
 
 [module/title]
 type = internal/xwindow
@@ -81,25 +81,11 @@ label-separator = " | "
 format-foreground = ${xrdb:color2}
 ; format-background = ${xrdb:color0}
 
-menu-0-0 = 
-menu-0-0-exec = menu-open-1
+menu-0-0 = 
+menu-0-0-exec = poweroff
 menu-0-1 = 
-menu-0-1-exec = menu-open-2
-menu-0-2 = 
-menu-0-2-exec = menu-open-3
-menu-0-3 = "  "
-
-menu-1-0 = 
-menu-1-0-exec = systemctl suspend -i
-menu-1-1 = "  "
-
-menu-2-0 = 
-menu-2-0-exec = systemctl reboot -i
-menu-2-1 = ""
-
-menu-3-0 = 
-menu-3-0-exec = systemctl poweroff -i
-menu-3-1 = ""
+menu-0-1-exec = reboot
+menu-0-2 = ""
 
 [module/workspaces]
 type = internal/xworkspaces
@@ -223,7 +209,7 @@ date = ""
 date-alt = " %a %d %b"
 date-font = 2
 
-time = %H:%M
+time = "%H:%M  "
 time-alt = %H:%M
 
 label = %date% %time%
@@ -248,41 +234,6 @@ label-muted = sound muted
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-
-;
-; Powermenu
-;
-
-[module/powermenu]
-type = custom/menu
-
-label-open = "%{T4} %{T-}%{T4} %{T-}"
-label-close =
-format = <label-toggle><menu>
-label-separator = " | "
-
-format-foreground = ${colors.white}
-format-background = ${xrdb:color3}
-
-menu-0-0 = 
-menu-0-0-exec = menu-open-1
-menu-0-1 = 
-menu-0-1-exec = menu-open-2
-menu-0-2 = 
-menu-0-2-exec = menu-open-3
-menu-0-3 = "  "
-
-menu-1-0 = 
-menu-1-0-exec = systemctl suspend -i
-menu-1-1 = "  "
-
-menu-2-0 = 
-menu-2-0-exec = systemctl reboot -i
-menu-2-1 = ""
-
-menu-3-0 = 
-menu-3-0-exec = systemctl poweroff -i
-menu-3-1 = ""
 
 ;
 ; Window-list
