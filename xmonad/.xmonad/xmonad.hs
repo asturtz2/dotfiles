@@ -72,11 +72,11 @@ startup conf = conf {startupHook = start}
 start :: X()
 start = do
     polybar
-    compton
+    --compton
     spawn "xset r rate 250 40"
   where
     polybar = reload "polybar --reload main"
-    compton = reload "compton"
+    --compton = reload "compton"
 
 reload :: String -> X ()
 reload process = spawn $ "reload " ++ process
@@ -101,7 +101,7 @@ layout = id
     -- gaps = [spacing 2, avoidStuts]
     -- resizing = [mkToggle (single FULL), minimize]
     -- extend = compose layoutExtensions
-    gapWidth  = 30
+    gapWidth  = 15
     gapShrink = 5
     mult      = 0
     minWidth  = 1

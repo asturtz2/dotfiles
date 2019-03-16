@@ -3756,3 +3756,9 @@ zrclocal
 # End:
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+###-tns-completion-start-###
+if [ -f /home/alex/.tnsrc ]; then 
+    source /home/alex/.tnsrc 
+fi
+###-tns-completion-end-###

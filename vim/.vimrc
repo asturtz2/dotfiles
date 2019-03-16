@@ -31,11 +31,6 @@ augroup LeaveBuffer
     autocmd BufLeave *.md normal! mM
 augroup end
 
-augroup NumberToggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
-augroup end
 " }}}
 
 " Plugins {{{
@@ -49,37 +44,41 @@ map <Space>pc :PlugClean<CR>
 call plug#begin()
 
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-Plug 'xolox/vim-easytags'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'xolox/vim-misc'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-" Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-obsession'
+Plug 'sheerun/vim-polyglot'
 Plug 'tommcdo/vim-lion'
 Plug 'tommcdo/vim-exchange'
 Plug 'rstacruz/vim-closer'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'wellle/targets.vim'
-Plug 'haya14busa/incsearch.vim'
+Plug 'romainl/vim-cool'
+Plug 'romainl/vim-qf'
 Plug 'romainl/vim-tinyMRU'
 Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'ervandew/supertab'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
 Plug 'unblevable/quick-scope'
-Plug 'w0rp/ale'
+Plug 'christoomey/vim-tmux-navigator'
 " Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
 
 "Haskell
 Plug 'itchyny/vim-haskell-indent', { 'for' : 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for' : 'haskell' }
 " Plug 'eagletmt/ghcmod-vim', { 'for' : 'haskell' }
+
+"Purescript
+Plug 'FrigoEU/psc-ide-vim', { 'for' : 'purescript' }
 
 " Latex
 Plug 'lervag/vimtex', { 'for' : ['tex', 'plaintex', 'latex'] }
@@ -99,17 +98,6 @@ let g:qs_highlight_on_keys = ['f','F','t','T']
 
 " Incsearch.vim
 set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
 
 " nnoremap <Space>c :CtrlPDir<CR>
 " let g:ctrlp_show_hidden = 1 "Show hidden files in control p
@@ -151,6 +139,9 @@ endif
 " Changes {{{
 nnoremap Y y$
 
+"Augment vim-surround with a 'space' text object
+nnoremap ds<space> F<space>xf<space>x
+
 "Swap the word under the cursor with the next occurring word to the left (h)
 "or to the right (l), ignoring non-alphanumeric characters.
 nnoremap <Space>wh "_yiw?\v\w+\_W+%#<CR>:s/\v(%#\w+)(\_W+)(\w+)/\3\2\1/<CR><C-o><C-l>:nohl<CR>
@@ -169,6 +160,32 @@ nnoremap [[ :cprevious<CR>
 nnoremap ]] :cnext<CR>
 
 nnoremap <Space>' :marks<CR>:normal!<Space>'
+
+" "in line" (entire line sans white-space; cursor at beginning--ie, ^)
+xnoremap <silent> il :<c-u>normal! g_v^<cr>
+onoremap <silent> il :<c-u>normal! g_v^<cr>
+
+" "around line" (entire line sans trailing newline; cursor at beginning--ie, 0)
+xnoremap <silent> al :<c-u>normal! $v0<cr>
+onoremap <silent> al :<c-u>normal! $v0<cr>
+
+" "in number" (next number after cursor on current line)
+xnoremap <silent> in :<c-u>call <sid>inNumber()<cr>
+onoremap <silent> in :<c-u>call <sid>inNumber()<cr>
+
+" "around number" (next number on line and possible surrounding white-space)
+xnoremap <silent> an :<c-u>call <sid>aroundNumber()<cr>
+onoremap <silent> an :<c-u>call <sid>aroundNumber()<cr>
+
+" "in indentation" (indentation level sans any surrounding empty lines)
+xnoremap <silent> ii :<c-u>call <sid>inIndentation()<cr>
+onoremap <silent> ii :<c-u>call <sid>inIndentation()<cr>
+
+" "around indentation" (indentation level and any surrounding empty lines)
+xnoremap <silent> ai :<c-u>call <sid>aroundIndentation()<cr>
+onoremap <silent> ai :<c-u>call <sid>aroundIndentation()<cr>
+
+xnoremap $ $h
 " }}}
 "
 " Search/Replace {{{
@@ -179,8 +196,9 @@ nnoremap <Space>' :marks<CR>:normal!<Space>'
 nnoremap go "gyiw:g/<C-R>g/z#.2<CR>
 
 "Replace every occurrence of the word under the cursor in the paragraph.
-nnoremap <Space>sp :'{,'}s/\<<C-r>=expand('<cword>')<CR>\>/
-nnoremap <Space>sf :%s/\<<C-r>=expand('<cword>')<CR>\>/
+nnoremap <Space>sp :'{,'}s/\<<C-r>=expand('<cword>')<CR>\>//g<left><left>
+nnoremap <Space>sf :%s/\<<C-r>=expand('<cword>')<CR>\>//g<left><left>
+nnoremap <Space>sl :s/\<<C-r>=expand('<cword>')<CR>\>//g<left><left>
 
 
 if has('nvim')
@@ -202,6 +220,10 @@ nnoremap <PageDown> :bprev<CR>
 
 " }}}
 
+"{{{ Splits
+set splitright
+"}}}
+
 " Files {{{
 nnoremap <Space>f :find <C-R>=expand(getcwd()).'/**/*'<CR>
 nnoremap <Space>F :find *
@@ -209,8 +231,8 @@ nnoremap <Space>e :edit <C-R>=fnameescape(expand('%:p:h')).'/'<CR>
 nnoremap <Space>cf :cd **/*
 nnoremap <Space>ch :cd<CR>:pwd<CR>
 nnoremap <Space>cc :cd %:p:h<CR>:pwd<CR>
-command! -nargs=+ -complete=file_in_path -bar Grep  silent! grep! <args> | redraw! | cwindow
-nnoremap <silent> <Space>gw :Grep <C-r><C-w><CR>
+command! -nargs=+ -complete=file_in_path -bar Grep  silent! grep! <args> <bar> redraw! <bar> cwindow
+nnoremap <silent> <Space>gw :grep <C-r><C-w><CR>
 nnoremap <Space>gg :Grep<Space>
 
 set path&
@@ -284,16 +306,18 @@ set foldmethod=indent
 " }}}
 
 " {{{ Tags
-let g:easytags_file = '~/.vim/global-tags'
 set tags=./tags,tags,~/.vim/tags/*;
-let g:easytags_by_filetype = '~/.vim/tagfiles'
-" let g:easytags_languages = {
-"     'haskell': {
-"         'cmd': 'haskdogs',
 " }}}
 
 " Completion {{{
-set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <C-p> pumvisible() ? '<C-p>' :
+  \ '<C-p><C-r>=pumvisible() ? "\<lt>Up>" : ""<CR>'
+" inoremap  
+" inoremap  
+
 " let s:python_version = 3
 " }}}
 
@@ -305,13 +329,11 @@ set undoreload=10000
 " }}}
 
 " {{{ Git
-nnoremap <Space>vs :!git status<CR>
+nnoremap <Space>vs :Gstatus<CR>
 nnoremap <Space>vb :!git branch<CR>
 nnoremap <Space>vc :!git commit -am ""<Left>
 " }}}
 " {{{ UI
-set number
-set relativenumber "Enable line numbers
 set showmatch "Show matching characters (parentheses, brackets, etc.)
 " }}}
 
@@ -323,13 +345,17 @@ nnoremap <Space>m :make<CR>
 filetype plugin indent on
 set modelines=1
 set hidden "Enable hidden buffers
-set completeopt-="preview"
 set showmatch
 set textwidth=80
 set columns=80
 set ttimeout
 set ttimeoutlen=20
 let loaded_netrwPlugin=1 "Do not load netrw
+set tabstop=8
+set shiftwidth=4
+set softtabstop=4
+set smarttab
+set expandtab
 "}}}
 
 
@@ -347,6 +373,213 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
+" regular expressions that match numbers (order matters .. keep '\d' last!)
+" note: \+ will be appended to the end of each
+let s:regNums = [ '0b[01]', '0x\x', '\d' ]
+
+function! s:inNumber()
+	" select the next number on the line
+	" this can handle the following three formats (so long as s:regNums is
+	" defined as it should be above this function):
+	"   1. binary  (eg: "0b1010", "0b0000", etc)
+	"   2. hex     (eg: "0xffff", "0x0000", "0x10af", etc)
+	"   3. decimal (eg: "0", "0000", "10", "01", etc)
+	" NOTE: if there is no number on the rest of the line starting at the
+	"       current cursor position, then visual selection mode is ended (if
+	"       called via an omap) or nothing is selected (if called via xmap)
+
+	" need magic for this to work properly
+	let l:magic = &magic
+	set magic
+
+	let l:lineNr = line('.')
+
+	" create regex pattern matching any binary, hex, decimal number
+	let l:pat = join(s:regNums, '\+\|') . '\+'
+
+	" move cursor to end of number
+	if (!search(l:pat, 'ce', l:lineNr))
+		" if it fails, there was not match on the line, so return prematurely
+		return
+	endif
+
+	" start visually selecting from end of number
+	normal! v
+
+	" move cursor to beginning of number
+	call search(l:pat, 'cb', l:lineNr)
+
+	" restore magic
+	let &magic = l:magic
+endfunction
+
+function! s:aroundNumber()
+	" select the next number on the line and any surrounding white-space;
+	" this can handle the following three formats (so long as s:regNums is
+	" defined as it should be above these functions):
+	"   1. binary  (eg: "0b1010", "0b0000", etc)
+	"   2. hex     (eg: "0xffff", "0x0000", "0x10af", etc)
+	"   3. decimal (eg: "0", "0000", "10", "01", etc)
+	" NOTE: if there is no number on the rest of the line starting at the
+	"       current cursor position, then visual selection mode is ended (if
+	"       called via an omap) or nothing is selected (if called via xmap);
+	"       this is true even if on the space following a number
+
+	" need magic for this to work properly
+	let l:magic = &magic
+	set magic
+
+	let l:lineNr = line('.')
+
+	" create regex pattern matching any binary, hex, decimal number
+	let l:pat = join(s:regNums, '\+\|') . '\+'
+
+	" move cursor to end of number
+	if (!search(l:pat, 'ce', l:lineNr))
+		" if it fails, there was not match on the line, so return prematurely
+		return
+	endif
+
+	" move cursor to end of any trailing white-space (if there is any)
+	call search('\%'.(virtcol('.')+1).'v\s*', 'ce', l:lineNr)
+
+	" start visually selecting from end of number + potential trailing whitspace
+	normal! v
+
+	" move cursor to beginning of number
+	call search(l:pat, 'cb', l:lineNr)
+
+	" move cursor to beginning of any white-space preceding number (if any)
+	call search('\s*\%'.virtcol('.').'v', 'b', l:lineNr)
+
+	" restore magic
+	let &magic = l:magic
+endfunction
+
+function! s:inIndentation()
+	" select all text in current indentation level excluding any empty lines
+	" that precede or follow the current indentationt level;
+	"
+	" the current implementation is pretty fast, even for many lines since it
+	" uses "search()" with "\%v" to find the unindented levels
+	"
+	" NOTE: if the current level of indentation is 1 (ie in virtual column 1),
+	"       then the entire buffer will be selected
+	"
+	" WARNING: python devs have been known to become addicted to this
+
+	" magic is needed for this
+	let l:magic = &magic
+	set magic
+
+	" move to beginning of line and get virtcol (current indentation level)
+	" BRAM: there is no searchpairvirtpos() ;)
+	normal! ^
+	let l:vCol = virtcol(getline('.') =~# '^\s*$' ? '$' : '.')
+
+	" pattern matching anything except empty lines and lines with recorded
+	" indentation level
+	let l:pat = '^\(\s*\%'.l:vCol.'v\|^$\)\@!'
+
+	" find first match (backwards & don't wrap or move cursor)
+	let l:start = search(l:pat, 'bWn') + 1
+
+	" next, find first match (forwards & don't wrap or move cursor)
+	let l:end = search(l:pat, 'Wn')
+
+	if (l:end !=# 0)
+		" if search succeeded, it went too far, so subtract 1
+		let l:end -= 1
+	endif
+
+	" go to start (this includes empty lines) and--importantly--column 0
+	execute 'normal! '.l:start.'G0'
+
+	" skip empty lines (unless already on one .. need to be in column 0)
+	call search('^[^\n\r]', 'Wc')
+
+	" go to end (this includes empty lines)
+	execute 'normal! Vo'.l:end.'G'
+
+	" skip backwards to last selected non-empty line
+	call search('^[^\n\r]', 'bWc')
+
+	" go to end-of-line 'cause why not
+	normal! $o
+
+	" restore magic
+	let &magic = l:magic
+endfunction
+
+function! s:aroundIndentation()
+	" select all text in the current indentation level including any emtpy
+	" lines that precede or follow the current indentation level;
+	"
+	" the current implementation is pretty fast, even for many lines since it
+	" uses "search()" with "\%v" to find the unindented levels
+	"
+	" NOTE: if the current level of indentation is 1 (ie in virtual column 1),
+	"       then the entire buffer will be selected
+	"
+	" WARNING: python devs have been known to become addicted to this
+
+	" magic is needed for this (/\v doesn't seem work)
+	let l:magic = &magic
+	set magic
+
+	" move to beginning of line and get virtcol (current indentation level)
+	" BRAM: there is no searchpairvirtpos() ;)
+	normal! ^
+	let l:vCol = virtcol(getline('.') =~# '^\s*$' ? '$' : '.')
+
+	" pattern matching anything except empty lines and lines with recorded
+	" indentation level
+	let l:pat = '^\(\s*\%'.l:vCol.'v\|^$\)\@!'
+
+	" find first match (backwards & don't wrap or move cursor)
+	let l:start = search(l:pat, 'bWn') + 1
+
+	" NOTE: if l:start is 0, then search() failed; otherwise search() succeeded
+	"       and l:start does not equal line('.')
+	" FORMER: l:start is 0; so, if we add 1 to l:start, then it will match
+	"         everything from beginning of the buffer (if you don't like
+	"         this, then you can modify the code) since this will be the
+	"         equivalent of "norm! 1G" below
+	" LATTER: l:start is not 0 but is also not equal to line('.'); therefore,
+	"         we want to add one to l:start since it will always match one
+	"         line too high if search() succeeds
+
+	" next, find first match (forwards & don't wrap or move cursor)
+	let l:end = search(l:pat, 'Wn')
+
+	" NOTE: if l:end is 0, then search() failed; otherwise, if l:end is not
+	"       equal to line('.'), then the search succeeded.
+	" FORMER: l:end is 0; we want this to match until the end-of-buffer if it
+	"         fails to find a match for same reason as mentioned above;
+	"         again, modify code if you do not like this); therefore, keep
+	"         0--see "NOTE:" below inside the if block comment
+	" LATTER: l:end is not 0, so the search() must have succeeded, which means
+	"         that l:end will match a different line than line('.')
+
+	if (l:end !=# 0)
+		" if l:end is 0, then the search() failed; if we subtract 1, then it
+		" will effectively do "norm! -1G" which is definitely not what is
+		" desired for probably every circumstance; therefore, only subtract one
+		" if the search() succeeded since this means that it will match at least
+		" one line too far down
+		" NOTE: exec "norm! 0G" still goes to end-of-buffer just like "norm! G",
+		"       so it's ok if l:end is kept as 0. As mentioned above, this means
+		"       that it will match until end of buffer, but that is what I want
+		"       anyway (change code if you don't want)
+		let l:end -= 1
+	endif
+
+	" finally, select from l:start to l:end
+	execute 'normal! '.l:start.'G0V'.l:end.'G$o'
+
+	" restore magic
+	let &magic = l:magic
+endfunction
 "Custom commands {{{
 "A better oldfiles
 command! Bro :enew | setl buftype=nofile |  setl nobuflisted | 0put =v:oldfiles

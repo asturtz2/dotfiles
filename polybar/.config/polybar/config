@@ -14,16 +14,15 @@ white = #ffffff
 
 [bar/main]
 
-monitor = eDP-1
+monitor = HDMI-0
 enable-ipc = true
 ; TODO: Dynamic Width
 ; width = 2130
-width = 2160
+width = 1920
 ; width = 1920
 ; offset-x = 15
 ; offset-y = 15
 height = 55
-dpi = 192
 bottom = false
 ; background = #5a000000
 ; foreground = #eee
