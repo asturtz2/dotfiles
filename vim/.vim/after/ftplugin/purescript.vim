@@ -4,6 +4,9 @@ let purescript_indent_where = 2
 let purescript_indent_case = 2
 let purescript_indent_in = 0
 
+let &path=getcwd() . '/bower_components/**,' . getcwd() . '/src/**,' . getcwd() . '/test/**'
+let &define='^\s*\(data\|type\|newtype\|class\s\(\(\i*\s\)*<=\s\)*\)'
+
 setlocal shiftwidth=2
 setlocal softtabstop=4
 setlocal expandtab

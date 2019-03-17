@@ -56,7 +56,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
 Plug 'sheerun/vim-polyglot'
 Plug 'tommcdo/vim-lion'
-Plug 'tommcdo/vim-exchange'
 Plug 'rstacruz/vim-closer'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'wellle/targets.vim'
@@ -76,9 +75,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'itchyny/vim-haskell-indent', { 'for' : 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for' : 'haskell' }
 " Plug 'eagletmt/ghcmod-vim', { 'for' : 'haskell' }
-
-"Purescript
-Plug 'FrigoEU/psc-ide-vim', { 'for' : 'purescript' }
 
 " Latex
 Plug 'lervag/vimtex', { 'for' : ['tex', 'plaintex', 'latex'] }
@@ -276,6 +272,11 @@ endif
 " inoremap {, {<CR>},<C-c>O<Tab>
 " inoremap [; [<CR>];<C-c>O<Tab>
 " inoremap [, [<CR>],<C-c>O<Tab>
+"}}}
+
+"{{{ Command mode
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 "}}}
 
 " Statusline {{{
