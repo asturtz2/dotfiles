@@ -17,15 +17,10 @@ function upgrade(){
 function backup-packages(){
     # Copy list of installed packages for reinstallation
     echo "Copying list of installed packages."
-    aura -Qqen > ~/dotfiles/arch/arch-pkgs.txt \
+    pacaur -Qqen > ~/dotfiles/arch/arch-pkgs.txt \
         && echo 'Arch package list saved.'
-    aura -Qqem > ~/dotfiles/arch/aur-pkgs.txt \
+    pacaur -Qqem > ~/dotfiles/arch/aur-pkgs.txt \
         && echo 'Aur package list saved.'
-
-    #Backup installed packages for downgrade
-    echo "Backing up installed packages"
-    sudo aura -B \
-        && echo 'Packages successfully backed up'
 }
 
 # Commit all tracked dotfiles to github repo.
