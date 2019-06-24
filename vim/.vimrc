@@ -15,6 +15,8 @@ augroup end
 augroup Quickfix
     autocmd!
     autocmd FileType qf :nnoremap <buffer> <CR> <CR><C-w>o
+    autocmd QuickFixCmdPost cgetexpr cwindow
+    autocmd QuickFixCmdPost lgetexpr lwindow
 augroup END
 
 "Create file marks for the last file viewed of a given type
@@ -24,11 +26,15 @@ augroup LeaveBuffer
     autocmd BufLeave *.hs normal! mH
     autocmd BufLeave *.c normal! mC
     autocmd BufLeave *.cpp normal! mC
+    autocmd BufLeave *.purs normal! mP
     autocmd BufLeave *.js normal! mJ
+    autocmd BufLeave *.ts normal! mJ
     autocmd BufLeave *.rb normal! mR
     autocmd BufLeave *.css normal! mS
-    autocmd BufLeave *.tex normal! mT
+    autocmd BufLeave *.tex normal! mM
     autocmd BufLeave *.md normal! mM
+    autocmd BufLeave *.xml normal! mM
+    autocmd BufLeave *.html normal! mM
 augroup end
 
 " }}}
@@ -43,10 +49,10 @@ map <Space>pc :PlugClean<CR>
 " Installation{{{
 call plug#begin()
 
+Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'xolox/vim-misc'
@@ -69,6 +75,9 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
 Plug 'unblevable/quick-scope'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'vmchale/dhall-vim'
+Plug 'justinmk/vim-dirvish'
+Plug 'andymass/vim-matchup'
 " Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
 
 "Haskell
@@ -121,10 +130,6 @@ let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 let g:haskell_indent_disable = 0
 
-" Ale
-let g:lint_on_save = 1
-let g:lint_on_text_changed = 'never'
-let g:lint_on_filetype_changed = 0
 " Wal
 if executable('wal')
     colorscheme wal
@@ -154,8 +159,6 @@ nnoremap <End> $
 
 nnoremap [[ :cprevious<CR>
 nnoremap ]] :cnext<CR>
-
-nnoremap <Space>' :marks<CR>:normal!<Space>'
 
 " "in line" (entire line sans white-space; cursor at beginning--ie, ^)
 xnoremap <silent> il :<c-u>normal! g_v^<cr>
@@ -218,27 +221,36 @@ nnoremap <PageDown> :bprev<CR>
 
 "{{{ Splits
 set splitright
+nnoremap <C-W><C-D> :vert<Space>dsp<Space><C-R>=expand('<cword>')<CR><CR>
 "}}}
 
 " Files {{{
-nnoremap <Space>f :find <C-R>=expand(getcwd()).'/**/*'<CR>
-nnoremap <Space>F :find *
-nnoremap <Space>e :edit <C-R>=fnameescape(expand('%:p:h')).'/'<CR>
+nnoremap [a :prev <bar> args<CR>
+nnoremap ]a :next <bar> args<CR>
+nnoremap <Space>f :find *<C-z><S-Tab>
+nnoremap <Space>F :find <C-R>=expand(getcwd()).'/**/*'<CR><C-z><S-Tab>
+nnoremap <Space>e :edit <C-R>=fnameescape(expand('%:p:h')).'/'<CR><C-z><S-Tab>
 nnoremap <Space>cf :cd **/*
 nnoremap <Space>ch :cd<CR>:pwd<CR>
 nnoremap <Space>cc :cd %:p:h<CR>:pwd<CR>
-command! -nargs=+ -complete=file_in_path -bar Grep  silent! grep! <args> <bar> redraw! <bar> cwindow
-nnoremap <silent> <Space>gw :grep <C-r><C-w><CR>
+function! Grep(args)
+    let args = split(a:args, ' ')
+    return system(join([&grepprg, shellescape(args[0]), get(args, 1, '')], ' '))
+endfunction
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<q-args>)
+command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<q-args>)
+nnoremap <silent> <Space>gw :Grep<Space><C-R>=expand('<cword>' . ' ' . &path)<CR><CR>
 nnoremap <Space>gg :Grep<Space>
 
 set path&
 let &path .= "**"
 
+set wildignore=
 set wildignore+=*.swp,*.bak
 set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.dll,*.pdb,*.min.*,bundle.*
 set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
 set wildignore+=*/min/*,*/vendor/*
-set wildignore+=*/node_modules/*,*/bower_components/*
+" set wildignore+=*/node_modules/*,*/bower_components/*
 set wildignore+=*/java/*,*/target/*,*/out/*
 set wildignore+=tags,cscope.*
 set wildignore+=*.tar.*
@@ -246,6 +258,7 @@ set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.aux,*.log,*.fdb*,*.fls
 set wildignorecase
 set wildmode=full
 set wildmenu
+set wildcharm=<C-z>
 
 " if executable("ag")
 "     set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --vimgrep
@@ -308,14 +321,16 @@ set foldmethod=indent
 
 " {{{ Tags
 set tags=./tags,tags,~/.vim/tags/*;
+nnoremap <C-]> g<C-]>
 " }}}
 
 " Completion {{{
 set completeopt=longest,menuone
+set complete=.,w,b,u
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>C-n>" : ""<CR>'
 inoremap <expr> <C-p> pumvisible() ? '<C-p>' :
-  \ '<C-p><C-r>=pumvisible() ? "\<lt>Up>" : ""<CR>'
+  \ '<C-p><C-r>=pumvisible() ? "\<lt>C-p>" : ""<CR>'
 " inoremap  
 " inoremap  
 
@@ -341,7 +356,9 @@ set showmatch "Show matching characters (parentheses, brackets, etc.)
 " Misc {{{
 map <Space>~ :so ~/.vimrc<CR>
 map <Space>z :!zathura * &<Left><Left>
-nnoremap <Space>m :make<CR>
+command! -nargs=* -bar Make w<bar>silent!<Space>make<Space><args><bar>silent<Space>redraw!
+nnoremap <Space>m :Make<CR>
+nnoremap <Space>M :Make
 
 filetype plugin indent on
 set modelines=1
@@ -351,12 +368,12 @@ set textwidth=80
 set columns=80
 set ttimeout
 set ttimeoutlen=20
-let loaded_netrwPlugin=1 "Do not load netrw
 set tabstop=8
 set shiftwidth=4
 set softtabstop=4
 set smarttab
 set expandtab
+set history=1000
 "}}}
 
 
@@ -373,6 +390,48 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+
+" make list-like commands more intuitive
+function! CCR()
+    let cmdline = getcmdline()
+    if cmdline =~ '\v\C^(ls|files|buffers)'
+        " like :ls but prompts for a buffer command
+        return "\<CR>:b"
+    elseif cmdline =~ '\v\C/(#|nu|num|numb|numbe|number)$'
+        " like :g//# but prompts for a command
+        return "\<CR>:"
+    elseif cmdline =~ '\v\C^(dli|il)'
+        " like :dlist or :ilist but prompts for a count for :djump or :ijump
+        return "\<CR>:" . cmdline[0] . "j  " . split(cmdline, " ")[1] . "\<S-Left>\<Left>"
+    elseif cmdline =~ '\v\C^(cli|lli)'
+        " like :clist or :llist but prompts for an error/location number
+        return "\<CR>:silent " . repeat(cmdline[0], 2) . "\<Space>"
+    elseif cmdline =~ 'ol'
+        " like :oldfiles but prompts for an old file to edit
+        set nomore
+        return "\<CR>:silent set more|e #<"
+    elseif cmdline =~ '\C^changes'
+        " like :changes but prompts for a change to jump to
+        set nomore
+        return "\<CR>:silent set more|norm! g;\<S-Left>"
+    elseif cmdline =~ '\C^ju'
+        " like :jumps but prompts for a position to jump to
+        set nomore
+        return "\<CR>:silent set more|norm! \<C-o>\<S-Left>"
+    elseif cmdline =~ '\C^marks'
+        " like :marks but prompts for a mark to jump to
+        return "\<CR>:norm! `"
+    elseif cmdline =~ '\C^undol'
+        " like :undolist but prompts for a change to undo
+        return "\<CR>:u "
+    elseif cmdline =~ '\C^reg'
+        " prompt for register to paste
+        return "\<CR>:norm! \"p\<Left>"
+    else
+        return "\<CR>"
+    endif
+endfunction
+cnoremap <expr> <CR> CCR()
 
 " regular expressions that match numbers (order matters .. keep '\d' last!)
 " note: \+ will be appended to the end of each
@@ -582,9 +641,12 @@ function! s:aroundIndentation()
 	let &magic = l:magic
 endfunction
 "Custom commands {{{
-"A better oldfiles
-command! Bro :enew | setl buftype=nofile |  setl nobuflisted | 0put =v:oldfiles
-  \| nnoremap <buffer> <CR> gf | 1
+
+"Lightweight git blame
+command! -range GB echo join(systemlist("git blame -L <line1>,<line2> " . expand('%')), "\n")
+
+"Rename current file
+command! -nargs=1 -bar -complete=file Rename file<space><args><bar>call<space>delete(expand('#'))<bar>w
 "}}}
 
 "}}}

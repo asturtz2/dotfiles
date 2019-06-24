@@ -217,7 +217,7 @@ insert :: [((KeyMask, KeySym), X ())]
 insert = [bind xK_i subkeys]
   where
     subkeys = submap . M.fromList $
-      [ bindNoMod xK_e $ run   "nvim"
+      [ bindNoMod xK_e $ run   "vim"
       , bindNoMod xK_p $ runInTerm "-title ncmpcpp" "zsh -c 'ncmpcpp'"
       , bindNoMod xK_c $ run   "weechat"
       , bindNoMod xK_v $ spawn "zathura"
@@ -231,7 +231,7 @@ switch :: [((KeyMask, KeySym), X ())]
 switch = [bind xK_s subkeys]
   where
     subkeys = submap . M.fromList $
-      [ bindNoMod xK_e $ raiseNext (running "nvim")
+      [ bindNoMod xK_e $ raiseNext (running "vim")
       , bindNoMod xK_p $ raiseNext (running "ncmpcpp")
       , bindNoMod xK_v $ raiseNext (running "zathura")
       , bindNoMod xK_b $ raiseNext (running "vimb")

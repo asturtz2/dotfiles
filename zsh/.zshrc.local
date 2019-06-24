@@ -1,5 +1,6 @@
 bindkey -v
-
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
 # function search(){
 #     aura -Ss $1
 #     aura -As $1
