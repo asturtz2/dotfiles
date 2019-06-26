@@ -42,16 +42,16 @@ main = xmonad $ fullscreenSupport config
 -- config = extensions . hooks . settings $ def
 
 -- data Hook = Startup | Layout | Manage | Event
-config = extensions def
-    { terminal           = term
-    , borderWidth        = 0
-    , normalBorderColor  = "#cccccc"
-    , focusedBorderColor = "#8A745E"
-    , startupHook        = start
-    , layoutHook         = layout
-    , manageHook         = manager
-    , handleEventHook    = events
-    -- , workspaces         = ["1"]
+config                      = extensions def
+    { terminal              = term
+    , borderWidth           = 0
+    , normalBorderColor     = "#cccccc"
+    , focusedBorderColor    = "#8A745E"
+    , startupHook           = start
+    , layoutHook            = layout
+    , manageHook            = manager
+    , handleEventHook       = events
+    , modMask               = mod4Mask
     }
 
 extensions :: XConfig l -> XConfig l
@@ -149,7 +149,7 @@ events = fullscreenEventHook <+> docksEventHook <+> handleEventHook def
 -- spaces :: [String]
 -- spaces = [ "dev" , "web" , "mail" , "media" , "chat" , "office" , "log" ]
 
-mod   = mod1Mask
+mod   = mod4Mask
 shift = shiftMask
 
 -- killRest :: Window -> X()
@@ -187,10 +187,10 @@ keybinds = flip additionalKeys addKeys . flip removeKeys delKeys
       , quit
       ]
     delKeys =
-      [ (mod1Mask, xK_q)
-      , (mod1Mask .|. shiftMask, xK_Return)
-      , (mod1Mask .|. shiftMask, xK_c)
-      , (mod1Mask, xK_p)
+      [ (mod, xK_q)
+      , (mod .|. shiftMask, xK_Return)
+      , (mod .|. shiftMask, xK_c)
+      , (mod, xK_p)
       ]
 
 
@@ -199,17 +199,12 @@ fullscreen = [bind xK_f (sendMessage $ Toggle FULL)]
 
 bind :: KeySym -> X() -> ((KeyMask, KeySym), X ())
 bind key action = ((mod, key), action)
-  where
-    mod = mod1Mask
 
 bindNoMod :: Integral n => KeySym -> X() -> ((n, KeySym), X())
 bindNoMod key action = ((0, key), action)
 
 bindShift :: KeySym -> X() -> ((KeyMask, KeySym), X ())
 bindShift key action = ((mod .|. shift, key), action)
-  where
-    mod   = mod1Mask
-    shift = shiftMask
 
 -- Insert a new instance of an application into the current workspace before the
 -- currently focused window
