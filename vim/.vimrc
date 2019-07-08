@@ -1,9 +1,9 @@
 " Startup {{{
 
 " Filetype templates
-augroup NewFile
+augroup Templates
     autocmd!
-    autocmd BufNewFile *.tex 0r ~/.vim/templates/template.tex
+    autocmd BufNewFile *.* silent! execute '0r ~/.vim/templates/template.'.expand("<afile>:e")
 augroup end
 
 "Strip all trailing whitespace from file on write
@@ -104,6 +104,10 @@ let g:qs_highlight_on_keys = ['f','F','t','T']
 " Incsearch.vim
 set hlsearch
 
+" Matchup
+let g:matchup_matchparen_enabled = 0
+let g:matchup_surround_enabled = 1
+
 " nnoremap <Space>c :CtrlPDir<CR>
 " let g:ctrlp_show_hidden = 1 "Show hidden files in control p
 " let g:ctrlp_user_command = 'ag %s -l -g "" -f --nocolor --hidden --path-to-ignore ~/.ignore'
@@ -129,6 +133,9 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 let g:haskell_indent_disable = 0
+
+"vim-vue
+let g:vue_disable_pre_processors = 1
 
 " Wal
 if executable('wal')
@@ -364,6 +371,7 @@ filetype plugin indent on
 set modelines=1
 set hidden "Enable hidden buffers
 set showmatch
+set showcmd
 set textwidth=80
 set columns=80
 set ttimeout
@@ -650,5 +658,3 @@ command! -nargs=1 -bar -complete=file Rename file<space><args><bar>call<space>de
 "}}}
 
 "}}}
-
-" vim:foldmethod=marker:foldlevel=0
