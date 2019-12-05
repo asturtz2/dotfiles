@@ -112,10 +112,6 @@ nnoremap <Space>sp :'{,'}s/\<<C-r>=expand('<cword>')<CR>\>//g<left><left>
 nnoremap <Space>sf :%s/\<<C-r>=expand('<cword>')<CR>\>//g<left><left>
 nnoremap <Space>sl :s/\<<C-r>=expand('<cword>')<CR>\>//g<left><left>
 
-
-if has('nvim')
-    set inccommand=nosplit "Show substitution matches/replacements dynamically
-endif
 set incsearch "Search as characters are entered
 set hlsearch "Highlight search matches
 set ignorecase
@@ -170,44 +166,25 @@ set wildignore+=tags,cscope.*
 set wildignore+=*.tar.*
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.aux,*.log,*.fdb*,*.fls
 set wildignorecase
-set wildmode=list:lastused,full
+set wildmode=full,list:lastused
 set wildmenu
 set wildcharm=<C-z>
 
-" if executable("ag")
-"     set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --vimgrep
-"     set grepformat^=%f:%l:%c:%m
-" endif
 if executable("rg")
     set grepprg=rg\ --vimgrep
+    set grepformat^=%f:%l:%c:%m
+elseif executable("ag")
+    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --vimgrep
     set grepformat^=%f:%l:%c:%m
 endif
 
 let g:tex_flavor = "latex"
 " }}}
 "
-" Terminals {{{
-if has('nvim')
-    tnoremap <Esc> <C-\><C-N>
-endif
-" }}}
 
-" Insert mode {{{
-" inoremap (; (<CR>);<C-c>O<Tab>
-" inoremap (, (<CR>),<C-c>O<Tab>
-" inoremap {; {<CR>};<C-c>O<Tab>
-" inoremap {, {<CR>},<C-c>O<Tab>
-" inoremap [; [<CR>];<C-c>O<Tab>
-" inoremap [, [<CR>],<C-c>O<Tab>
-"}}}
-
-"{{{ Command mode
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
-"}}}
 
-" Statusline {{{
-" set statusline=%<\ %f\ %m%r%y%w%=%l\/%-6L\ %3c\
 hi User1 ctermbg=7 ctermfg=0 cterm=bold
 hi User2 ctermbg=7 ctermfg=0
 set statusline=
@@ -222,7 +199,6 @@ set statusline+=\ %{&fileformat}\ \  "File format
 set statusline+=%1*
 set statusline+=\ (%l,\ %c):\%P\ \  "Line number
 set laststatus=2
-" }}}
 
 " Folding {{{
 set foldenable
@@ -245,10 +221,6 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>C-n>" : ""<CR>'
 inoremap <expr> <C-p> pumvisible() ? '<C-p>' :
   \ '<C-p><C-r>=pumvisible() ? "\<lt>C-p>" : ""<CR>'
-" inoremap  
-" inoremap  
-
-" let s:python_version = 3
 " }}}
 
 " Undo {{{
@@ -258,18 +230,7 @@ set undolevels=1000
 set undoreload=10000
 " }}}
 
-" {{{ Git
-nnoremap <Space>vs :Gstatus<CR>
-nnoremap <Space>vb :!git branch<CR>
-nnoremap <Space>vc :!git commit -am ""<Left>
-" }}}
-" {{{ UI
-set showmatch "Show matching characters (parentheses, brackets, etc.)
-" }}}
-
 " Misc {{{
-map <Space>~ :so ~/.vimrc<CR>
-map <Space>z :!zathura * &<Left><Left>
 command! -nargs=* -bar Make w<bar>silent!<Space>make<Space><args><bar>silent<Space>redraw!
 nnoremap <Space>m :Make<CR>
 nnoremap <Space>M :Make

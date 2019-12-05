@@ -22,21 +22,21 @@
 [submodule "vim/.vim/pack/plugins/start/vim-surround"]
 	path = vim/.vim/pack/plugins/start/vim-surround
 	url = git@github.com:tpope/vim-surround.git
-[submodule "/home/alex/dotfiles/vim/.vim/pack/plugins/start/andymass/vim-matchup"]
-	path = /home/alex/dotfiles/vim/.vim/pack/plugins/start/andymass/vim-matchup
+[submodule "vim/.vim/pack/plugins/start/andymass/vim-matchup"]
+	path = vim/.vim/pack/plugins/start/andymass/vim-matchup
 	url = git@github.com:andymass/vim-matchup.git
-[submodule "/home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-matchup"]
-	path = /home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-matchup
+[submodule "vim/.vim/pack/plugins/start/vim-matchup"]
+	path = vim/.vim/pack/plugins/start/vim-matchup
 	url = git@github.com:andymass/vim-matchup.git
-[submodule "/home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-closer"]
-	path = /home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-closer
+[submodule "vim/.vim/pack/plugins/start/vim-closer"]
+	path = vim/.vim/pack/plugins/start/vim-closer
 	url = git@github.com:rstacruz/vim-closer.git
-[submodule "/home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-tinyMRU"]
-	path = /home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-tinyMRU
+[submodule "vim/.vim/pack/plugins/start/vim-tinyMRU"]
+	path = vim/.vim/pack/plugins/start/vim-tinyMRU
 	url = git@github.com:romainl/vim-tinyMRU.git
 [submodule "vim/.vim/pack/plugins/opt/wal"]
 	path = vim/.vim/pack/plugins/opt/wal
 	url = git@github.com:dylanaraps/wal.git
-[submodule "/home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-vue"]
-	path = /home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-vue
+[submodule "vim/.vim/pack/plugins/start/vim-vue"]
+	path = vim/.vim/pack/plugins/start/vim-vue
 	url = git@github.com:posva/vim-vue.git
