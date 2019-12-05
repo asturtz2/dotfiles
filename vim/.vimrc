@@ -1,6 +1,3 @@
-" Startup {{{
-
-" Filetype templates
 augroup Templates
     autocmd!
     autocmd BufNewFile *.* silent! execute '0r ~/.vim/templates/template.'.expand("<afile>:e")
@@ -12,143 +9,19 @@ augroup WriteBuffer
     autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 augroup end
 
-augroup Quickfix
-    autocmd!
-    autocmd FileType qf :nnoremap <buffer> <CR> <CR><C-w>o
-    autocmd QuickFixCmdPost cgetexpr cwindow
-    autocmd QuickFixCmdPost lgetexpr lwindow
-augroup END
-
-"Create file marks for the last file viewed of a given type
-augroup LeaveBuffer
-    autocmd!
-    autocmd BufLeave *.vim* normal! mV
-    autocmd BufLeave *.hs normal! mH
-    autocmd BufLeave *.c normal! mC
-    autocmd BufLeave *.cpp normal! mC
-    autocmd BufLeave *.purs normal! mP
-    autocmd BufLeave *.js normal! mJ
-    autocmd BufLeave *.ts normal! mJ
-    autocmd BufLeave *.rb normal! mR
-    autocmd BufLeave *.css normal! mS
-    autocmd BufLeave *.tex normal! mM
-    autocmd BufLeave *.md normal! mM
-    autocmd BufLeave *.xml normal! mM
-    autocmd BufLeave *.html normal! mM
-augroup end
-
-" }}}
-
-" Plugins {{{
-
-map <Space>pi :PlugInstall<CR>
-map <Space>pu :PlugUpdate<CR>
-map <Space>ps :PlugStatus<CR>
-map <Space>pc :PlugClean<CR>
-
-" Installation{{{
-call plug#begin()
-
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-commentary'
-" Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
-Plug 'xolox/vim-misc'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-obsession'
-Plug 'sheerun/vim-polyglot'
-Plug 'tommcdo/vim-lion'
-Plug 'rstacruz/vim-closer'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'romainl/vim-cool'
-Plug 'romainl/vim-qf'
-Plug 'romainl/vim-tinyMRU'
-Plug 'sjl/gundo.vim', { 'on' : 'GundoToggle' }
-Plug 'ervandew/supertab'
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
-Plug 'unblevable/quick-scope'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'vmchale/dhall-vim'
-Plug 'justinmk/vim-dirvish'
-Plug 'andymass/vim-matchup'
-Plug 'jeetsukumaran/vim-indentwise'
-" Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
-
-"Haskell
-Plug 'itchyny/vim-haskell-indent', { 'for' : 'haskell' }
-Plug 'neovimhaskell/haskell-vim', { 'for' : 'haskell' }
-" Plug 'eagletmt/ghcmod-vim', { 'for' : 'haskell' }
-
-" Latex
-Plug 'lervag/vimtex', { 'for' : ['tex', 'plaintex', 'latex'] }
-
-" Wal
-if executable('wal')
-    Plug 'dylanaraps/wal'
-endif
-
-call plug#end()
-" }}}
-
-" Options {{{
-
-" Quick-scope
-let g:qs_highlight_on_keys = ['f','F','t','T']
-
-" Incsearch.vim
 set hlsearch
 
 " Matchup
 let g:matchup_matchparen_enabled = 0
 let g:matchup_surround_enabled = 1
 
-" nnoremap <Space>c :CtrlPDir<CR>
-" let g:ctrlp_show_hidden = 1 "Show hidden files in control p
-" let g:ctrlp_user_command = 'ag %s -l -g "" -f --nocolor --hidden --path-to-ignore ~/.ignore'
-" let g:ctrlp_working_path_mode = 0
-
-" Supertab
-let g:SuperTabDefaultCompletionType = "context"
-
-" Gundo
-map <Space>u :GundoToggle<CR>
-
-"Vimtex
-let g:vimtex_complete_close_braces = 1
-let g:vimtex_view_method = 'zathura'
-let g:vimtex_indent_enabled = 0
-
-"Haskell-vim
-let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
-let g:haskell_indent_disable = 0
-
-"Dart
-
-let g:dart_style_guide = 2
-
-"vim-vue
-"let g:vue_disable_pre_processors = 1
-
+syntax on
 " Wal
 if executable('wal')
+    packadd wal
     colorscheme wal
 endif
-" }}}
-"}}}
 
-" Changes {{{
 nnoremap Y y$
 
 "Augment vim-surround with a 'space' text object
@@ -159,7 +32,6 @@ nnoremap ds<space> F<space>xf<space>x
 nnoremap <Space>wh "_yiw?\v\w+\_W+%#<CR>:s/\v(%#\w+)(\_W+)(\w+)/\3\2\1/<CR><C-o><C-l>:nohl<CR>
 nnoremap <Space>wl "_yiw:s/\v(%#\w+)(\_W+)(\w+)/\3\2\1/<CR><C-o>/\v\w+\_W+<CR><C-l>:nohl<CR>
 nmap <silent> gs m':set opfunc=Substitute<CR>g@
-" }}}
 
 " Text objects {{{
 " 24 simple text-objects
@@ -697,21 +569,6 @@ command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h'))
 "Rename current file
 command! -nargs=1 -bar -complete=file Rename file<space><args><bar>call<space>delete(expand('#'))<bar>w
 
-"Lightweight MRU
-" this is our 'main' function: it couldn't be simpler
-function! MRU(arg)
-    execute 'edit ' . a:arg
-endfunction
-
-" the completion function, again it's very simple
-function! MRUComplete(ArgLead, CmdLine, CursorPos)
-    return filter(copy(v:oldfiles), 'v:val =~ a:ArgLead')
-endfunction
-
-" the actual command
-" it accepts only one argument
-" it's set to use the function above for completion
-command! -nargs=1 -complete=customlist,MRUComplete MRU call MRU(<f-args>)
 "}}}
 
 "}}}

@@ -1,0 +1,42 @@
+[submodule "vim/.vim/pack/plugins/start/vim-qf"]
+	path = vim/.vim/pack/plugins/start/vim-qf
+	url = git@github.com:romainl/vim-qf.git
+[submodule "vim/.vim/pack/plugins/start/vim-cool"]
+	path = vim/.vim/pack/plugins/start/vim-cool
+	url = git@github.com:romainl/vim-cool.git
+[submodule "vim/.vim/pack/plugins/start/vim-dirvish"]
+	path = vim/.vim/pack/plugins/start/vim-dirvish
+	url = git@github.com:justinmk/vim-dirvish.git
+[submodule "vim/.vim/pack/plugins/start/vim-obsession"]
+	path = vim/.vim/pack/plugins/start/vim-obsession
+	url = git@github.com:tpope/vim-obsession.git
+[submodule "vim/.vim/pack/plugins/start/vim-commentary"]
+	path = vim/.vim/pack/plugins/start/vim-commentary
+	url = git@github.com:tpope/vim-commentary.git
+[submodule "vim/.vim/pack/plugins/start/vim-vinegar"]
+	path = vim/.vim/pack/plugins/start/vim-vinegar
+	url = git@github.com:tpope/vim-vinegar.git
+[submodule "vim/.vim/pack/plugins/start/vim-abolish"]
+	path = vim/.vim/pack/plugins/start/vim-abolish
+	url = git@github.com:tpope/vim-abolish.git
+[submodule "vim/.vim/pack/plugins/start/vim-surround"]
+	path = vim/.vim/pack/plugins/start/vim-surround
+	url = git@github.com:tpope/vim-surround.git
+[submodule "/home/alex/dotfiles/vim/.vim/pack/plugins/start/andymass/vim-matchup"]
+	path = /home/alex/dotfiles/vim/.vim/pack/plugins/start/andymass/vim-matchup
+	url = git@github.com:andymass/vim-matchup.git
+[submodule "/home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-matchup"]
+	path = /home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-matchup
+	url = git@github.com:andymass/vim-matchup.git
+[submodule "/home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-closer"]
+	path = /home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-closer
+	url = git@github.com:rstacruz/vim-closer.git
+[submodule "/home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-tinyMRU"]
+	path = /home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-tinyMRU
+	url = git@github.com:romainl/vim-tinyMRU.git
+[submodule "vim/.vim/pack/plugins/opt/wal"]
+	path = vim/.vim/pack/plugins/opt/wal
+	url = git@github.com:dylanaraps/wal.git
+[submodule "/home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-vue"]
+	path = /home/alex/dotfiles/vim/.vim/pack/plugins/start/vim-vue
+	url = git@github.com:posva/vim-vue.git
