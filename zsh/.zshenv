@@ -7,7 +7,7 @@ alias ag='ag --path-to-ignore ~/.ignore'
 alias errlog='journalctl -p 3 -xb'
 
 
-export EDITOR='nvim'
+export EDITOR='vim'
 export BROWSER='vimb'
 export _JAVA_AWT_WM_NONREPARENTING=1
 

@@ -14,7 +14,6 @@ white = #ffffff
 
 [bar/main]
 
-monitor = HDMI-0
 enable-ipc = true
 ; TODO: Dynamic Width
 ; width = 2130
@@ -42,8 +41,8 @@ font-1 = Iosevka:weight=bold:pixelsize=10;3
 font-2 = Iosevka:pixelsize=18;4
 font-3 = Iosevka:pixelsize=30;4
 
-modules-left = arch workspaces
-modules-center = title
+modules-left = arch workspaces-xmonad
+modules-center = title-xmonad
 modules-right = xkeyboard battery wireless date
 
 [module/title]
@@ -86,6 +85,18 @@ menu-0-1 = 
 menu-0-1-exec = reboot
 menu-0-2 = ""
 
+[module/workspaces-xmonad]
+type = custom/script
+exec = tail -F /tmp/xmonad-ws
+exec-if = [ -p /tmp/xmonad-ws ]
+tail = true
+
+[module/title-xmonad]
+type = custom/script
+exec = tail -F /tmp/xmonad-title
+exec-if = [ -p /tmp/xmonad-title ]
+tail = true
+
 [module/workspaces]
 type = internal/xworkspaces
 
@@ -99,26 +110,27 @@ type = internal/xworkspaces
 
 format = <label-state>
 
-label-active = 
-label-active-font = 3
+label-active = %name%
+label-active-font = 0
 label-active-margin = 1
 label-active-spacing = 1
-label-active-foreground =${xrdb:color5}
+label-active-foreground =${xrdb:color3}
+label-active-underline = ${xrdb:color2}
 
-label-urgent = %icon%
-label-urgent-font = 3
+label-urgent = %name%
+label-urgent-font = 0
 label-urgent-margin = 1
 label-urgent-spacing = 1
 label-urgent-foreground = ${xrdb:color1}
 
-label-occupied = %icon%
-label-occupied-font = 3
+label-occupied = %name%
+label-occupied-font = 0
 label-occupied-margin = 1
 label-occupied-spacing = 1
 label-occupied-foreground = ${xrdb:color1}
 
-label-empty = 
-label-empty-font = 3
+label-empty = %name%
+label-empty-font = 0
 label-empty-margin = 1
 label-empty-spacing = 1
 label-empty-foreground = ${xrdb:color7}
@@ -183,7 +195,7 @@ animation-charging-font = 3
 
 [module/wireless]
 type = internal/network
-interface = wlp1s0
+interface = wlp2s0
 interval = 3.0
 
 format-connected =<label-connected>

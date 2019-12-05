@@ -1,6 +1,12 @@
 setlocal shiftwidth=2
 setlocal softtabstop=2
+setlocal tabstop=2
 
+nnoremap <buffer> <Space>gu :Grep '<<C-R>=expand('%:t:r')<CR>'<CR>
+
+setlocal isfname+=@-@
+setlocal suffixesadd+=.vue,.js,.ts,.tsx
+setlocal include=^\\s*[^\/]\\+\\(from\\\|require(\\)\\s*['\"\.]
 setlocal includeexpr=RESOLVE(v:fname)
 
 function! RESOLVE(module) abort
@@ -44,25 +50,26 @@ function! RESOLVE(module) abort
 
     " Handling absolute and relative paths.
     " Example: var foo = require('./foo.js');
-    if a:module =~ '^\/' || a:module =~ '^\.\{1,2}\/'
-        let root = fnamemodify(substitute(finddir("node_modules", ".;"), '/node_modules', '', ''), ':p:h:h')
+    if a:module =~ '^\/' || a:module =~ '^\.\{1,2}\/' || a:module =~ '^@\/'
+        let root = fnamemodify(substitute(finddir("node_modules", ".;"), '/node_modules', '', ''), ':p:h')
+
+        if a:module =~ '^@\/'
+            let module = substitute(a:module, '^@\/', '', '')
+        endif
+
         if a:module =~ '^\.\{1,2}\/'
             let module = substitute(a:module, '^\.\{1,2}\/', '', '')
         endif
 
         let filename = 0
         try
-            let filename = findfile(module, root)
+            if isdirectory(module)
+                let filename = findfile(module . "/index.js")
+            else
+                let filename = findfile(module)
+            endif
         catch
-            try
-                let filename = findfile(module . ".js", root)
-            catch
-                try
-                    let filename = findfile(module . "/index.js", root)
-                catch
-                    let filename = 0
-                endtry
-            endtry
+            let filename = a:module
         endtry
 
         return filename
@@ -106,7 +113,10 @@ function! NODE_MODULES_PATHS() abort
 endfunction
 
 let &define = '^\%(' . join([
-  \ '\s*var\s\+\ze\k\+\s*=\s*function\>',
+  \ '\s*\(var\|let\|const\)\s\+\ze\k\+\s*=\s*function\>',
+  \ '\s*\(var\|let\|const\)\s\+\ze\k\+\s*=\s*(.*)\s+=>',
   \ '\s*\ze\k\+\s*:\s*function\>',
+  \ '\s*\ze\k\+\s*:\s*(.*)\s*{',
+  \ '\s*\ze\k\+\s*(.*)\s*{',
   \ '\s*function\s\+\ze\k\+'
   \ ], '\|') . '\)'

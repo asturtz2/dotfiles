@@ -5,16 +5,17 @@ Xft.hinting: 1
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
-URxvt.font: xft:DejaVuSansMono Nerd Font:size=12:antialias=true
+URxvt.font: xft:Iosevka Term:size=12:antialias=true,xft:DejaVuSansMono Nerd Font:size=12:antialias=true,xft:bitstream vera sans mono,xft:unifont,xft:Arial,xft:Font Awesome 5 Free,xft:Font Awesome 5 Free Solid,xft:Font Awesome 5 Brands
 !URxvt.boldFont: xft:Iosevka:bold:size=12:antialias=true
 !URxvt.font: xft:bitstream vera sans mono:size=12:antialias=true
 !URxvt.boldFont: xft:bitstream vera sans mono:bold:size=12:antialias=true
-URxvt.letterSpace: -1
+!URxvt.letterSpace: -1
 URxvt.depth: 32
 URxvt.geometry: 80x30
-URxvt.internalBorder: 3
+URxvt.internalBorder: 5
 URxvt.scrollBar: false
 URxvt.scrollBar_right: true
 URxvt.iso14755: False
 URxvt.clipboard.copycmd:xsel -ob
 URxvt.perl-ext-common: resize-font
+URxvt.urgentOnBell: true

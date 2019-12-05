@@ -110,7 +110,10 @@ function! NODE_MODULES_PATHS() abort
 endfunction
 
 let &define = '^\%(' . join([
-  \ '\s*var\s\+\ze\k\+\s*=\s*function\>',
+  \ '\s*\(var\|let\|const\)\s\+\ze\k\+\s*=\s*function\>',
+  \ '\s*\(var\|let\|const\)\s\+\ze\k\+\s*=\s*(.*)\s+=>',
   \ '\s*\ze\k\+\s*:\s*function\>',
+  \ '\s*\ze\k\+\s*:\s*(.*)\s*{',
+  \ '\s*\ze\k\+\s*(.*)\s*{',
   \ '\s*function\s\+\ze\k\+'
   \ ], '\|') . '\)'

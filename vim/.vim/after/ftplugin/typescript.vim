@@ -1,6 +1,7 @@
 setlocal shiftwidth=2
 setlocal softtabstop=2
 
+setlocal path=.,pages/**,components/**,services/**,data/**
 setlocal includeexpr=RESOLVE(v:fname)
 
 function! RESOLVE(module) abort

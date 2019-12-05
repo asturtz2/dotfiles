@@ -64,7 +64,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tommcdo/vim-lion'
 Plug 'rstacruz/vim-closer'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'wellle/targets.vim'
 Plug 'romainl/vim-cool'
 Plug 'romainl/vim-qf'
 Plug 'romainl/vim-tinyMRU'
@@ -78,6 +77,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'vmchale/dhall-vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'andymass/vim-matchup'
+Plug 'jeetsukumaran/vim-indentwise'
 " Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
 
 "Haskell
@@ -134,8 +134,12 @@ let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 let g:haskell_indent_disable = 0
 
+"Dart
+
+let g:dart_style_guide = 2
+
 "vim-vue
-let g:vue_disable_pre_processors = 1
+"let g:vue_disable_pre_processors = 1
 
 " Wal
 if executable('wal')
@@ -154,18 +158,37 @@ nnoremap ds<space> F<space>xf<space>x
 "or to the right (l), ignoring non-alphanumeric characters.
 nnoremap <Space>wh "_yiw?\v\w+\_W+%#<CR>:s/\v(%#\w+)(\_W+)(\w+)/\3\2\1/<CR><C-o><C-l>:nohl<CR>
 nnoremap <Space>wl "_yiw:s/\v(%#\w+)(\_W+)(\w+)/\3\2\1/<CR><C-o>/\v\w+\_W+<CR><C-l>:nohl<CR>
+nmap <silent> gs m':set opfunc=Substitute<CR>g@
 " }}}
 
-" Movement {{{
+" Text objects {{{
+" 24 simple text-objects
+" ----------------------
+" i_ i. i: i, i; i| i/ i\ i* i+ i- i#
+" a_ a. a: a, a; a| a/ a\ a* a+ a- a#
+for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '-', '#' ]
+    execute 'xnoremap i' . char . ' :<C-u>normal! T' . char . 'vt' . char . '<CR>'
+    execute 'onoremap i' . char . ' :normal vi' . char . '<CR>'
+    execute 'xnoremap a' . char . ' :<C-u>normal! F' . char . 'vf' . char . '<CR>'
+    execute 'onoremap a' . char . ' :normal va' . char . '<CR>'
+endfor
 
-" Go to beginning of last visual selection
-nnoremap gV `[v`
+" buffer text-objects
+" -------------------
+" i% a%
+xnoremap i% :<C-u>let z = @/\|1;/^./kz<CR>G??<CR>:let @/ = z<CR>V'z
+onoremap i% :normal vi%<CR>
+xnoremap a% GoggV
+onoremap a% :normal va%<CR>
 
-nnoremap <Home> ^
-nnoremap <End> $
-
-nnoremap [[ :cprevious<CR>
-nnoremap ]] :cnext<CR>
+" square brackets text-objects
+" ----------------------------
+" ir ar
+xnoremap ir i[
+xnoremap ar a[
+onoremap ir :normal vi[<CR>
+onoremap ar :normal va[<CR>
+" }}}
 
 " "in line" (entire line sans white-space; cursor at beginning--ie, ^)
 xnoremap <silent> il :<c-u>normal! g_v^<cr>
@@ -190,6 +213,17 @@ onoremap <silent> ii :<c-u>call <sid>inIndentation()<cr>
 " "around indentation" (indentation level and any surrounding empty lines)
 xnoremap <silent> ai :<c-u>call <sid>aroundIndentation()<cr>
 onoremap <silent> ai :<c-u>call <sid>aroundIndentation()<cr>
+
+" Movement {{{
+
+" Go to beginning of last visual selection
+nnoremap gV `[v`
+
+nnoremap <Home> ^
+nnoremap <End> $
+
+nnoremap [[ :cprevious<CR>
+nnoremap ]] :cnext<CR>
 
 xnoremap $ $h
 " }}}
@@ -219,7 +253,7 @@ set smartcase
 " Buffers {{{
 nnoremap <Space>a <C-^>
 nnoremap <Space>d :ls<CR>:bd<Space>
-nnoremap <Space>b :ls<CR>:b **<Left>
+nnoremap <Space>b :b<Space><C-R><C-W><CR>
 nnoremap <Space>r :ME<Space>
 nnoremap <PageUp> :bnext<CR>
 nnoremap <PageDown> :bprev<CR>
@@ -233,37 +267,38 @@ nnoremap <C-W><C-D> :vert<Space>dsp<Space><C-R>=expand('<cword>')<CR><CR>
 
 " Files {{{
 nnoremap [a :prev <bar> args<CR>
-nnoremap ]a :next <bar> args<CR>
+nnoremap ]a :set nomore <bar> :next <bar> args<CR>
 nnoremap <Space>f :find *<C-z><S-Tab>
 nnoremap <Space>F :find <C-R>=expand(getcwd()).'/**/*'<CR><C-z><S-Tab>
 nnoremap <Space>e :edit <C-R>=fnameescape(expand('%:p:h')).'/'<CR><C-z><S-Tab>
 nnoremap <Space>cf :cd **/*
 nnoremap <Space>ch :cd<CR>:pwd<CR>
 nnoremap <Space>cc :cd %:p:h<CR>:pwd<CR>
+" command! -nargs=+ -complete=file_in_path -bar Grep silent grep <args>
 function! Grep(args)
+    " return system(join([&grepprg, join(a:000)], ' '))
     let args = split(a:args, ' ')
-    return system(join([&grepprg, shellescape(args[0]), get(args, 1, '')], ' '))
+    return system(join([&grepprg, args[0], len(args) > 1 ? join(args[1:-1], ' ') : ''], ' '))
 endfunction
 command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<q-args>)
 command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<q-args>)
 nnoremap <silent> <Space>gw :Grep<Space><C-R>=expand('<cword>' . ' ' . &path)<CR><CR>
 nnoremap <Space>gg :Grep<Space>
 
-set path&
-let &path .= "**"
+set path=.,**
 
 set wildignore=
 set wildignore+=*.swp,*.bak
 set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.dll,*.pdb,*.min.*,bundle.*
 set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
 set wildignore+=*/min/*,*/vendor/*
-" set wildignore+=*/node_modules/*,*/bower_components/*
+set wildignore+=*/node_modules/*,*/bower_components/*
 set wildignore+=*/java/*,*/target/*,*/out/*
 set wildignore+=tags,cscope.*
 set wildignore+=*.tar.*
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.aux,*.log,*.fdb*,*.fls
 set wildignorecase
-set wildmode=full
+set wildmode=list:lastused,full
 set wildmenu
 set wildcharm=<C-z>
 
@@ -318,11 +353,11 @@ set laststatus=2
 " }}}
 
 " Folding {{{
-set foldenable "Enable folding
-set foldopen=all " Open folds on enter
-set foldclose=all " Close folds on exit
-set foldlevel=5 "Autofold everything by default
-set foldnestmax=5 "Only fold toplevel
+set foldenable
+set foldopen=all
+set foldclose=all
+set foldlevel=5
+set foldnestmax=5
 set foldmethod=indent
 " }}}
 
@@ -402,6 +437,7 @@ endfunction
 " make list-like commands more intuitive
 function! CCR()
     let cmdline = getcmdline()
+    command! -bar Z silent set more|delcommand Z
     if cmdline =~ '\v\C^(ls|files|buffers)'
         " like :ls but prompts for a buffer command
         return "\<CR>:b"
@@ -413,28 +449,25 @@ function! CCR()
         return "\<CR>:" . cmdline[0] . "j  " . split(cmdline, " ")[1] . "\<S-Left>\<Left>"
     elseif cmdline =~ '\v\C^(cli|lli)'
         " like :clist or :llist but prompts for an error/location number
-        return "\<CR>:silent " . repeat(cmdline[0], 2) . "\<Space>"
-    elseif cmdline =~ 'ol'
+        return "\<CR>:sil " . repeat(cmdline[0], 2) . "\<Space>"
+    elseif cmdline =~ '\C^old'
         " like :oldfiles but prompts for an old file to edit
         set nomore
-        return "\<CR>:silent set more|e #<"
+        return "\<CR>:Z|e #<"
     elseif cmdline =~ '\C^changes'
         " like :changes but prompts for a change to jump to
         set nomore
-        return "\<CR>:silent set more|norm! g;\<S-Left>"
+        return "\<CR>:Z|norm! g;\<S-Left>"
     elseif cmdline =~ '\C^ju'
         " like :jumps but prompts for a position to jump to
         set nomore
-        return "\<CR>:silent set more|norm! \<C-o>\<S-Left>"
+        return "\<CR>:Z|norm! \<C-o>\<S-Left>"
     elseif cmdline =~ '\C^marks'
         " like :marks but prompts for a mark to jump to
         return "\<CR>:norm! `"
     elseif cmdline =~ '\C^undol'
         " like :undolist but prompts for a change to undo
         return "\<CR>:u "
-    elseif cmdline =~ '\C^reg'
-        " prompt for register to paste
-        return "\<CR>:norm! \"p\<Left>"
     else
         return "\<CR>"
     endif
@@ -648,13 +681,37 @@ function! s:aroundIndentation()
 	" restore magic
 	let &magic = l:magic
 endfunction
+
+function! Substitute(type, ...)
+    let cur = getpos("''")
+    call cursor(cur[1], cur[2])
+    let cword = expand('<cword>')
+    execute "'[,']s/" . cword . "/" . input(cword . '/')
+    call cursor(cur[1], cur[2])
+endfunction
+
 "Custom commands {{{
 
 "Lightweight git blame
-command! -range GB echo join(systemlist("git blame -L <line1>,<line2> " . expand('%')), "\n")
-
+command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%')), "\n")
 "Rename current file
 command! -nargs=1 -bar -complete=file Rename file<space><args><bar>call<space>delete(expand('#'))<bar>w
+
+"Lightweight MRU
+" this is our 'main' function: it couldn't be simpler
+function! MRU(arg)
+    execute 'edit ' . a:arg
+endfunction
+
+" the completion function, again it's very simple
+function! MRUComplete(ArgLead, CmdLine, CursorPos)
+    return filter(copy(v:oldfiles), 'v:val =~ a:ArgLead')
+endfunction
+
+" the actual command
+" it accepts only one argument
+" it's set to use the function above for completion
+command! -nargs=1 -complete=customlist,MRUComplete MRU call MRU(<f-args>)
 "}}}
 
 "}}}
