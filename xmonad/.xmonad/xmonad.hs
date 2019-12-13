@@ -456,10 +456,9 @@ main = mkPipes P.>> (xmonad $ do
     markJumped = withFocused $ addTag "jumped"
     unmarkJumped = withFocused $ delTag "jumped"
     jumped = ask P.>>= (\win -> liftX $ hasTag "jumped" win)
-    notJumped = ask P.>>= (\win -> liftX $ not <$> hasTag "jumped" win)
 
   keys =+
-    [ ("M-o", markJumped P.>> nextMatch History notJumped)
+    [ ("M-o", markJumped P.>> nextMatch History (not <$> jumped))
     , ("M-i", unmarkJumped P.>> nextMatch History jumped)
     , ("M-b e", unmarkJumped P.>> (nextMatch History $ title `contains` "VIM"))
     , ("M-b M-e", unmarkJumped P.>> (nextMatch History $ title `contains` "VIM"))

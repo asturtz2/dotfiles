@@ -166,7 +166,7 @@ set wildignore+=tags,cscope.*
 set wildignore+=*.tar.*
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.aux,*.log,*.fdb*,*.fls
 set wildignorecase
-set wildmode=full,list:lastused
+set wildmode=full
 set wildmenu
 set wildcharm=<C-z>
 
