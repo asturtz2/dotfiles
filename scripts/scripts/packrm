@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git -C ~/dotfiles submodule deinit vim/.vim/pack/plugins/**/$1
+git rm vim/.vim/pack/plugins/**/$1
+rm -rf .git/modules/vim/.vim/pack/plugins/**/$1

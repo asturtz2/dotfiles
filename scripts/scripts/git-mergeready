@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+if [[ $# -ne 1 ]]; then
+    echo "Usage: merge <branchname>"
+    exit 1
+fi
+
+git rebase master $1
+git checkout master
+git merge --squash $1
+git commit
+git branch -f $1 HEAD

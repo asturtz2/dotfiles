@@ -37,3 +37,33 @@
 [submodule "vim/.vim/pack/plugins/start/vim-vue"]
 	path = vim/.vim/pack/plugins/start/vim-vue
 	url = https://github.com/posva/vim-vue.git
+[submodule "vim/.vim/pack/plugins/start/Apprentice"]
+	path = vim/.vim/pack/plugins/start/Apprentice
+	url = https://github.com/romainl/Apprentice.git
+[submodule "vim/.vim/pack/plugins/start/vim-javascript"]
+	path = vim/.vim/pack/plugins/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/.vim/pack/plugins/start/vim-jsx-pretty"]
+	path = vim/.vim/pack/plugins/start/vim-jsx-pretty
+	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
+[submodule "vim/.vim/pack/plugins/start/typescript-vim"]
+	path = vim/.vim/pack/plugins/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "vim/.vim/pack/plugins/start/tsuquyomi"]
+	path = vim/.vim/pack/plugins/start/tsuquyomi
+	url = https://github.com/Quramy/tsuquyomi.git
+[submodule "vim/.vim/pack/plugins/start/vim-tex"]
+	path = vim/.vim/pack/plugins/start/vim-tex
+	url = https://github.com/lervag/vimtex.git
+[submodule "vim/.vim/pack/plugins/start/vim-graphql"]
+	path = vim/.vim/pack/plugins/start/vim-graphql
+	url = https://github.com/jparise/vim-graphql.git
+[submodule "vim/.vim/pack/plugins/opt/vim-lsp"]
+	path = vim/.vim/pack/plugins/opt/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp
+[submodule "vim/.vim/pack/plugins/start/vim-slime"]
+	path = vim/.vim/pack/plugins/start/vim-slime
+	url = https://github.com/jpalardy/vim-slime.git
+[submodule "vim/.vim/pack/plugins/opt/vim-ghcid-quickfix"]
+	path = vim/.vim/pack/plugins/opt/vim-ghcid-quickfix
+	url = https://github.com/aiya000/vim-ghcid-quickfix.git

@@ -1,6 +1,11 @@
+augroup Compiling
+    autocmd!
+    autocmd BufWritePost *.ts,*.tsx silent TsuAsyncGeterr
+augroup end
+
 augroup Templates
     autocmd!
-    autocmd BufNewFile *.* silent! execute '0r ~/.vim/templates/template.'.expand("<afile>:e")
+    autocmd BufNewFile *.* silent! execute 'keepalt 0r ~/.vim/templates/template.'.expand("<afile>:e")
 augroup end
 
 "Strip all trailing whitespace from file on write
@@ -17,10 +22,12 @@ let g:matchup_surround_enabled = 1
 
 syntax on
 " Wal
-if executable('wal')
-    packadd wal
-    colorscheme wal
-endif
+" if executable('wal')
+"     packadd wal
+"     colorscheme wal
+" endif
+colorscheme apprentice
+set cursorline
 
 nnoremap Y y$
 
@@ -162,6 +169,7 @@ set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
 set wildignore+=*/min/*,*/vendor/*
 set wildignore+=*/node_modules/*,*/bower_components/*
 set wildignore+=*/java/*,*/target/*,*/out/*
+set wildignore+=*/dist/*
 set wildignore+=tags,cscope.*
 set wildignore+=*.tar.*
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.aux,*.log,*.fdb*,*.fls
@@ -234,6 +242,8 @@ set undoreload=10000
 command! -nargs=* -bar Make w<bar>silent!<Space>make<Space><args><bar>silent<Space>redraw!
 nnoremap <Space>m :Make<CR>
 nnoremap <Space>M :Make
+let g:tsuquyomi_disable_default_mappings = 1
+let g:tsuquyomi_disable_quickfix = 1
 
 filetype plugin indent on
 set modelines=1
@@ -526,10 +536,21 @@ endfunction
 "Custom commands {{{
 
 "Lightweight git blame
-command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%')), "\n")
+command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
 "Rename current file
 command! -nargs=1 -bar -complete=file Rename file<space><args><bar>call<space>delete(expand('#'))<bar>w
 
 "}}}
 
+"Vimtex {{{
+let g:vimtex_view_method = 'zathura'
+"}}}
+
+"Vim-slime {{{
+let g:slime_target = 'x11'
+"}}}
+
+"vim-ghcid-quickfix {{{
+let g:ghcid_quickfix = #{ showing: 'quickfix_on_error' }
+"}}}
 "}}}

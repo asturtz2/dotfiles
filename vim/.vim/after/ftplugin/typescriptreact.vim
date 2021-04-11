@@ -1,5 +1,12 @@
-setlocal shiftwidth=2
-setlocal softtabstop=2
+if exists("b:did_ftplugin")
+    finish
+endif
+let b:did_ftplugin = 1
+
+" setlocal shiftwidth=2
+" setlocal softtabstop=2
+
+compiler eslint
 
 setlocal includeexpr=RESOLVE(v:fname)
 
@@ -106,8 +113,11 @@ function! NODE_MODULES_PATHS() abort
 endfunction
 
 let &define = '^\%(' . join([
-  \ '\s*var\s\+\ze\k\+\s*=\s*function\>',
+  \ '\s*\(var\|let\|const\)\s\+\ze\k\+\s*=\s*function\>',
+  \ '\s*\(var\|let\|const\)\s\+\ze\k\+\s*=\s*(.*)\s+=>',
   \ '\s*\ze\k\+\s*:\s*function\>',
+  \ '\s*\ze\k\+\s*:\s*(.*)\s*{',
+  \ '\s*\ze\k\+\s*(.*)\s*{',
   \ '\s*function\s\+\ze\k\+'
   \ ], '\|') . '\)'
 
@@ -120,3 +130,5 @@ nnoremap <buffer> <Bslash>s :TsuSearch<Space>
 
 nnoremap <buffer> <Bslash>t :<C-u>echo tsuquyomi#hint()<CR>
 nnoremap <buffer> <Bslash>f :TsuQuickFix<CR>
+
+inoremap <buffer> <lt>/ <lt>/<C-x><C-o><C-p>

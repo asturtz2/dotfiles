@@ -1,6 +1,8 @@
 bindkey -v
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
+. ~/.nix-profile/etc/profile.d/nix.sh
+eval "$(direnv hook zsh)"
 # function search(){
 #     aura -Ss $1
 #     aura -As $1
@@ -77,3 +79,6 @@ fd() {
                      -type d \
                      -print 2> /dev/null | fzf +m) && cd "$dir"
 }
+
+function _git_mergeready() { _git_checkout; }
+compdef _git_mergeready git-mergeready
